@@ -1,7 +1,9 @@
 {
   "name": "gaps-ts",
   "version": "0.1.0",
-  "private": true,
+
+  "homepage": "https://quaffel.github.io/gaps-web",
+
   "dependencies": {
     "@types/node": "^16.18.91",
     "@types/react": "^18.2.67",
