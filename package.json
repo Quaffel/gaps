@@ -1,9 +1,7 @@
 {
   "name": "gaps-ts",
   "version": "0.1.0",
-
   "homepage": "https://quaffel.github.io/gaps-web",
-
   "dependencies": {
     "@types/node": "^16.18.91",
     "@types/react": "^18.2.67",
@@ -15,6 +13,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start-localhost": "PUBLIC_URL=/ react-scripts start",
     "build": "react-scripts build",
     "eject": "react-scripts eject"
   },
