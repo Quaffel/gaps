@@ -13,6 +13,9 @@ import { getResourcePath } from './ui/resources';
 
 import './index.css';
 
+const repositoryUrl = process.env.REACT_APP_REPOSITORY_URL;
+console.log("source code is hosted @ ", repositoryUrl)
+
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
@@ -79,7 +82,7 @@ function App(): JSX.Element {
                 onSelect={handleDisplaySelection}
                 disabled={pane.name !== 'game'} />
 
-            <a href="https://github.com/owengombas/gaps-web">
+            <a href={repositoryUrl}>
                 <img src={getResourcePath('icon-feather/github')} alt='go to GitHub repository' />
             </a>
         </header>
