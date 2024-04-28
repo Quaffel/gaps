@@ -35,7 +35,7 @@ export function InteractiveGamePane({
         return {
             score: rules.getScore(state.currentBoard),
         }
-    }, [state.currentBoard]);
+    }, [rules, state.currentBoard]);
 
     return <>
         <StatisticsBar statistics={statistics} />

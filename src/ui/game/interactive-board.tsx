@@ -20,7 +20,7 @@ export function InteractiveBoard({
 
     const possibleMoves = React.useMemo<Array<Move>>(() => {
         return rules.getPossibleMoves(board);
-    }, [board]);
+    }, [rules, board]);
 
     function isSelected(card: CardPosition) {
         return selection?.cardPosition.row === card.row && selection.cardPosition.column === card.column;

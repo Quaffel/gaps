@@ -29,7 +29,7 @@ export function SelectionBar<TOptions extends string>({
     }
 
     return <nav>
-        {options.map((option, optionIdx) => <DecoratedButton
+        {options.map((option) => <DecoratedButton
             key={option.id}
             label={option.label}
             icon={option.icon}

@@ -65,9 +65,11 @@ export function MctsGamePane({
     }
 
     function handlePlaybackStateChange(playbackState: PlaybackState) {
-        onStateChange(Object.assign(state, {
+        onStateChange({
+            initialBoard: state.initialBoard,
             playbackState,
-        }));
+            moves: state.moves,
+        });
     }
 
     const playbackBoard = React.useMemo(() => {
@@ -75,7 +77,7 @@ export function MctsGamePane({
         const highlightedMove = getHighlightedMove(state.moves ?? [], state.playbackState);
 
         return { board, highlightedMove };
-    }, [state.moves, state.playbackState]);
+    }, [state]);
 
     return <>
         <ConfigurationBar disabled={loading} onConfigurationSubmission={handleConfigurationSubmission} />

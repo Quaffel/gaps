@@ -7,7 +7,7 @@ export function LabeledRuler({
 }): JSX.Element {
     return <div className="labeled-ruler">
         <hr />
-        <span>OR</span>
+        <span>{label}</span>
         <hr />
     </div>
 }

@@ -17,6 +17,7 @@ export function PlainBoard({
 }): JSX.Element {
     return <div className="board">
         {rows.map((it, rowIdx) => <CardRow
+            key={rowIdx}
             cards={it}
             onCardSelect={(card, columnIdx) => onCardSelect?.(card, rowIdx, columnIdx)} />)}
     </div>

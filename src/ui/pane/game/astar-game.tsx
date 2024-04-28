@@ -60,15 +60,19 @@ export function AStarGamePane({
 
         console.log("path:", path);
 
-        onStateChange(Object.assign(state, {
+        onStateChange({
+            initialBoard: state.initialBoard,
             moves: path?.map(it => it.action),
-        }));
+            playbackState: state.playbackState,
+        });
     }
 
     function handlePlaybackStateChange(playbackState: PlaybackState) {
-        onStateChange(Object.assign(state, {
+        onStateChange({
+            initialBoard: state.initialBoard,
+            moves: state.moves,
             playbackState,
-        }));
+        });
     }
 
     const playbackBoard = React.useMemo(() => {
@@ -76,7 +80,7 @@ export function AStarGamePane({
         const highlightedMove = getHighlightedMove(state.moves ?? [], state.playbackState);
 
         return { board, highlightedMove };
-    }, [state.moves, state.playbackState]);
+    }, [state]);
 
     return <>
         <ConfigurationBar disabled={loading} onConfigurationSubmission={handleConfigurationSubmission} />

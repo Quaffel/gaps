@@ -116,10 +116,10 @@ function GameSession({
         return interactiveSession;
     });
 
-    const displayPane: Pane<any> = gamePanes[display];
-    const sessionPane: Pane<any> = gamePanes[session.display];
-
     const state = React.useMemo(() => {
+        const displayPane: Pane<any> = gamePanes[display];
+        const sessionPane: Pane<any> = gamePanes[session.display];
+
         if (display === session.display)
             return session.state;
 
