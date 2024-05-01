@@ -3,6 +3,7 @@
     flex-basis: 0;
 
     min-width: 4rem;
+    margin-inline: .5rem;
 
     display: flex;
     flex-direction: column;

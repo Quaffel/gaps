@@ -1,6 +1,7 @@
 :root {
     --primary: #090909;
     --border-radius: 8px;
+    --pane-inset: 1rem;
 }
 
 body {
@@ -18,17 +19,17 @@ body {
 
     height: 100vh;
     box-sizing: border-box;
-    padding: 1rem;
 }
 
 header {
     box-sizing: content-box;
-    padding-block: .5rem;
+    padding-inline: .5rem;
+    padding-top: var(--pane-inset);
 
     position: relative;
 
     display: flex;
-    gap: 1rem;
+    gap: .5rem;
 
     flex-direction: column;
     align-items: center;
@@ -60,6 +61,7 @@ main {
     flex-direction: column;
 
     max-height: 100vh;
+    padding-block: .5rem;
 
     gap: 1rem;
 }

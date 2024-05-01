@@ -4,8 +4,6 @@
 
     flex-grow: 1;
 
-    gap: 1rem;
-
     flex-basis: 5rem;
     min-height: 5rem;
 }
