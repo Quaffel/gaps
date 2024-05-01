@@ -1,3 +1,4 @@
+import { PlainButton } from "../../common/plain-button";
 import { VerticalBar } from "../../common/vertical-bar";
 import { buildIntegerRangeValidator, useValidatedNumberInput } from "../common/validated-input";
 import { Configuration } from "./configuration";
@@ -19,7 +20,7 @@ export function ConfigurationBar({
     return <VerticalBar>
         <label>A* (A-Star)</label>
         {configElement}
-        <button disabled={disabled || config === null} onClick={handleSubmission}>Apply</button>
+        <PlainButton disabled={disabled || config === null} onClick={handleSubmission}>Apply</PlainButton>
     </VerticalBar>;
 }
 

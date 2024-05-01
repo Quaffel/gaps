@@ -5,6 +5,7 @@ import { getBoardOfSeed } from "../../../seed";
 import { buildIntegerRangeValidator, useValidatedNumberInput, useValidatedTextInput } from "../common/validated-input";
 
 import './configuration-menu.css';
+import { PlainButton } from "../../common/plain-button";
 
 
 export function ConfigurationMenu({
@@ -22,7 +23,7 @@ export function ConfigurationMenu({
     return <div className="configuration-menu">
         {configElement}
 
-        <button disabled={config === null} onClick={handleSubmission}>Submit</button>
+        <PlainButton disabled={config === null} onClick={handleSubmission}>Submit</PlainButton>
     </div>
 }
 
