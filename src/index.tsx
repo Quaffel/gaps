@@ -13,7 +13,7 @@ import { getResourcePath } from './ui/resources';
 
 import './index.css';
 
-const repositoryUrl = process.env.REACT_APP_REPOSITORY_URL;
+const repositoryUrl = __REPOSITORY_URL__;
 console.log("source code is hosted @ ", repositoryUrl)
 
 const root = ReactDOM.createRoot(

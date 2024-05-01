@@ -26,7 +26,7 @@ export function InteractiveBoard({
         return selection?.cardPosition.row === card.row && selection.cardPosition.column === card.column;
     }
 
-    function handleCardSelection(card: Card | null, cardPosition: CardPosition) {
+    function handleCardSelection(_card: Card | null, cardPosition: CardPosition) {
         if (selection != null) {
             if (isSelected(cardPosition)) {
                 // The selected card was selected again, meaning that it should be de-selected.

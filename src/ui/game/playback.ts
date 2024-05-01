@@ -1,6 +1,7 @@
 import { Board } from "../../board";
 import { Card } from "../../cards";
 import { Move } from "../../game";
+import { assertType } from "../../util/types";
 
 export type MoveIndex = 'initial' | 'final' | number;
 
@@ -38,7 +39,7 @@ export function getBoardAtMove(
     const displayedSwapIdx = typeof moveIndex === 'number'
         ? moveIndex
         : (() => {
-            const _assertStateIsFinal: 'final' = moveIndex;
+            assertType<'final'>(moveIndex);
             return swaps.length;
         })();
 

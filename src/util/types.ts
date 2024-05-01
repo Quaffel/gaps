@@ -3,3 +3,5 @@
 export type ComponentType<ArrayType extends readonly unknown[]> = ArrayType extends readonly (infer ElementType)[]
     ? ElementType
     : never;
+
+export function assertType<T>(_value: T) {}

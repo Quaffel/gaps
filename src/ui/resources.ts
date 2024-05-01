@@ -1,6 +1,9 @@
 import { Rank, Suit } from "../cards";
 import { ComponentType } from "../util/types";
 
+// populated by vite
+const baseUrl = import.meta.env.BASE_URL;
+
 type CardResource = `cards/${Rank}_of_${Suit}` | 'cards/back' | 'cards-custom/gap';
 
 namespace FeatherIcons {
@@ -24,5 +27,5 @@ type FeatherIconResource = `icon-feather/${FeatherIcons.Variants}`;
 export type Resource = CardResource | FeatherIconResource;
 
 export function getResourcePath(resource: Resource) {
-    return `./res/${resource}.svg`;
+    return `${baseUrl}/res/${resource}.svg`;
 }

@@ -2,43 +2,55 @@
   "name": "gaps-ts",
   "version": "0.1.0",
   "homepage": "https://quaffel.github.io/gaps",
+  "type": "module",
   "dependencies": {
-    "@types/node": "^16.18.91",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
     "@types/react": "^18.2.67",
     "@types/react-dom": "^18.2.22",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
-    "typescript": "^5.4"
+    "@typescript-eslint/eslint-plugin": "^7.2.0",
+    "@typescript-eslint/parser": "^7.2.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.6",
+    "typescript": "^5.4",
+    "vite": "^5.2.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "start-localhost": "PUBLIC_URL=/ react-scripts start",
-    "build": "react-scripts build",
-    "eject": "react-scripts eject"
+    "dev": "vite",
+    "build": "tsc && vite build --base=/gaps",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
   },
   "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es2020": true
+    },
     "extends": [
       "react-app",
-      "react-app/jest"
+      "eslint:recommended",
+      "plugin:@typescript-eslint/strict-type-checked",
+      "plugin:react-hooks/recommended"
     ],
+
+    "ignorePatterns": ["dist"],
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["react-refresh"],
+
     "rules": {
-        "@typescript-eslint/no-unused-vars": ["warn", {
-            "argsIgnorePattern": "^_",
-            "varsIgnorePattern": "^_"
-        }]
+      "@typescript-eslint/no-unused-vars": ["warn", {
+          "argsIgnorePattern": "^_",
+          "varsIgnorePattern": "^_"
+        }
+      ],
+      "react-refresh/only-export-components": ["warn", {
+          "allowConstantExport": true
+        }
+      ]
     }
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
   }
 }
