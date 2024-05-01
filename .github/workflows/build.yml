@@ -30,4 +30,4 @@ jobs:
       uses: actions/upload-pages-artifact@v3.0.1
       with:
         name: opt-build
-        path: build/
+        path: dist/
