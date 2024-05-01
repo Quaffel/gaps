@@ -5,9 +5,10 @@ nav {
     gap: 1rem;
 
     overflow-x: auto;
-}
 
-nav>button {
-    flex-grow: 1;
-    margin: .5rem;
+    &>button {
+        flex-grow: 1;
+        margin: .5rem;
+    }
+
 }

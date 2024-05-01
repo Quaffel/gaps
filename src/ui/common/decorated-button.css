@@ -1,16 +1,13 @@
 .decorated-button {
-    width: clamp(max-content, 10vw, calc(max-content * 2));
+    min-width: fit-content;
     height: 5rem;
     position: relative;
 
     box-sizing: border-box;
 
     overflow: hidden;
-    min-width: fit-content;
 
     border-radius: .75rem;
-    border-width: 0;
-    background-color: unset;
     text-align: unset;
 
     /* shadows generated using https://manuarora.in/boxshadows */
@@ -26,33 +23,23 @@
         min-width: max-content;
         height: 100%;
 
-        padding: .5rem;
+        transform: translate(5%, 5%);
 
         font-weight: 800;
         font-size: 1.25rem;
 
         border: 2px;
-        color: black;
-        text-shadow:
-            -5px -1px 0 white,
-            5px -1px 0 white,
-            -5px 1px 0 white,
-            5px 1px 0 white;
-
-        z-index: 999;
+        color: black; 
     }
 
     & img {
         position: absolute;
-
         top: 0;
         left: 0;
 
-        transform: translate(30%, 30%);
+        transform: translate(35%, 35%);
 
         width: 100%;
         height: 100%;
-
-        aspect-ratio: 1;
     }
 }
