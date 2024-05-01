@@ -22,11 +22,11 @@ export function findGaps(board: Board<Card | null>, width: number = 1): Array<Ca
 }
 
 /**
- * @returns an array of all stuck gaps. A gap is stuck if it needs to be filled (i.e., it is not the last card
+ * @returns an array of all dead gaps. A gap is dead if it needs to be filled (i.e., it is not the last card
  * in the row) but there is no card that can fill it (i.e., its predecessor is of the suit's highest rank).
  * it is not the last card in the row and the preceding card is of the suit's highest rank.
  */
-export function getStuckGaps(board: Board<Card | null>): Array<CardPosition> {
+export function getDeadGaps(board: Board<Card | null>): Array<CardPosition> {
     return findGaps(board).filter(gap => {
         const previousColumn = gap.column - 1;
         if (previousColumn < 0) return false;
@@ -139,7 +139,7 @@ export function getScore(board: Board<Card | null>): number {
 
     const metrics = [
         findCorrectlyPlacedCards(board).length / size,
-        (4 - getStuckGaps(board).length) / 4,
+        (4 - getDeadGaps(board).length) / 4,
         (3 - findGaps(board, 2).length) / 3,
         (getPossibleMoves(board).length / size),
     ]

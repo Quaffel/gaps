@@ -2,7 +2,7 @@ import React from "react";
 import { Board, getCellCount } from "../../../board";
 import { Card } from "../../../cards";
 import { GameRules, Move } from "../../../game";
-import { findCorrectlyPlacedCards, findGaps, getStuckGaps } from "../../../logic/rules";
+import { findCorrectlyPlacedCards, findGaps, getDeadGaps } from "../../../logic/rules";
 import { AStar } from "../../../logic/solver/astar";
 import { State } from "../../../logic/solver/state";
 import { Configuration } from "../../configuration/astar/configuration";
@@ -45,7 +45,7 @@ export function AStarGamePane({
             const board: Board<Card | null> = state.get();
             const functions = [
                 getCellCount(board) - findCorrectlyPlacedCards(board).length,
-                getStuckGaps(board).length,
+                getDeadGaps(board).length,
                 findGaps(board, 2).length,
             ]
             const weights = [3, 5, 1];
