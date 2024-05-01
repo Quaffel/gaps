@@ -35,7 +35,7 @@
     align-items: center;
     gap: 0.5rem;
 
-    margin-inline: 1rem;
+    margin-inline-start: 1rem;
 
     label {
         font-weight: bolder;
