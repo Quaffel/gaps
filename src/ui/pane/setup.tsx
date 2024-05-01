@@ -3,13 +3,13 @@ import { ConfigurationMenu } from "../configuration/setup/configuration-menu";
 
 import './setup.css';
 
-export function ConfigurationPane({
-    onConfigurationCompletion,
+export function SetupPane({
+    onSetupCompletion,
 }: {
-    onConfigurationCompletion(configuration: Configuration): void,
+    onSetupCompletion(configuration: Configuration): void,
 }): JSX.Element {
     function handleConfigurationSubmission(configuration: Configuration) {
-        onConfigurationCompletion(configuration);
+        onSetupCompletion(configuration);
     }
 
     return <div className="configuration-pane">

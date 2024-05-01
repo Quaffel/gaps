@@ -13,6 +13,7 @@
     & > label {
         font-size: 1.3rem;
         font-weight: bolder;
+        margin-bottom: .5rem;
     }
 
     flex-grow: 1;

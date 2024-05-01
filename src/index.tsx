@@ -8,7 +8,7 @@ import { AStarGamePane } from './ui/pane/game/astar-game';
 import { GamePane, GamePaneState, GamePaneType, gamePanes } from './ui/pane/game/common';
 import { InteractiveGamePane } from './ui/pane/game/interactive-game';
 import { MctsGamePane } from './ui/pane/game/mcts-game';
-import { ConfigurationPane } from './ui/pane/setup';
+import { SetupPane } from './ui/pane/setup';
 import { getResourcePath } from './ui/resources';
 
 import './index.css';
@@ -24,7 +24,7 @@ root.render(
 );
 
 type Pane = {
-    name: 'configuration',
+    name: 'setup',
 } | {
     name: 'game',
     type: GamePaneType
@@ -32,9 +32,9 @@ type Pane = {
 }
 
 function App(): JSX.Element {
-    const [pane, setPane] = React.useState<Pane>({ name: 'configuration' });
+    const [pane, setPane] = React.useState<Pane>({ name: 'setup' });
 
-    function handleConfigurationCompletion(configuration: Configuration) {
+    function handleSetupCompletion(configuration: Configuration) {
         setPane({
             name: 'game',
             type: 'interactive',
@@ -54,8 +54,8 @@ function App(): JSX.Element {
 
     const paneElement = (() => {
         switch (pane.name) {
-            case 'configuration':
-                return <ConfigurationPane onConfigurationCompletion={handleConfigurationCompletion} />;
+            case 'setup':
+                return <SetupPane onSetupCompletion={handleSetupCompletion} />;
             case 'game':
                 return <GameSession display={pane.type} configuration={pane.configuration} />
         }
@@ -67,7 +67,7 @@ function App(): JSX.Element {
             <SelectionBar options={[
                 {
                     id: 'interactive',
-                    label: "Play",
+                    label: "Play yourself",
                     icon: 'icon-feather/play',
                 }, {
                     id: 'astar',
