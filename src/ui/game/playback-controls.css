@@ -3,13 +3,11 @@
     justify-content: center;
     align-items: center;
 
-    gap: 2rem;
+    gap: 1rem;
 }
 
 .playback-controls-bar button {
-    width: 4rem;
-    height: 4rem;
-
+    aspect-ratio: 1;
     background-color: white;
     border-radius: 8px;
     border: 1px solid black;
