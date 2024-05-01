@@ -24,7 +24,8 @@
         min-width: max-content;
         height: 100%;
 
-        transform: translate(5%, 5%);
+        margin-top: 5px;
+        padding-inline: .5rem;
 
         font-weight: 800;
         font-size: 1.25rem;
