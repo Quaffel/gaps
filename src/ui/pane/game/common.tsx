@@ -4,7 +4,7 @@ import { interactiveGamePane } from "./interactive-game";
 import { astarGamePane } from "./astar-game";
 import { mctsGamePane } from "./mcts-game";
 
-export interface Pane<TState> {
+export interface GamePane<TState> {
     deriveBoard(state: TState): Board<Card | null>,
 
     buildDefaultState(initialBoard: Board<Card | null>): TState,
@@ -22,8 +22,8 @@ export const gamePanes = {
 } as const;
 
 
-export type PaneState<TName extends keyof typeof gamePanes> = typeof gamePanes[TName] extends Pane<infer TConfig>
-    ? TConfig
+export type GamePaneState<TName extends keyof typeof gamePanes> = typeof gamePanes[TName] extends GamePane<infer TState>
+    ? TState
     : never;
 
-export type PaneName = keyof typeof gamePanes;
+export type GamePaneType = keyof typeof gamePanes;

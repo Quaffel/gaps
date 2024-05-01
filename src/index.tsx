@@ -1,20 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import { Configuration, deriveBoardFromConfiguration } from './ui/configuration/setup/configuration';
 import { solitaireGapsRules } from './logic/rules';
+import { Configuration, deriveBoardFromConfiguration } from './ui/configuration/setup/configuration';
 import { SelectionBar } from './ui/menu/selection-bar';
-import { ConfigurationPane } from './ui/pane/setup';
-import { Pane, PaneName, PaneState, gamePanes } from './ui/pane/game/common';
-import { InteractiveGamePane } from './ui/pane/game/interactive-game';
 import { AStarGamePane } from './ui/pane/game/astar-game';
+import { GamePane, GamePaneState, GamePaneType, gamePanes } from './ui/pane/game/common';
+import { InteractiveGamePane } from './ui/pane/game/interactive-game';
 import { MctsGamePane } from './ui/pane/game/mcts-game';
+import { ConfigurationPane } from './ui/pane/setup';
 import { getResourcePath } from './ui/resources';
 
 import './index.css';
-
-const repositoryUrl = __REPOSITORY_URL__;
-console.log("source code is hosted @ ", repositoryUrl)
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -26,28 +23,33 @@ root.render(
     </React.StrictMode >
 );
 
-type Paane = {
+type Pane = {
     name: 'configuration',
 } | {
     name: 'game',
+    type: GamePaneType
     configuration: Configuration,
 }
 
-// TODO: Configuration pane was previously child of session, which ensured that configuration menu was centered
-
 function App(): JSX.Element {
-    const [pane, setPane] = React.useState<Paane>({ name: 'configuration' });
-    const [display, setDisplay] = React.useState<PaneName>('interactive');
+    const [pane, setPane] = React.useState<Pane>({ name: 'configuration' });
 
     function handleConfigurationCompletion(configuration: Configuration) {
         setPane({
             name: 'game',
+            type: 'interactive',
             configuration,
         });
     }
 
-    function handleDisplaySelection(display: PaneName) {
-        setDisplay(display);
+    function handleDisplaySelection(display: GamePaneType) {
+        if (pane.name !== 'game') throw new Error("unreachable (component should not be active)");
+
+        setPane({
+            name: pane.name,
+            type: display,
+            configuration: pane.configuration
+        });
     }
 
     const paneElement = (() => {
@@ -55,11 +57,9 @@ function App(): JSX.Element {
             case 'configuration':
                 return <ConfigurationPane onConfigurationCompletion={handleConfigurationCompletion} />;
             case 'game':
-                return <GameSession display={display} configuration={pane.configuration} />
+                return <GameSession display={pane.type} configuration={pane.configuration} />
         }
     })();
-
-    // GameSession, AStarGame
 
     return <>
         <header>
@@ -78,11 +78,11 @@ function App(): JSX.Element {
                     label: "Solve with MCTS",
                     icon: 'icon-feather/git-merge',
                 }]}
-                selectedOption={display}
+                selectedOption={pane.name === 'game' ? pane.type : 'interactive'}
                 onSelect={handleDisplaySelection}
                 disabled={pane.name !== 'game'} />
 
-            <a href={repositoryUrl}>
+            <a href={__REPOSITORY_URL__}>
                 <img src={getResourcePath('icon-feather/github')} alt='go to GitHub repository' />
             </a>
         </header>
@@ -92,9 +92,9 @@ function App(): JSX.Element {
     </>
 }
 
-interface Session<TPane extends PaneName = PaneName> {
+interface Session<TPane extends GamePaneType = GamePaneType> {
     display: TPane,
-    state: PaneState<TPane>,
+    state: GamePaneState<TPane>,
 }
 
 function GameSession({
@@ -102,7 +102,7 @@ function GameSession({
     display,
 }: {
     configuration: Configuration,
-    display: PaneName,
+    display: GamePaneType,
 }): JSX.Element {
     const [session, setSession] = React.useState<Session>(() => {
         const initialBoard = deriveBoardFromConfiguration(configuration);
@@ -117,8 +117,8 @@ function GameSession({
     });
 
     const state = React.useMemo(() => {
-        const displayPane: Pane<any> = gamePanes[display];
-        const sessionPane: Pane<any> = gamePanes[session.display];
+        const displayPane: GamePane<any> = gamePanes[display];
+        const sessionPane: GamePane<any> = gamePanes[session.display];
 
         if (display === session.display)
             return session.state;
@@ -132,7 +132,7 @@ function GameSession({
             case 'interactive':
                 return <InteractiveGamePane
                     rules={solitaireGapsRules}
-                    state={state as PaneState<'interactive'>}
+                    state={state as GamePaneState<'interactive'>}
                     onStateChange={state => {
                         const interactiveSession: Session<'interactive'> = { display, state };
                         setSession(interactiveSession);

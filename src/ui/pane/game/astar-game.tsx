@@ -10,7 +10,7 @@ import { ConfigurationBar } from "../../configuration/astar/configuration-bar";
 import { PlaybackState, getBoardAtMove, getHighlightedMove } from "../../game/playback";
 import { PlaybackBoard } from "../../game/playback-board";
 import { GamePlaybackControls } from "../../game/playback-controls";
-import { Pane } from "./common";
+import { GamePane } from "./common";
 import { GapsBoardState } from "../../../logic/gaps-state";
 
 export interface AStarPaneState {
@@ -103,7 +103,7 @@ function deriveBoard(state: AStarPaneState): Board<Card | null> {
     return getBoardAtMove(state.initialBoard, state.moves ?? [], state.playbackState);
 }
 
-export const astarGamePane: Pane<AStarPaneState> = {
+export const astarGamePane: GamePane<AStarPaneState> = {
     deriveBoard,
     buildDefaultState,
     render: AStarGamePane,

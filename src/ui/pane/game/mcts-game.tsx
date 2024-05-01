@@ -10,7 +10,7 @@ import { ConfigurationBar } from "../../configuration/mcts/configuration-bar";
 import { PlaybackState, getBoardAtMove, getHighlightedMove } from "../../game/playback";
 import { PlaybackBoard } from "../../game/playback-board";
 import { GamePlaybackControls } from "../../game/playback-controls";
-import { Pane } from "./common";
+import { GamePane } from "./common";
 
 export interface MctsPaneState {
     initialBoard: Board<Card | null>,
@@ -100,7 +100,7 @@ function deriveBoard(state: MctsPaneState): Board<Card | null> {
     return getBoardAtMove(state.initialBoard, state.moves ?? [], state.playbackState);
 }
 
-export const mctsGamePane: Pane<MctsPaneState> = {
+export const mctsGamePane: GamePane<MctsPaneState> = {
     deriveBoard,
     buildDefaultState,
     render: MctsGamePane,

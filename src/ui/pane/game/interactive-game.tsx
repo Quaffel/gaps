@@ -5,7 +5,7 @@ import { GameRules, Move } from "../../../game";
 import { solitaireGapsRules } from "../../../logic/rules";
 import { InteractiveBoard } from "../../game/interactive-board";
 import { StatisticsBar } from "../../game/statistics-bar";
-import { Pane } from "./common";
+import { GamePane } from "./common";
 
 export interface InteractivePaneState {
     currentBoard: Board<Card | null>,
@@ -49,7 +49,7 @@ function buildDefaultState(initialBoard: Board<Card | null>): InteractivePaneSta
     }
 }
 
-export const interactiveGamePane: Pane<InteractivePaneState> = {
+export const interactiveGamePane: GamePane<InteractivePaneState> = {
     deriveBoard(state: InteractivePaneState): Board<Card | null> {
         return state.currentBoard;
     },
