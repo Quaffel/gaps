@@ -5,11 +5,9 @@ import { Configuration } from "./configuration";
 
 export function ConfigurationBar({
     disabled,
-    seed,
     score,
     onConfigurationSubmission,
 }: {
-    seed: string,
     score: number,
     disabled?: boolean,
     onConfigurationSubmission(submission: Configuration): void,
@@ -29,7 +27,6 @@ export function ConfigurationBar({
         </div>
         <div>
             <strong>Score:</strong> {score.toFixed(2)}
-            {/* <strong>Seed:</strong> {seed} */}
         </div>
     </VerticalBar>;
 }

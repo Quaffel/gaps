@@ -1,8 +1,8 @@
 import React from "react";
 import { Configuration } from "./configuration";
-import { LabeledRuler } from "../../common/labeled-ruler";
-import { getBoardOfSeed } from "../../../seed";
-import { buildIntegerRangeValidator, useValidatedNumberInput, useValidatedTextInput } from "../common/validated-input";
+// import { LabeledRuler } from "../../common/labeled-ruler";
+// import { getBoardOfSeed } from "../../../seed";
+import { buildIntegerRangeValidator, useValidatedNumberInput } from "../common/validated-input";
 
 import "./configuration-menu.css";
 import { PlainButton } from "../../common/plain-button";
@@ -49,11 +49,11 @@ export function useConfiguration(): [JSX.Element, Configuration | null] {
         placeholder: "42"
     });
 
-    const [gameSeedElement, gameSeed] = useValidatedTextInput({
-        validator: (input: string) => getBoardOfSeed(input) !== null,
-        hint: "3.10 0.0 0.1 ...",
-        placeholder: "3.10 0.0 0.1 ...",
-    });
+    // const [gameSeedElement, gameSeed] = useValidatedTextInput({
+    //     validator: (input: string) => getBoardOfSeed(input) !== null,
+    //     hint: "3.10 0.0 0.1 ...",
+    //     placeholder: "3.10 0.0 0.1 ...",
+    // });
 
     const configuration = React.useMemo<Configuration | null>(() => {
         if (rows !== null && columns !== null) {

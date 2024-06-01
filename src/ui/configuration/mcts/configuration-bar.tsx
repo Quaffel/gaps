@@ -5,13 +5,11 @@ import { Configuration } from "./configuration";
 
 export function ConfigurationBar({
     disabled,
-    seed,
     score,
     onConfigurationSubmission,
 }: {
     score: number,
     disabled?: boolean,
-    seed: string,
     onConfigurationSubmission(submission: Configuration): void,
 }): JSX.Element {
     const [configElement, config] = useMctsConfiguration();
@@ -29,7 +27,6 @@ export function ConfigurationBar({
         </div>
         <div>
             <strong>Score</strong> {score.toFixed(2)}
-            {/* <strong>Seed:</strong> {seed} */}
         </div>
     </VerticalBar>;
 }
