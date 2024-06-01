@@ -1168,5 +1168,77 @@
         "solved": false,
         "pathLength": 36,
         "time": 22836
+    },
+    {
+        "method": "astar",
+        "rows": 4,
+        "columns": 13,
+        "seed": 44,
+        "solved": false,
+        "pathLength": 34,
+        "time": 22500
+    },
+    {
+        "method": "mcts",
+        "rows": 4,
+        "columns": 13,
+        "seed": 44,
+        "solved": false,
+        "pathLength": 10,
+        "time": 46890
+    },
+    {
+        "method": "astar",
+        "rows": 4,
+        "columns": 13,
+        "seed": 45,
+        "solved": false,
+        "pathLength": 36,
+        "time": 22500
+    },
+    {
+        "method": "mcts",
+        "rows": 4,
+        "columns": 13,
+        "seed": 45,
+        "solved": false,
+        "pathLength": 22,
+        "time": 45727
+    },
+    {
+        "method": "astar",
+        "rows": 4,
+        "columns": 13,
+        "seed": 46,
+        "solved": false,
+        "pathLength": 56,
+        "time": 22500
+    },
+    {
+        "method": "mcts",
+        "rows": 4,
+        "columns": 13,
+        "seed": 46,
+        "solved": false,
+        "pathLength": 9,
+        "time": 46699
+    },
+    {
+        "method": "astar",
+        "rows": 4,
+        "columns": 13,
+        "seed": 47,
+        "solved": false,
+        "pathLength": 52,
+        "time": 22500
+    },
+    {
+        "method": "mcts",
+        "rows": 4,
+        "columns": 13,
+        "seed": 47,
+        "solved": false,
+        "pathLength": 7,
+        "time": 48302
     }
 ]
