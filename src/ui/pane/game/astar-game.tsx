@@ -82,7 +82,7 @@ export function AStarGamePane({
     }, [rules, playbackBoard.board]);
 
     return <>
-        <ConfigurationBar score={score} seed={seed} disabled={loading} onConfigurationSubmission={handleConfigurationSubmission} />
+        <ConfigurationBar score={score} disabled={loading} onConfigurationSubmission={handleConfigurationSubmission} />
         <PlaybackBoard board={playbackBoard.board} highlightedMove={playbackBoard.highlightedMove} />
         <GamePlaybackControls
             moves={state.moves ?? []}
