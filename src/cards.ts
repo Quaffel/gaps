@@ -5,10 +5,10 @@ import { ComponentType } from "./util/types";
 
 // also report the respective inverse mapping.
 export const SUITS = [
-    'hearts',
-    'diamonds',
-    'clubs',
-    'spades',
+    "hearts",
+    "diamonds",
+    "clubs",
+    "spades",
 ] as const;
 
 export type Suit = ComponentType<typeof SUITS>;
@@ -20,19 +20,19 @@ export function getSuitCardinality(suit: Suit): number {
 }
 
 export const RANKS = [
-    'ace',
-    '2',
-    '3',
-    '4',
-    '5',
-    '6',
-    '7',
-    '8',
-    '9',
-    '10',
-    'jack',
-    'queen',
-    'king',
+    "ace",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "jack",
+    "queen",
+    "king",
  ] as const;
 
 export type Rank = ComponentType<typeof RANKS>;

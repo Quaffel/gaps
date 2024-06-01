@@ -1,6 +1,6 @@
 import React from "react";
 
-import './validated-input.css';
+import "./validated-input.css";
 
 type Validator<T> = (input: T) => boolean;
 

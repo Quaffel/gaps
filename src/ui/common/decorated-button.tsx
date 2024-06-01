@@ -1,6 +1,6 @@
-import { Resource, getResourcePath } from '../resources';
+import { Resource, getResourcePath } from "../resources";
 
-import './decorated-button.css';
+import "./decorated-button.css";
 
 export function DecoratedButton({
     label,
@@ -15,17 +15,17 @@ export function DecoratedButton({
     selected?: boolean,
     onSelect?: () => void,
     }): JSX.Element {
-    const classes = ['decorated-button'];
-    if (selected) classes.push('selected');
+    const classes = ["decorated-button"];
+    if (selected) classes.push("selected");
 
     return <button
         className={classes.join(" ")}
-        type='button'
-        disabled={disabled || selected}
-        onClick={() => onSelect?.()}>
+        type="button"
+        disabled={disabled}
+        onClick={() => { if (!disabled && !selected) onSelect?.() }}>
         {/* Buttons are replaced elements, meaning that CSS layout rules do not apply.  
-            As buttons center their contents by default, we instead use a wrapping 'div' element of
-            equal size and do the layouting within the inner 'div' element. */}
+            As buttons center their contents by default, we instead use a wrapping "div" element of
+            equal size and do the layouting within the inner "div" element. */}
 
         <img width={30} src={getResourcePath(icon)} alt="" />
         <div>{label}</div>

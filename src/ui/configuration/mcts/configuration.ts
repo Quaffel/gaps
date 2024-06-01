@@ -1,4 +1,5 @@
 export interface Configuration {
-    maxDepth: number,
+    timeout: number,
+    seed: number,
     maxIterations: number,
 }

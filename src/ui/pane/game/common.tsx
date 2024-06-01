@@ -16,9 +16,9 @@ export interface GamePane<TState> {
 };
 
 export const gamePanes = {
-    'interactive': interactiveGamePane,
-    'astar': astarGamePane,
-    'mcts': mctsGamePane,
+    "interactive": interactiveGamePane,
+    "astar": astarGamePane,
+    "mcts": mctsGamePane,
 } as const;
 
 

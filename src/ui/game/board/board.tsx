@@ -52,7 +52,7 @@ export function HighlightedBoard({
 
             return {
                 card,
-                highlight: highlight ?? 'none'
+                highlight: highlight ?? "none"
             };
         })
     ), [state, highlights]);

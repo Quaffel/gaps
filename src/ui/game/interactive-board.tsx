@@ -37,7 +37,7 @@ export function InteractiveBoard({
             const selectedCandidateMove = selection.candidateMoves.find(
                 it => it.to.row === cardPosition.row && it.to.column === cardPosition.column);
 
-            // There is no valid move with the selected card as the 'to' card. We therefore ignore the event.
+            // There is no valid move with the selected card as the "to" card. We therefore ignore the event.
             // We keep the selection though as the user might want to try another target card.
             if (selectedCandidateMove === undefined)
                 return;
@@ -53,7 +53,7 @@ export function InteractiveBoard({
         const possibleMovesWithSelectedCard = possibleMoves.filter(
             it => it.from.row === cardPosition.row && it.from.column === cardPosition.column);
 
-        // There is no valid move with the selected card as the 'from' card. We therefore ignore the event.
+        // There is no valid move with the selected card as the "from" card. We therefore ignore the event.
         if (possibleMovesWithSelectedCard.length === 0)
             return;
 
@@ -67,18 +67,18 @@ export function InteractiveBoard({
         if (selection === null) {
             return possibleMoves.map(it => ({
                 spot: it.from,
-                highlight: 'selection-candidate',
+                highlight: "selection-candidate",
             }));
         }
 
         return [
             {
                 spot: selection.cardPosition,
-                highlight: 'selection'
+                highlight: "selection"
             },
             ...selection.candidateMoves.map(it => ({
                 spot: it.to,
-                highlight: 'swap-candidate' as const,
+                highlight: "swap-candidate" as const,
             }))
         ]
     }, [possibleMoves, selection]);

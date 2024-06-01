@@ -16,10 +16,10 @@ export function PlaybackBoard({
 
         return [{
             spot: highlightedMove.from,
-            highlight: 'selection',
+            highlight: "selection",
         }, {
             spot: highlightedMove.to,
-            highlight: 'swap-candidate',
+            highlight: "swap-candidate",
         }];
     }, [highlightedMove]);
 

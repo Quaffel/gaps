@@ -1,3 +1,3 @@
 export interface Configuration {
-    maxOpenSetSize: number,
+    timeout: number,
 }

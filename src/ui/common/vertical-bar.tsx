@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-import './vertical-bar.css';
+import "./vertical-bar.css";
 
 export function VerticalBar({
     children,

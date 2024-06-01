@@ -12,6 +12,7 @@ import { PlaybackBoard } from "../../game/playback-board";
 import { GamePlaybackControls } from "../../game/playback-controls";
 import { GamePane } from "./common";
 import { GapsBoardState } from "../../../logic/gaps-state";
+import { getSeedOfBoard } from "../../../seed";
 
 export interface AStarPaneState {
     initialBoard: Board<Card | null>,
@@ -37,26 +38,16 @@ export function AStarGamePane({
 
         // Leave enough time to React to update the state.
         // This does not guarantee a re-render before the calculation kicks off.
-        // This is a hack. Ideally, we'd spawn a web worker for the calculation and use useEffect to
+        // This is a hack. Ideally, we"d spawn a web worker for the calculation and use useEffect to
         // handle the communication with it.
         await new Promise(resolve => setTimeout(resolve, 100));
-
-        const heuristicFn = (state: State<Board<Card | null>, Move>) => {
-            const board: Board<Card | null> = state.get();
-            const functions = [
-                getCellCount(board) - findCorrectlyPlacedCards(board).length,
-                getDeadGaps(board).length,
-                findGaps(board, 2).length,
-            ]
-            const weights = [3, 5, 1];
-            return functions.reduce((acc, val, idx) => acc + val * weights[idx], 0);
-        }
-
         const astar = new AStar.AStarSearch(
             new GapsBoardState(rules, state.initialBoard),
-            configuration.maxOpenSetSize,
-            heuristicFn);
-        const path = astar.findPath();
+            configuration.timeout,
+            (state) => 1.0 - state.getScore(),
+        );
+
+        const path = await astar.findPath();
 
         console.log("path:", path);
 
@@ -82,8 +73,16 @@ export function AStarGamePane({
         return { board, highlightedMove };
     }, [state]);
 
+    const seed = React.useMemo(() => {
+        return getSeedOfBoard(playbackBoard.board);
+    }, [playbackBoard.board]);
+
+    const score = React.useMemo(() => {
+        return 1.0 - rules.getScore(playbackBoard.board);
+    }, [rules, playbackBoard.board]);
+
     return <>
-        <ConfigurationBar disabled={loading} onConfigurationSubmission={handleConfigurationSubmission} />
+        <ConfigurationBar score={score} seed={seed} disabled={loading} onConfigurationSubmission={handleConfigurationSubmission} />
         <PlaybackBoard board={playbackBoard.board} highlightedMove={playbackBoard.highlightedMove} />
         <GamePlaybackControls
             moves={state.moves ?? []}
@@ -95,7 +94,7 @@ export function AStarGamePane({
 function buildDefaultState(initialBoard: Board<Card | null>): AStarPaneState {
     return {
         initialBoard,
-        playbackState: { moveIndex: 'initial' },
+        playbackState: { moveIndex: "initial" },
     }
 }
 

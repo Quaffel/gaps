@@ -4,7 +4,11 @@ import { generateSolvedBoard } from "./logic/generation";
 
 export function getSeedOfBoard(board: Board<Card | null>): string {
     let seed = `${getRowCount(board)}.${getColumnCount(board)} `;
-    seed += flatMapBoard(board, card => card ? `${card.suit}.${card.rank}` : "x.x").join(" ");
+    seed += flatMapBoard(board, card => {
+        const rankIdx = card ? RANKS.indexOf(card.rank) : "x";
+        const suitIdx = card ? SUITS.indexOf(card.suit) : "x";
+        return `${suitIdx}.${rankIdx}`;
+    }).join(" ");
 
     return seed;
 }

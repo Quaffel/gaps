@@ -3,9 +3,9 @@ import { ComponentType } from "../../util/types";
 import { getResourcePath } from "../resources";
 import { MoveIndex, PlaybackState } from "./playback";
 
-import './playback-controls.css';
+import "./playback-controls.css";
 
-const ActionValues = ['play', 'pause', 'fast-forward', 'rewind', 'skip-forward', 'skip-back'] as const;
+const ActionValues = ["play", "pause", "fast-forward", "rewind", "skip-forward", "skip-back"] as const;
 type Action = ComponentType<typeof ActionValues>;
 
 export function GamePlaybackControls({
@@ -18,7 +18,7 @@ export function GamePlaybackControls({
     onPlaybackStateChange(playbackState: PlaybackState): void,
 }): JSX.Element {
     const moveIndex = playbackState.moveIndex;
-    if (typeof moveIndex === 'number' && (moveIndex < 0 || moveIndex >= moves.length))
+    if (typeof moveIndex === "number" && (moveIndex < 0 || moveIndex >= moves.length))
         throw new Error("displayed swap index is out of bounds");
 
     const movesAvailable = moves.length !== 0;
@@ -32,23 +32,23 @@ export function GamePlaybackControls({
     }
 
     function showFirst() {
-        if (!movesAvailable || moveIndex === 'initial') throw new Error("unreachable (button should not be active)");
-        setMoveIndex('initial');
+        if (!movesAvailable || moveIndex === "initial") throw new Error("unreachable (button should not be active)");
+        setMoveIndex("initial");
     }
 
     function showLast() {
-        if (!movesAvailable || moveIndex === 'final') throw new Error("unreachable (button should not be active)");
-        setMoveIndex('final');
+        if (!movesAvailable || moveIndex === "final") throw new Error("unreachable (button should not be active)");
+        setMoveIndex("final");
     }
 
     function showNext() {
-        if (!movesAvailable || moveIndex === 'final') throw new Error("unreachable (button should not be active)");
+        if (!movesAvailable || moveIndex === "final") throw new Error("unreachable (button should not be active)");
 
         let nextDisplayState;
-        if (moveIndex === 'initial')
+        if (moveIndex === "initial")
             nextDisplayState = 0;
         else if (moveIndex === moves.length - 1)
-            nextDisplayState = 'final' as const;
+            nextDisplayState = "final" as const;
         else
             nextDisplayState = moveIndex + 1;
 
@@ -56,13 +56,13 @@ export function GamePlaybackControls({
     }
 
     function showPrevious() {
-        if (!movesAvailable || moveIndex === 'initial') throw new Error("unreachable (button should not be active)");
+        if (!movesAvailable || moveIndex === "initial") throw new Error("unreachable (button should not be active)");
 
         let previousDisplayState;
-        if (moveIndex === 'final')
+        if (moveIndex === "final")
             previousDisplayState = moves.length - 1;
         else if (moveIndex === 0)
-            previousDisplayState = 'initial' as const;
+            previousDisplayState = "initial" as const;
         else
             previousDisplayState = moveIndex - 1;
 
@@ -71,23 +71,23 @@ export function GamePlaybackControls({
 
     return <PlaybackControlsBar controls={[
         {
-            action: 'skip-back',
-            enabled: movesAvailable && moveIndex !== 'initial',
+            action: "skip-back",
+            enabled: movesAvailable && moveIndex !== "initial",
             onAction: () => showFirst(),
         }, {
-            action: 'rewind',
-            enabled: movesAvailable && moveIndex !== 'initial',
+            action: "rewind",
+            enabled: movesAvailable && moveIndex !== "initial",
             onAction: () => showPrevious(),
         }, {
-            action: 'play',
+            action: "play",
             enabled: false,
         }, {
-            action: 'fast-forward',
-            enabled: movesAvailable && moveIndex !== 'final',
+            action: "fast-forward",
+            enabled: movesAvailable && moveIndex !== "final",
             onAction: () => showNext(),
         }, {
-            action: 'skip-forward',
-            enabled: movesAvailable && moveIndex !== 'final',
+            action: "skip-forward",
+            enabled: movesAvailable && moveIndex !== "final",
             onAction: () => showLast()
         }
     ]} />;
@@ -113,7 +113,7 @@ function PlaybackControlsBar({
             disabled={!it.enabled}
             onClick={() => it.onAction?.()}
             key={it.action}>
-            <img src={getActionIcon(it.action)} alt={it.action} />
+            <object data={getActionIcon(it.action)} type="image/svg+xml"></object>
         </button>)}
     </div>;
 }

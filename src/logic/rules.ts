@@ -23,8 +23,8 @@ export function findGaps(board: Board<Card | null>, width: number = 1): Array<Ca
 
 /**
  * @returns an array of all dead gaps. A gap is dead if it needs to be filled (i.e., it is not the last card
- * in the row) but there is no card that can fill it (i.e., its predecessor is of the suit's highest rank).
- * it is not the last card in the row and the preceding card is of the suit's highest rank.
+ * in the row) but there is no card that can fill it (i.e., its predecessor is of the suit"s highest rank).
+ * it is not the last card in the row and the preceding card is of the suit"s highest rank.
  */
 export function getDeadGaps(board: Board<Card | null>): Array<CardPosition> {
     return findGaps(board).filter(gap => {
@@ -87,8 +87,8 @@ export function findCorrectlyPlacedCards(board: Board<Card | null>): Array<CardP
 
     const correctlyPlacedCards = board.reduce<CardPosition[][]>((acc, row, rowIdx) => {
         // nested array
-        //  first dimension:  suit
-        //  second dimension: list of cards that are correctly placed if that row were of the respective suit
+        // first dimension:  suit
+        // second dimension: list of cards that are correctly placed if that row were of the respective suit
         const resRow = row.reduce<CardPosition[][]>((acc, card, columnIdx) => {
             if (isCardInCorrectColumn(card, columnIdx)) {
                 const cardPosition = { row: rowIdx, column: columnIdx };
@@ -137,17 +137,39 @@ export function getScore(board: Board<Card | null>): number {
 
     const size = getRowCount(board) * getColumnCount(board);
 
-    const metrics = [
+    let possibleGaps = findGaps(board).length;
+    if (possibleGaps > 4) {
+        possibleGaps = 4;
+    }
+
+    const functions = [
         findCorrectlyPlacedCards(board).length / size,
+        possibleGaps / 4,
         (4 - getDeadGaps(board).length) / 4,
-        (3 - findGaps(board, 2).length) / 3,
-        (getPossibleMoves(board).length / size),
     ]
-
-    const weights = [5, 3, 2, 1];
+    const weights = [3, 10, 1];
     const weightsSum = weights.reduce((acc, val) => acc + val, 0);
+    const score = functions.reduce((acc, val, idx) => acc + val * weights[idx], 0);
 
-    return metrics.reduce((acc, val, idx) => acc + val * weights[idx], 0) / weightsSum;
+    return score / weightsSum;
+    
+    // if (isSolved(board)) {
+    //     return 1;
+    // }
+
+    // const size = getRowCount(board) * getColumnCount(board);
+
+    // const metrics = [
+    //     findCorrectlyPlacedCards(board).length / size,
+    //     (4 - getDeadGaps(board).length) / 4,
+    //     (3 - findGaps(board, 2).length) / 3,
+    //     (getPossibleMoves(board).length / size),
+    // ]
+
+    // const weights = [5, 3, 2, 1];
+    // const weightsSum = weights.reduce((acc, val) => acc + val, 0);
+
+    // return metrics.reduce((acc, val, idx) => acc + val * weights[idx], 0) / weightsSum;
 }
 
 export function getPossibleMoves(board: Board<Card | null>): Array<Move> {

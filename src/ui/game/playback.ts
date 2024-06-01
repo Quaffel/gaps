@@ -3,7 +3,7 @@ import { Card } from "../../cards";
 import { Move } from "../../game";
 import { assertType } from "../../util/types";
 
-export type MoveIndex = 'initial' | 'final' | number;
+export type MoveIndex = "initial" | "final" | number;
 
 export interface PlaybackState {
     moveIndex: MoveIndex,
@@ -12,7 +12,7 @@ export interface PlaybackState {
 export function getHighlightedMove(moves: Array<Move>, playbackState: PlaybackState): Move | null {
     const moveIndex = playbackState.moveIndex;
 
-    if (moveIndex === 'initial' || moveIndex === 'final') return null;
+    if (moveIndex === "initial" || moveIndex === "final") return null;
     return moves[moveIndex];
 }
 
@@ -24,7 +24,7 @@ export function getBoardAtMove(
     const moveIndex = playbackState.moveIndex;
 
     const board = structuredClone(initialBoard);
-    if (moveIndex === 'initial') return board;
+    if (moveIndex === "initial") return board;
 
     function performSwap(swapIdx: number) {
         const swap = swaps[swapIdx];
@@ -36,10 +36,10 @@ export function getBoardAtMove(
         board[swap.to.row][swap.to.column] = fromCard;
     }
 
-    const displayedSwapIdx = typeof moveIndex === 'number'
+    const displayedSwapIdx = typeof moveIndex === "number"
         ? moveIndex
         : (() => {
-            assertType<'final'>(moveIndex);
+            assertType<"final">(moveIndex);
             return swaps.length;
         })();
 

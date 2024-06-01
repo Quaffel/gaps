@@ -24,15 +24,17 @@ export namespace AStar {
     export class AStarSearch<TState, TAction> {
         private _openSet: Node<TState, TAction>[] = [];
         private _closedSet: Set<string> = new Set();
-        private _maxDepth: number;
         private _bestNode: Node<TState, TAction> | null = null;
-        private _heuristicFn: (state: State<TState, TAction>) => number;
+        private _heuristic: (state: State<TState, TAction>) => number;
+        private _cost: (state: State<TState, TAction>) => number;
+        private _timeout: number;
 
-        constructor(initialState: State<TState, TAction>, maxDepth: number, heuristicFn: (state: State<TState, TAction>) => number) {
-            this._maxDepth = maxDepth;
+        constructor(initialState: State<TState, TAction>, timeout: number, heuristic: (state: State<TState, TAction>) => number, cost: (state: State<TState, TAction>) => number = () => 0) {
             const rootNode = new Node(initialState, null, null, 0, initialState.getScore(), 0);
             this._openSet.push(rootNode);
-            this._heuristicFn = heuristicFn;
+            this._timeout = timeout;
+            this._cost = cost;
+            this._heuristic = heuristic;
         }
 
         // Helper function to find a node in a set based on its state
@@ -55,7 +57,10 @@ export namespace AStar {
         }
 
         findPath(): Path<TState, TAction> | null {
-            while (this._openSet.length > 0 && this._openSet.length < this._maxDepth) {
+            const startTime = Date.now();
+            const endTime = startTime + this._timeout * 1000;
+
+            while (this._openSet.length > 0 && Date.now() < endTime) {
                 // Sort openSet by f value and pick the node with the lowest f
                 this._openSet.sort((a, b) => a.f - b.f);
                 let currentNode = this._openSet.shift()!;
@@ -67,16 +72,21 @@ export namespace AStar {
 
                 this._closedSet.add(currentNode.state.hash());
 
-                currentNode.state.getPossibleActions().forEach(action => {
+                const possibleActions = currentNode.state.getPossibleActions();
+                for (let action of possibleActions) {
+                    if (Date.now() >= endTime) {
+                        break;
+                    }
+
                     let newState = currentNode.state.withActionApplied(action);
                     const hash = newState.hash();
 
                     if (this._closedSet.has(hash)) {
-                        return; // Skip expansion if the new state is already in closedSet
+                        continue; // Skip expansion if the new state is already in closedSet
                     }
 
-                    let newG = currentNode.g + 1;
-                    let newH = this._heuristicFn(newState);
+                    let newG = currentNode.g + this._cost(newState);
+                    let newH = this._heuristic(newState);
                     let newNode = new Node(newState, currentNode, action, newG, newH, currentNode.depth + 1);
 
                     // Check if the new node is the best node found so far
@@ -87,9 +97,9 @@ export namespace AStar {
                     if (!this._openSet.some(n => n.state.equals(newState) && n.g <= newG)) {
                         this._openSet.push(newNode);
                     } else {
-                        return; // Skip expansion if the new state is already in openSet with a lower g value
+                        continue; // Skip expansion if the new state is already in openSet with a lower g value
                     }
-                });
+                }
             }
 
             if (this._bestNode != null) {

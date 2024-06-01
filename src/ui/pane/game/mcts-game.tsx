@@ -11,6 +11,8 @@ import { PlaybackState, getBoardAtMove, getHighlightedMove } from "../../game/pl
 import { PlaybackBoard } from "../../game/playback-board";
 import { GamePlaybackControls } from "../../game/playback-controls";
 import { GamePane } from "./common";
+import { getSeedOfBoard } from "../../../seed";
+import { isSolved } from "../../../logic/rules";
 
 export interface MctsPaneState {
     initialBoard: Board<Card | null>,
@@ -36,23 +38,34 @@ export function MctsGamePane({
 
         // Leave enough time to React to update the state.
         // This does not guarantee a re-render before the calculation kicks off.
-        // This is a hack. Ideally, we'd spawn a web worker for the calculation and use useEffect to
+        // This is a hack. Ideally, we"d spawn a web worker for the calculation and use useEffect to
         // handle the communication with it.
         await new Promise(resolve => setTimeout(resolve, 100));
 
-        const mcts = new MCTS.MCTSSearch<Board<Card | null>, Move>(state => rules.getScore(state.get()));
+        const mcts = new MCTS.MCTSSearch<Board<Card | null>, Move>(
+            state => state.getScore(),
+            1.41,
+            configuration.seed
+        );
 
         const path: Path<Board<Card | null>, Move> = [];
         let board = state.initialBoard;
-        for (let iteration = 0; iteration < configuration.maxIterations; iteration++) {
+
+        const startTime = Date.now();
+        const endTime = startTime + configuration.timeout * 1000;
+
+        while (Date.now() < endTime) {
             const { done, element } = mcts.findNextMove(
                 new GapsBoardState(rules, board),
-                configuration.maxDepth);
+                configuration.maxIterations
+            );
 
             board = element.state;
             path.push(element);
 
-            if (done) break;
+            if (done) {
+                break;
+            }
         }
 
         console.log("path", path);
@@ -79,8 +92,16 @@ export function MctsGamePane({
         return { board, highlightedMove };
     }, [state]);
 
+    const seed = React.useMemo(() => {
+        return getSeedOfBoard(playbackBoard.board);
+    }, [playbackBoard.board]);
+
+    const score = React.useMemo(() => {
+        return rules.getScore(playbackBoard.board);
+    }, [rules, playbackBoard.board]);
+
     return <>
-        <ConfigurationBar disabled={loading} onConfigurationSubmission={handleConfigurationSubmission} />
+        <ConfigurationBar score={score} seed={seed} disabled={loading} onConfigurationSubmission={handleConfigurationSubmission} />
         <PlaybackBoard board={playbackBoard.board} highlightedMove={playbackBoard.highlightedMove} />
         <GamePlaybackControls
             moves={state.moves ?? []}
@@ -92,7 +113,7 @@ export function MctsGamePane({
 function buildDefaultState(initialBoard: Board<Card | null>): MctsPaneState {
     return {
         initialBoard,
-        playbackState: { moveIndex: 'initial' },
+        playbackState: { moveIndex: "initial" },
     }
 }
 

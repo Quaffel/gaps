@@ -1,7 +1,7 @@
 import { Configuration } from "../configuration/setup/configuration";
 import { ConfigurationMenu } from "../configuration/setup/configuration-menu";
 
-import './setup.css';
+import "./setup.css";
 
 export function SetupPane({
     onSetupCompletion,

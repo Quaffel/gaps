@@ -1,6 +1,6 @@
 .decorated-button {
     min-width: fit-content;
-    height: 5rem;
+    height: 3rem;
     position: relative;
 
     box-sizing: border-box;
@@ -35,5 +35,10 @@
     & img {
         top: 0;
         left: 0;
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
     }
 }

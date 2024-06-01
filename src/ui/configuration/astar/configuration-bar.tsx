@@ -5,8 +5,12 @@ import { Configuration } from "./configuration";
 
 export function ConfigurationBar({
     disabled,
+    seed,
+    score,
     onConfigurationSubmission,
 }: {
+    seed: string,
+    score: number,
     disabled?: boolean,
     onConfigurationSubmission(submission: Configuration): void,
 }): JSX.Element {
@@ -18,30 +22,36 @@ export function ConfigurationBar({
     }
 
     return <VerticalBar>
-        <label>A* (A-Star)</label>
-        {configElement}
-        <PlainButton disabled={disabled || config === null} onClick={handleSubmission}>Apply</PlainButton>
+        <div>
+            <label>A* (A-Star)</label>
+            {configElement}
+            <PlainButton disabled={disabled || config === null} onClick={handleSubmission}>Apply</PlainButton>
+        </div>
+        <div>
+            <strong>Score:</strong> {score.toFixed(2)}
+            {/* <strong>Seed:</strong> {seed} */}
+        </div>
     </VerticalBar>;
 }
 
 function useAStarConfiguration(): [JSX.Element, Configuration | null] {
-    const [setSizeElement, maxOpenSetSize] = useValidatedNumberInput({
-        validator: buildIntegerRangeValidator({ min: 1, max: 1_000_000 }),
-        hint: "maximum open set size",
-        defaultValue: 10_000,
+    const [timeoutElement, timeout] = useValidatedNumberInput({
+        validator: buildIntegerRangeValidator({ min: 1, max: 600 }),
+        hint: "Timeout in seconds",
+        defaultValue: 60,
         valueRange: {
             min: 1,
-            max: 1_000_000,
+            max: 600,
         }
     });
 
     const configElement = <div className="option flex-row">
-        <label>Maximum open set size</label>
-        {setSizeElement}
+        <label>Timeout in seconds</label>
+        {timeoutElement}
     </div>;
 
-    const config: Configuration | null = maxOpenSetSize !== null
-        ? { maxOpenSetSize }
+    const config: Configuration | null = timeout !== null
+        ? { timeout: timeout }
         : null;
 
     return [configElement, config];

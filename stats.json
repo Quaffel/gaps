@@ -1,0 +1,254 @@
+[
+    {
+        "method": "astar",
+        "rows": 4,
+        "columns": 6,
+        "seed": 42,
+        "solved": true,
+        "pathLength": 17,
+        "time": 13
+    },
+    {
+        "method": "mcts",
+        "rows": 4,
+        "columns": 6,
+        "seed": 42,
+        "solved": false,
+        "pathLength": 6,
+        "time": 5117
+    },
+    {
+        "method": "astar",
+        "rows": 4,
+        "columns": 6,
+        "seed": 43,
+        "solved": true,
+        "pathLength": 42,
+        "time": 66
+    },
+    {
+        "method": "mcts",
+        "rows": 4,
+        "columns": 6,
+        "seed": 43,
+        "solved": false,
+        "pathLength": 6,
+        "time": 5859
+    },
+    {
+        "method": "astar",
+        "rows": 4,
+        "columns": 6,
+        "seed": 44,
+        "solved": false,
+        "pathLength": 48,
+        "time": 5000
+    },
+    {
+        "method": "mcts",
+        "rows": 4,
+        "columns": 6,
+        "seed": 44,
+        "solved": false,
+        "pathLength": 3,
+        "time": 10297
+    },
+    {
+        "method": "astar",
+        "rows": 4,
+        "columns": 6,
+        "seed": 45,
+        "solved": false,
+        "pathLength": 1,
+        "time": 1
+    },
+    {
+        "method": "mcts",
+        "rows": 4,
+        "columns": 6,
+        "seed": 45,
+        "solved": false,
+        "pathLength": 417,
+        "time": 5003
+    },
+    {
+        "method": "astar",
+        "rows": 4,
+        "columns": 6,
+        "seed": 46,
+        "solved": false,
+        "pathLength": 30,
+        "time": 5000
+    },
+    {
+        "method": "mcts",
+        "rows": 4,
+        "columns": 6,
+        "seed": 46,
+        "solved": false,
+        "pathLength": 5,
+        "time": 10015
+    },
+    {
+        "method": "astar",
+        "rows": 4,
+        "columns": 6,
+        "seed": 47,
+        "solved": true,
+        "pathLength": 62,
+        "time": 66
+    },
+    {
+        "method": "mcts",
+        "rows": 4,
+        "columns": 6,
+        "seed": 47,
+        "solved": false,
+        "pathLength": 1,
+        "time": 7548
+    },
+    {
+        "method": "astar",
+        "rows": 4,
+        "columns": 6,
+        "seed": 48,
+        "solved": false,
+        "pathLength": 86,
+        "time": 5000
+    },
+    {
+        "method": "mcts",
+        "rows": 4,
+        "columns": 6,
+        "seed": 48,
+        "solved": false,
+        "pathLength": 2,
+        "time": 14619
+    },
+    {
+        "method": "astar",
+        "rows": 4,
+        "columns": 6,
+        "seed": 49,
+        "solved": false,
+        "pathLength": 84,
+        "time": 5000
+    },
+    {
+        "method": "mcts",
+        "rows": 4,
+        "columns": 6,
+        "seed": 49,
+        "solved": false,
+        "pathLength": 1,
+        "time": 12472
+    },
+    {
+        "method": "astar",
+        "rows": 4,
+        "columns": 6,
+        "seed": 50,
+        "solved": false,
+        "pathLength": 77,
+        "time": 5000
+    },
+    {
+        "method": "mcts",
+        "rows": 4,
+        "columns": 6,
+        "seed": 50,
+        "solved": false,
+        "pathLength": 1,
+        "time": 19484
+    },
+    {
+        "method": "astar",
+        "rows": 4,
+        "columns": 7,
+        "seed": 42,
+        "solved": true,
+        "pathLength": 25,
+        "time": 15
+    },
+    {
+        "method": "mcts",
+        "rows": 4,
+        "columns": 7,
+        "seed": 42,
+        "solved": false,
+        "pathLength": 21,
+        "time": 7860
+    },
+    {
+        "method": "astar",
+        "rows": 4,
+        "columns": 7,
+        "seed": 43,
+        "solved": false,
+        "pathLength": 24,
+        "time": 7500
+    },
+    {
+        "method": "mcts",
+        "rows": 4,
+        "columns": 7,
+        "seed": 43,
+        "solved": false,
+        "pathLength": 8,
+        "time": 15107
+    },
+    {
+        "method": "astar",
+        "rows": 4,
+        "columns": 7,
+        "seed": 44,
+        "solved": false,
+        "pathLength": 32,
+        "time": 7500
+    },
+    {
+        "method": "mcts",
+        "rows": 4,
+        "columns": 7,
+        "seed": 44,
+        "solved": false,
+        "pathLength": 5,
+        "time": 16553
+    },
+    {
+        "method": "astar",
+        "rows": 4,
+        "columns": 7,
+        "seed": 45,
+        "solved": false,
+        "pathLength": 54,
+        "time": 7500
+    },
+    {
+        "method": "mcts",
+        "rows": 4,
+        "columns": 7,
+        "seed": 45,
+        "solved": false,
+        "pathLength": 5,
+        "time": 15731
+    },
+    {
+        "method": "astar",
+        "rows": 4,
+        "columns": 7,
+        "seed": 46,
+        "solved": false,
+        "pathLength": 79,
+        "time": 7500
+    },
+    {
+        "method": "mcts",
+        "rows": 4,
+        "columns": 7,
+        "seed": 46,
+        "solved": false,
+        "pathLength": 2,
+        "time": 15945
+    }
+]

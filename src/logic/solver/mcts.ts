@@ -1,4 +1,5 @@
 import { ActionPathElement, State } from "./state";
+import { PseudoRandom } from "../pseudo-random";
 
 export namespace MCTS {
     class Node<TState, TAction> {
@@ -44,13 +45,16 @@ export namespace MCTS {
     export class MCTSSearch<TState, TAction> {
         private _cParam: number;
         private _scoreFn: (state: State<TState, TAction>) => number;
+        private _pseudoRandom: PseudoRandom;
 
         constructor(
             scoreFn: (state: State<TState, TAction>) => number,
-            c: number = 1.41
+            c: number = 1.41,
+            seed: number = 0
         ) {
             this._cParam = c;
             this._scoreFn = scoreFn;
+            this._pseudoRandom = new PseudoRandom(seed);
         }
 
         selectPromisingNode(node: Node<TState, TAction>): Node<TState, TAction> {
@@ -65,7 +69,8 @@ export namespace MCTS {
             let possibleActions: TAction[] = node.actions;
 
             while (possibleActions.length > 0) {
-                const action = possibleActions[Math.floor(Math.random() * possibleActions.length)];
+                const randomAction = this._pseudoRandom.nextInt(possibleActions.length);
+                const action = possibleActions[randomAction];
                 state = state.withActionApplied(action);
                 possibleActions = state.getPossibleActions();
             }

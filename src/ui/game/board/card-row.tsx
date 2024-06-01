@@ -1,7 +1,7 @@
 import { Card } from "../../../cards";
 import { CardSpotState, CardTile } from "./card";
 
-import './card-row.css'
+import "./card-row.css"
 
 export type Row = Array<CardSpotState>;
 

@@ -1,4 +1,4 @@
-import './plain-button.css';
+import "./plain-button.css";
 
 export function PlainButton(
     options: React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>

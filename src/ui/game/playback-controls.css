@@ -10,21 +10,24 @@
     padding: 1rem;
 
     aspect-ratio: 1;
-    background-color: white;
-    border-radius: 8px;
-    border: 1px solid black;
+    border-radius: 6px;
+    border: none;
+    background-color: black;
 
-    box-shadow: 4px 6px 3px -4px rgba(0, 0, 0, 0.58);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    object-fit: contain;
-}
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
 
-.playback-controls-bar button:active:not(:disabled) {
-    box-shadow: 0px 2px 3px -1px rgba(0, 0, 0, 0.8), 0px 1px 0px 0px rgba(25, 28, 33, 0.956), 0px 0px 0px 1px rgba(25, 28, 33, 0.6), inset 0.3em 0.3em 0.6em rgba(25, 28, 33, 0.1);
+    cursor: pointer;
 
-    transform: translate(2px, 2px);
-}
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+    }
 
-.playback-controls-bar button:disabled {
-    background-color: lightgray;
+    & object {
+        pointer-events: none;
+    }
 }

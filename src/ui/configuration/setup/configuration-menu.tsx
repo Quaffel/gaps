@@ -4,7 +4,7 @@ import { LabeledRuler } from "../../common/labeled-ruler";
 import { getBoardOfSeed } from "../../../seed";
 import { buildIntegerRangeValidator, useValidatedNumberInput, useValidatedTextInput } from "../common/validated-input";
 
-import './configuration-menu.css';
+import "./configuration-menu.css";
 import { PlainButton } from "../../common/plain-button";
 
 
@@ -42,7 +42,14 @@ export function useConfiguration(): [JSX.Element, Configuration | null] {
         placeholder: "from 1 to 13"
     });
 
-    const [seedElement, seed] = useValidatedTextInput({
+    const [seedElement, seed] = useValidatedNumberInput({
+        validator: buildIntegerRangeValidator({ min: 1, max: 100000 }),
+        valueRange: { min: 0, max: 100000 },
+        hint: "42",
+        placeholder: "42"
+    });
+
+    const [gameSeedElement, gameSeed] = useValidatedTextInput({
         validator: (input: string) => getBoardOfSeed(input) !== null,
         hint: "3.10 0.0 0.1 ...",
         placeholder: "3.10 0.0 0.1 ...",
@@ -52,23 +59,24 @@ export function useConfiguration(): [JSX.Element, Configuration | null] {
         if (rows !== null && columns !== null) {
             return {
                 boardGeneration: {
-                    method: 'random',
+                    method: "random",
                     dimensions: {
                         columns,
                         rows,
-                    }
+                    },
+                    seed: seed ?? 42,
                 }
             };
         }
 
-        if (seed !== null) {
-            return {
-                boardGeneration: {
-                    method: 'seed',
-                    seed,
-                }
-            }
-        }
+        // if (gameSeed !== null) {
+        //     return {
+        //         boardGeneration: {
+        //             method: "seed",
+        //             seed: gameSeed,
+        //         }
+        //     }
+        // }
 
         return null;
     }, [rows, columns, seed]);
@@ -86,14 +94,19 @@ export function useConfiguration(): [JSX.Element, Configuration | null] {
             {columnsElement}
         </div>
 
-        <LabeledRuler label="or" />
+        <div className="option">
+            <label>Seed</label>
+            {seedElement}
+        </div>
+
+        {/* <LabeledRuler label="or" />
 
         <label>Load board from seed</label>
 
         <div className="option">
             <label htmlFor="seed">Seed</label>
-            {seedElement}
-        </div>
+            {gameSeedElement}
+        </div> */}
     </div >;
 
     return [menuElement, configuration];

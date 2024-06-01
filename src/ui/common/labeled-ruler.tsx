@@ -1,4 +1,4 @@
-import './labeled-ruler.css';
+import "./labeled-ruler.css";
 
 export function LabeledRuler({
     label,

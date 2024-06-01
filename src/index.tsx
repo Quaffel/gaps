@@ -1,20 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import React from "react";
+import ReactDOM from "react-dom/client";
 
-import { solitaireGapsRules } from './logic/rules';
-import { Configuration, deriveBoardFromConfiguration } from './ui/configuration/setup/configuration';
-import { SelectionBar } from './ui/menu/selection-bar';
-import { AStarGamePane } from './ui/pane/game/astar-game';
-import { GamePane, GamePaneState, GamePaneType, gamePanes } from './ui/pane/game/common';
-import { InteractiveGamePane } from './ui/pane/game/interactive-game';
-import { MctsGamePane } from './ui/pane/game/mcts-game';
-import { SetupPane } from './ui/pane/setup';
-import { getResourcePath } from './ui/resources';
+import { solitaireGapsRules } from "./logic/rules";
+import { Configuration, deriveBoardFromConfiguration } from "./ui/configuration/setup/configuration";
+import { SelectionBar } from "./ui/menu/selection-bar";
+import { AStarGamePane } from "./ui/pane/game/astar-game";
+import { GamePane, GamePaneState, GamePaneType, gamePanes } from "./ui/pane/game/common";
+import { InteractiveGamePane } from "./ui/pane/game/interactive-game";
+import { MctsGamePane } from "./ui/pane/game/mcts-game";
+import { SetupPane } from "./ui/pane/setup";
+import { getResourcePath } from "./ui/resources";
 
-import './index.css';
+import "./index.css";
 
 const root = ReactDOM.createRoot(
-    document.getElementById('root') as HTMLElement
+    document.getElementById("root") as HTMLElement
 );
 
 root.render(
@@ -24,26 +24,26 @@ root.render(
 );
 
 type Pane = {
-    name: 'setup',
+    name: "setup",
 } | {
-    name: 'game',
+    name: "game",
     type: GamePaneType
     configuration: Configuration,
 }
 
 function App(): JSX.Element {
-    const [pane, setPane] = React.useState<Pane>({ name: 'setup' });
+    const [pane, setPane] = React.useState<Pane>({ name: "setup" });
 
     function handleSetupCompletion(configuration: Configuration) {
         setPane({
-            name: 'game',
-            type: 'interactive',
+            name: "game",
+            type: "interactive",
             configuration,
         });
     }
 
     function handleDisplaySelection(display: GamePaneType) {
-        if (pane.name !== 'game') throw new Error("unreachable (component should not be active)");
+        if (pane.name !== "game") throw new Error("unreachable (component should not be active)");
 
         setPane({
             name: pane.name,
@@ -54,9 +54,9 @@ function App(): JSX.Element {
 
     const paneElement = (() => {
         switch (pane.name) {
-            case 'setup':
+            case "setup":
                 return <SetupPane onSetupCompletion={handleSetupCompletion} />;
-            case 'game':
+            case "game":
                 return <GameSession display={pane.type} configuration={pane.configuration} />
         }
     })();
@@ -66,24 +66,24 @@ function App(): JSX.Element {
             <span>Gaps</span>
             <SelectionBar options={[
                 {
-                    id: 'interactive',
+                    id: "interactive",
                     label: "Play yourself",
-                    icon: 'icon-feather/play',
+                    icon: "icon-feather/play",
                 }, {
-                    id: 'astar',
-                    label: "Solve with A*",
-                    icon: 'icon-feather/star',
+                    id: "astar",
+                    label: "Solve with Greedy",
+                    icon: "icon-feather/star",
                 }, {
-                    id: 'mcts',
+                    id: "mcts",
                     label: "Solve with MCTS",
-                    icon: 'icon-feather/git-merge',
+                    icon: "icon-feather/git-merge",
                 }]}
-                selectedOption={pane.name === 'game' ? pane.type : 'interactive'}
+                selectedOption={pane.name === "game" ? pane.type : "interactive"}
                 onSelect={handleDisplaySelection}
-                disabled={pane.name !== 'game'} />
+                disabled={pane.name !== "game"} />
 
             <a href={__REPOSITORY_URL__}>
-                <img src={getResourcePath('icon-feather/github')} alt='go to GitHub repository' />
+                <img src={getResourcePath("icon-feather/github")} alt="go to GitHub repository" />
             </a>
         </header>
         <main>
@@ -107,8 +107,8 @@ function GameSession({
     const [session, setSession] = React.useState<Session>(() => {
         const initialBoard = deriveBoardFromConfiguration(configuration);
 
-        const interactiveSession: Session<'interactive'> = {
-            display: 'interactive',
+        const interactiveSession: Session<"interactive"> = {
+            display: "interactive",
             state: {
                 currentBoard: initialBoard,
             },
@@ -129,28 +129,28 @@ function GameSession({
 
     return (() => {
         switch (display) {
-            case 'interactive':
+            case "interactive":
                 return <InteractiveGamePane
                     rules={solitaireGapsRules}
-                    state={state as GamePaneState<'interactive'>}
+                    state={state as GamePaneState<"interactive">}
                     onStateChange={state => {
-                        const interactiveSession: Session<'interactive'> = { display, state };
+                        const interactiveSession: Session<"interactive"> = { display, state };
                         setSession(interactiveSession);
                     }} />
-            case 'astar':
+            case "astar":
                 return <AStarGamePane
                     rules={solitaireGapsRules}
                     state={state}
                     onStateChange={state => {
-                        const interactiveSession: Session<'astar'> = { display, state };
+                        const interactiveSession: Session<"astar"> = { display, state };
                         setSession(interactiveSession);
                     }} />
-            case 'mcts':
+            case "mcts":
                 return <MctsGamePane
                     rules={solitaireGapsRules}
                     state={state}
                     onStateChange={state => {
-                        const interactiveSession: Session<'mcts'> = { display, state };
+                        const interactiveSession: Session<"mcts"> = { display, state };
                         setSession(interactiveSession);
                     }} />
         }

@@ -1,7 +1,7 @@
 import { DecoratedButton } from "../common/decorated-button";
 import { Resource } from "../resources";
 
-import './selection-bar.css';
+import "./selection-bar.css";
 
 interface Option<TName extends string> {
     id: TName,
@@ -24,7 +24,7 @@ export function SelectionBar<TOptions extends string>({
         if (optionId === selectedOption)
             throw new Error("unreachable (button should not be active)");
 
-        console.log(`selected option '${optionId}'`)
+        console.log(`selected option "${optionId}"`)
         onSelect(optionId);
     }
 

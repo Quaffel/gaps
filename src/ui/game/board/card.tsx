@@ -1,7 +1,7 @@
 import { Card } from "../../../cards";
 import { getResourcePath } from "../../resources";
 
-import './card.css';
+import "./card.css";
 
 function getAltTextForCard(card: Card | null): string {
     if (card === null) {
@@ -13,7 +13,7 @@ function getAltTextForCard(card: Card | null): string {
 
 export interface CardSpotState {
     card: Card | null,
-    highlight: 'selection' | 'selection-candidate' | 'swap-candidate' | 'none',
+    highlight: "selection" | "selection-candidate" | "swap-candidate" | "none",
 }
 
 export function CardTile({
@@ -24,7 +24,7 @@ export function CardTile({
     onSelect?: () => void
 }): JSX.Element {
     function getCardResource(card: Card | null): string {
-        const cardPath = card === null ? 'cards-custom/gap' as const : `cards/${card.rank}_of_${card.suit}` as const;
+        const cardPath = card === null ? "cards-custom/gap" as const : `cards/${card.rank}_of_${card.suit}` as const;
         return getResourcePath(cardPath);
     }
 
