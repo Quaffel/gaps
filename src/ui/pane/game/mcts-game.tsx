@@ -11,6 +11,7 @@ import { PlaybackState, getBoardAtMove, getHighlightedMove } from "../../game/pl
 import { PlaybackBoard } from "../../game/playback-board";
 import { GamePlaybackControls } from "../../game/playback-controls";
 import { GamePane } from "./common";
+import { isSolved } from "../../../logic/rules";
 
 export interface MctsPaneState {
     initialBoard: Board<Card | null>,
@@ -58,12 +59,15 @@ export function MctsGamePane({
                 configuration.maxIterations
             );
 
+            if (done && isSolved(board)) {
+                path.push(element);
+                break;
+            } else if (done) {
+                continue;
+            }
+
             board = element.state;
             path.push(element);
-
-            if (done) {
-                break;
-            }
         }
 
         console.log("path", path);

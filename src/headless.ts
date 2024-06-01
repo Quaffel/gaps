@@ -36,7 +36,7 @@ for (let i = 0; i < N; i++) {
 }
 
 function getTimeout(columns: number) {
-    return 10 * (columns - 4) * 0.25;
+    return 10 * (columns - 4);
 }
 
 function runAStar(game: Board<Card | null>,  timeout: number): Path<Board<Card | null>, Move> {
@@ -61,7 +61,7 @@ function runMCTS(game: Board<Card | null>, timeout: number): Path<Board<Card | n
     const path: Path<Board<Card | null>, Move> = [];
 
     const startTime = Date.now();
-    const endTime = startTime + timeout * 1000;
+    const endTime = startTime + timeout * 1_000;
 
     let board = game;
     while (Date.now() < endTime) {
@@ -70,12 +70,15 @@ function runMCTS(game: Board<Card | null>, timeout: number): Path<Board<Card | n
             MCSTSMaxIterations,
         );
 
+        if (done && isSolved(element.state)) {
+            path.push(element);
+            break;
+        } else if (done) {
+            continue;
+        }
+
         board = element.state;
         path.push(element);
-
-        if (done) {
-            break;
-        }
     }
 
     return path;
@@ -91,11 +94,12 @@ let stats = [];
 for (let i = 0; i < dimensions.length; i++) {
     const [rows, columns] = dimensions[i];
     const games = gamesForDimensions[i];
+    const timeout = getTimeout(columns);
     for (let j = 0; j < games.length; j++) {
         const startTime = Date.now();
-        console.log(`Solving game with seed ${generationSeed} and board size ${rows}x${columns}`);
+        console.log(`Solving game with seed ${generationSeed} and board size ${rows}x${columns} with timeout ${timeout}s`);
         for (const method in methods) {
-            const path = methods[method](games[j], getTimeout(columns));
+            const path = methods[method](games[j], timeout);
             const currentStats = {
                 method,
                 rows,
@@ -103,7 +107,7 @@ for (let i = 0; i < dimensions.length; i++) {
                 seed: generationSeed + j,
                 solved: isSolved(path[path.length - 1].state),
                 pathLength: path.length,
-                time: Date.now() - startTime,
+                time: (Date.now() - startTime) / 1_000
             };
             stats.push(currentStats);
             console.log(currentStats);
