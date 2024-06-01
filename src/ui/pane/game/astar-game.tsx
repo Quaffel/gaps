@@ -1,10 +1,8 @@
 import React from "react";
-import { Board, getCellCount } from "../../../board";
+import { Board } from "../../../board";
 import { Card } from "../../../cards";
 import { GameRules, Move } from "../../../game";
-import { findCorrectlyPlacedCards, findGaps, getDeadGaps } from "../../../logic/rules";
 import { AStar } from "../../../logic/solver/astar";
-import { State } from "../../../logic/solver/state";
 import { Configuration } from "../../configuration/astar/configuration";
 import { ConfigurationBar } from "../../configuration/astar/configuration-bar";
 import { PlaybackState, getBoardAtMove, getHighlightedMove } from "../../game/playback";
@@ -12,7 +10,6 @@ import { PlaybackBoard } from "../../game/playback-board";
 import { GamePlaybackControls } from "../../game/playback-controls";
 import { GamePane } from "./common";
 import { GapsBoardState } from "../../../logic/gaps-state";
-import { getSeedOfBoard } from "../../../seed";
 
 export interface AStarPaneState {
     initialBoard: Board<Card | null>,

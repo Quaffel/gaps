@@ -1150,5 +1150,23 @@
         "solved": false,
         "pathLength": 40,
         "time": 22627
+    },
+    {
+        "method": "astar",
+        "rows": 4,
+        "columns": 13,
+        "seed": 43,
+        "solved": true,
+        "pathLength": 25,
+        "time": 37
+    },
+    {
+        "method": "mcts",
+        "rows": 4,
+        "columns": 13,
+        "seed": 43,
+        "solved": false,
+        "pathLength": 36,
+        "time": 22836
     }
 ]

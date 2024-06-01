@@ -11,8 +11,6 @@ import { PlaybackState, getBoardAtMove, getHighlightedMove } from "../../game/pl
 import { PlaybackBoard } from "../../game/playback-board";
 import { GamePlaybackControls } from "../../game/playback-controls";
 import { GamePane } from "./common";
-import { getSeedOfBoard } from "../../../seed";
-import { isSolved } from "../../../logic/rules";
 
 export interface MctsPaneState {
     initialBoard: Board<Card | null>,
