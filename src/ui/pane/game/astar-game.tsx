@@ -73,9 +73,9 @@ export function AStarGamePane({
         return { board, highlightedMove };
     }, [state]);
 
-    const seed = React.useMemo(() => {
-        return getSeedOfBoard(playbackBoard.board);
-    }, [playbackBoard.board]);
+    // const seed = React.useMemo(() => {
+    //     return getSeedOfBoard(playbackBoard.board);
+    // }, [playbackBoard.board]);
 
     const score = React.useMemo(() => {
         return 1.0 - rules.getScore(playbackBoard.board);

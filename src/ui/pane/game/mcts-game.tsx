@@ -92,9 +92,9 @@ export function MctsGamePane({
         return { board, highlightedMove };
     }, [state]);
 
-    const seed = React.useMemo(() => {
-        return getSeedOfBoard(playbackBoard.board);
-    }, [playbackBoard.board]);
+    // const seed = React.useMemo(() => {
+    //     return getSeedOfBoard(playbackBoard.board);
+    // }, [playbackBoard.board]);
 
     const score = React.useMemo(() => {
         return rules.getScore(playbackBoard.board);
