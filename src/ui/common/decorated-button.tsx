@@ -26,8 +26,8 @@ export function DecoratedButton({
         {/* Buttons are replaced elements, meaning that CSS layout rules do not apply.  
             As buttons center their contents by default, we instead use a wrapping 'div' element of
             equal size and do the layouting within the inner 'div' element. */}
-        <div>{label}</div>
 
-        <img src={getResourcePath(icon)} alt="" />
+        <img width={30} src={getResourcePath(icon)} alt="" />
+        <div>{label}</div>
     </button>
 }
