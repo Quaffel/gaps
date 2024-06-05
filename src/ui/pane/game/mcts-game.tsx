@@ -1,17 +1,15 @@
 import React from "react";
-import { Board, boardsEqual } from "../../../board";
+import { Board } from "../../../board";
 import { Card } from "../../../cards";
 import { GameRules, Move } from "../../../game";
 import { GapsBoardState } from "../../../logic/gaps-state";
 import { MCTS } from "../../../logic/solver/mcts";
-import { Path } from "../../../logic/solver/state";
 import { Configuration } from "../../configuration/mcts/configuration";
 import { ConfigurationBar } from "../../configuration/mcts/configuration-bar";
 import { PlaybackState, getBoardAtMove, getHighlightedMove } from "../../game/playback";
 import { PlaybackBoard } from "../../game/playback-board";
 import { GamePlaybackControls } from "../../game/playback-controls";
 import { GamePane } from "./common";
-import { getScore, isSolved } from "../../../logic/rules";
 
 export interface MctsPaneState {
     initialBoard: Board<Card | null>,

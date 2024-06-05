@@ -1,11 +1,9 @@
-import { Stream } from "stream";
-import { Board, boardsEqual, getCellCount, getRowCount } from "./board";
+import { Board } from "./board";
 import { Card } from "./cards";
 import { Move } from "./game";
 import { GapsBoardState } from "./logic/gaps-state";
 import { generateShuffledBoard } from "./logic/generation";
-import { findCorrectlyPlacedCards, findGaps, getRepeatedGaps, getScore, isSolved, solitaireGapsRules } from "./logic/rules";
-import { getDeadGaps } from "./logic/rules";
+import { isSolved, solitaireGapsRules } from "./logic/rules";
 import { AStar } from "./logic/solver/astar";
 import { MCTS } from "./logic/solver/mcts";
 import { Path } from "./logic/solver/state";

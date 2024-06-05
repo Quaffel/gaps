@@ -1,5 +1,5 @@
 import { Board, CardPosition, filterBoard, getCardAt, getColumnCount, getRowCount } from "../board";
-import { Card, RANKS, SUITS, getRankCardinality, getSuitCardinality } from "../cards";
+import { Card, RANKS, SUITS, getRankCardinality } from "../cards";
 import { GameRules, Move } from "../game";
 
 

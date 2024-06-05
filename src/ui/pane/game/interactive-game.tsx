@@ -33,7 +33,7 @@ export function InteractiveGamePane({
 
     const statistics = React.useMemo(() => {
         return {
-            score: rules.getScore(state.currentBoard),
+            score: rules.getScore(state.currentBoard, true),
         }
     }, [rules, state.currentBoard]);
 
