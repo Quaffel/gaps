@@ -1,0 +1,81 @@
+\chapter{A$^*$ Algorithm}
+Another approach for evaluating and choosing moves in the Gaps game is to use a deterministic method. Unlike stochastic methods, this approach will always produce the same output given a specific input.
+
+A$^*$ (A-star) is a pathfinding and graph-searching algorithm known for efficiently finding the shortest path between nodes using a combination of cost-based metrics. It maintains a record of the lowest known cost to reach each node from a starting point (G-cost), while estimating the remaining distance to the goal (H-cost). The combination of these values (F-cost) helps prioritize exploration paths, balancing between the cost so far and the estimated cost to reach the goal. This consistency is beneficial for solving the Gaps game effectively and reproducibly.
+
+Unlike the two other methods we have discussed, A$^*$ aims to provide the shortest path to the solution, likely yielding a smaller number of moves to solve the game. However, this strength comes with a cost. Since it blends depth-first and breadth-first exploration, and given that in our game the goal is located at the end of the tree, it might take more time to find the solution compared to the other methods.
+
+\section{Application to the Gaps game}
+Our A$^*$ implementation does not deviate from the standard A$^*$ algorithm. As a cost for an action (arc), we chose to use the number of moves made to reach the current state. This cost is incremented by one for each move made. The heuristic is simply our estimate $H(G^t, 0)$ that we defined in section \ref{heuristic}.
+
+The open and closed sets are managed using a hash value that represents the state of the game. This hash value is calculated based on the current state and is used to check if a state is already in either the open or closed list. This mechanism helps prevent revisiting equivalent states and avoids loops.
+
+For instance, consider a state $G^t$. If we apply an action $ a^t$ to $G^t$, resulting in state $G^{t+1}$, it is possible that in $G^{t+1}$, the optimal action $a^{t+1}$ might lead us back to a state equivalent to $G^t$ (i.e., $G^{t+2} \equiv G^t$). Using hash values to track states ensures that once a state has been explored, it won't be revisited, thus maintaining the efficiency of the algorithm by avoiding loops and redundant calculations.
+
+\subsection{Initialization}
+\begin{enumerate}
+    \item We start by adding the initial state to the open list.
+    \item Create an empty closed list.
+\end{enumerate}
+
+\subsection{Node evaluation}
+\begin{enumerate}
+    \item Select the node with the lowest F-cost from the open list (F-cost = G-cost + H-cost).
+    \item Move this node to the closed list.
+\end{enumerate}
+
+\subsection{Goal check}
+\begin{enumerate}
+    \item Check if the current node is the goal state, if so, return the path from the initial state to the current node.
+\end{enumerate}
+
+\subsection{Neighbor exploration}
+\begin{enumerate}
+    \item For each neighbor of the current node:
+    \begin{enumerate}
+        \item Calculate the G-cost, which is the cost to reach the this node from the initial state (G-cost of the current node + 1).
+        \item Calculate the H-cost, which is the heuristic estimate of the remaining cost to reach the goal (using the $H(G^t, 0)$ heuristic).
+        \item Calculate the F-cost, which is the sum of the G-cost and H-cost.
+        \item If the neighbor is not in the open list or the closed list, add it to the open list.
+        \item If it is in the open list with a higher F-cost, update the node with the new F-cost and set the parent to be the current node.
+    \end{enumerate}
+\end{enumerate}
+
+\subsection{Reiteration}
+\begin{enumerate}
+    \item Repeat the process until the open list is empty or the goal state is reached.
+\end{enumerate}
+
+\begin{algorithm}[H]
+    \caption{A$^*$ for Gaps Game}
+    \begin{algorithmic}
+    \State open\_list $\gets$ priority queue containing the start node
+    \State closed\_list $\gets$ empty set
+    \While{open\_list is not empty}
+    \State current\_node $\gets$ node from open\_list with lowest heuristic value
+    \If{current\_node is the goal}
+        \State \Return the path to current\_node
+    \EndIf
+    \State remove current\_node from open\_list
+    \State add current\_node to closed\_list
+
+    \For{each neighbor in neighbors of current\_node}
+        \If{neighbor is in closed\_list}
+            \State continue
+        \EndIf
+        \State neighbor.g $\gets$ current\_node.g + 1 \Comment{Increment G-cost by 1}
+        \State neighbor.h $\gets H(G^{\text{neighbor}}, 0)$ \Comment{Calculate heuristic}
+        \State neighbor.f $\gets$ neighbor.g + neighbor.h \Comment{Calculate F-cost}
+
+        \If{neighbor is not in open\_list}
+            \State add neighbor to open\_list
+        \EndIf
+    \EndFor
+\EndWhile
+
+\State \Return failure
+\end{algorithmic}
+\end{algorithm}
+
+\section{Heuristic Function}
+The heuristic function is a critical component of the A$^*$ algorithm, guiding the search towards the goal. For the Gaps game, we chose the function $H\left(G^t, 0\right)$ \ref{heuristic} as being our heuristic, which we consider to be admissible. This means that the $H\left(G^t, 0\right)$ will never overestimate the number of moves needed to reach the goal. If this heuristic is found to not be admissible, the algorithm may not find the optimal solution or may take longer to find it.

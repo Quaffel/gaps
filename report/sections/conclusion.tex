@@ -1,0 +1,24 @@
+\chapter{Conclusion}
+In this work, we explored and evaluated different algorithms for solving the Gaps game, focusing on Greedy BFS, A$^*$, and MCTS. Each algorithm demonstrated unique strengths and weaknesses, revealing insights into their suitability for this specific problem domain.
+
+Greedy BFS proved to be the fastest and most efficient algorithm, achieving the highest success rate due to its strategy of quickly reaching a leaf node without seeking the shortest path. This efficiency demonstrates the effectiveness of a straightforward, heuristic-based approach for solving the Gaps game.
+
+The A$^*$ algorithm, while efficient in narrowing down searches to promising paths, showed limitations in this context. Its focus on finding the shortest path often led to longer computation times and a higher likelihood of reaching the timeout before finding a solution, resulting in the lowest success rate among the three methods.
+
+MCTS, on the other hand, demonstrated the ability to explore large state spaces in a depth-focused manner, gradually converging towards a solution through its backpropagation process. Despite requiring significant computational resources and longer times to find solutions, MCTS showed potential for improvement through parameter tuning and policy enhancements.
+
+Our analysis highlights the importance of selecting the appropriate algorithm based on the specific objectives and constraints of the problem. For the Gaps game, where quick solutions are preferable, Greedy BFS emerged as the most practical choice. However, for scenarios where path optimality is crucial, enhancements to A$^*$ and MCTS could offer better performance.
+
+Future work could explore hybrid approaches, combining elements of both MCTS and A$^*$, to leverage their strengths and mitigate their weaknesses. Additionally, automated tuning of parameters and dynamic heuristic adjustments present promising avenues for optimizing algorithm performance. Exploring alternative methods, such as modeling the Gaps game as a Constraint Satisfaction Problem (CSP), could also lead to more effective heuristic functions and improved overall performance.
+
+In conclusion, while each algorithm has its own advantages, the choice of method should align with the specific goals and constraints of the task. Our findings contribute to a deeper understanding of algorithmic strategies for solving the Gaps game and open up new possibilities for further research and optimization in this area.
+
+% In this project, we faced the challenge of solving the card game Gaps by implementing two distinct artificial intelligence algorithms: Monte Carlo Tree Search (MCTS) and the A* pathfinding algorithm. Both approaches leverage heuristic scoring systems to prioritize effective moves and minimize gaps that block card placement. By focusing on correctly arranging cards while reducing double and dead gaps, each algorithm offers a unique approach to efficiently solve the Gaps game.
+
+% The MCTS approach demonstrated its adaptability and ability to explore a wide range of possible moves via random simulations. Its iterative learning mechanism ensured the identification of promising paths while balancing between exploration and exploitation. With each iteration, the quality of decisions improved, ultimately leading to more consistent progress in solving the game.
+
+% Contrary, the A* algorithm provided a deterministic and systematic exploration of game states. By using weighted heuristics for well-placed cards, dead gaps, and double gaps, A* focused on the most promising paths and rapidly converged on solutions by systematically addressing blocking gaps and misplaced cards.
+
+% Although the project provides an initial comparison between the two approaches, further experimentation could refine the performance analysis by exploring various scenarios and evaluating computational efficiency. Understanding the strengths and weaknesses of each approach can help refine their heuristics and weight combinations to ensure better adaptability and accuracy in solving the Gaps game.
+
+% Overall, this project demonstrate the power of combining artificial intelligence algorithms and heuristic scoring systems to solve complex single-player card games. By methodically implementing and comparing MCTS and A* algorithms, we were able to gain valuable insights into the application of each technique.

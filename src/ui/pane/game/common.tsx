@@ -3,6 +3,7 @@ import { Card } from "../../../cards";
 import { interactiveGamePane } from "./interactive-game";
 import { astarGamePane } from "./astar-game";
 import { mctsGamePane } from "./mcts-game";
+import { greedyGamePane } from "./greedy-game";
 
 export interface GamePane<TState> {
     deriveBoard(state: TState): Board<Card | null>,
@@ -18,6 +19,7 @@ export interface GamePane<TState> {
 export const gamePanes = {
     "interactive": interactiveGamePane,
     "astar": astarGamePane,
+    "greedy": greedyGamePane,
     "mcts": mctsGamePane,
 } as const;
 

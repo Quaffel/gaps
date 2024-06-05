@@ -1,0 +1,26 @@
+\chapter{Discussions}
+\section{Path length analysis}
+In figure \ref{fig:overall_performances} we can see that the method yielding to the shortest path length is, as expected, A*. This is due to the fact that A$^*$ is designed to find the shortest path to the solution. MCTS provides the longest path length, this is likely due to the stochastic nature of the algorithm, which can lead to suboptimal moves; it also does not naturaly prevent loops in the path unlike the two other methods. Greedy BFS, is in between the two other methods, this is because it does not aim to find the shortest path but rather to reach a leaf node as quickly as possible, in general if the heuristic is well designed it should provide descent path lengths.
+
+\section{Time complexity analysis}
+The most time-consuming algorithm to solve the Gaps game is MCTS, this is because it requires a large number of iterations to find a good solution. In contrast the Greedy BFS algorithm simply requires to jump from one node to another by selecting the best move, this is why it is the fastest algorithm, as soon as it reaches a leaf node it returns it, no matter if it is a solution or not. A* is in between the two other methods, it is slower than Greedy BFS but faster than MCTS, this is because it explores the state space with a balance between depth and breadth.
+
+\section{Success rate analysis}
+The algorithm with the highest success rate is, surprisingly, the simpliest one, the Greedy BFS algorithm. This is likely because unlike $A^*$, the Greedy BFS algorithm does not aim to find the shortest path to the solution, it just follows the best path at each step. MCTS is not far behind, and unlike the two other methods, we can improve its success rate by increasing the number of iterations. $A^*$ has the lowest success rate, this is due to the fact it spends more time descending the tree to find the shortest path which leads more often reach the timeout before finding a solution, this is demonstrated in the last plot of figure \ref{fig:overall_performances}.
+
+Having a solution which takes a long time to find is not useful in practice, this is why we do not consider setting up a longer timeout for further experiments.
+
+\section{A*}
+The A$^*$ algorithm is also effective for solving the Gaps game because it narrows down the search efficiently by focusing on promising paths. However, if the goal is not to find a short path to the solution, this makes A$^*$ the least promising method for solving this game, as it is the slowest (reaches the timeout more often) and has the lowest success rate.
+
+\section{Greedy BFS}
+The Greedy BFS algorithm is the fastest and most efficient algorithm to solve the Gaps game. It is well suited for this game because it does not aim to find the shortest path to the solution, but rather to reach a leaf node as quickly as possible. This is why it has the highest success rate. However, it does not guarantee a short path to the solution.
+
+This shows that the having a good way of counting the number of misplaced cards can already provide a good heuristic for finding a solution to the Gaps game. And as mentioned in the section \ref{ssec:wellplaced} finding a good way of counting the number of well-placed is not trivial, we believe that better solutions can be found by improving this fun
+
+\section{MCTS}
+MCTS is well suited for the Gaps game because it allows for the exploration of a large state space in a depth-focused manner. Its backpropagation process enables the algorithm to efficiently and progressively converge towards a solution. However, this comes at the cost of high computational resources due to the significant number of iterations required, resulting in longer times to find a solution.
+
+Better results can potentially be achieved by fine-tuning the number of iterations, the exploration constant $W_c$, and the weight constant $W_S$ in the UCB formula. Additionally, improving the selection and expansion policies can further enhance the performance of MCTS in solving the Gaps game.
+
+

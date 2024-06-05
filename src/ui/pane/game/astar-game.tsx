@@ -1,5 +1,5 @@
 import React from "react";
-import { Board } from "../../../board";
+import { Board, getCellCount } from "../../../board";
 import { Card } from "../../../cards";
 import { GameRules, Move } from "../../../game";
 import { AStar } from "../../../logic/solver/astar";
@@ -10,6 +10,7 @@ import { PlaybackBoard } from "../../game/playback-board";
 import { GamePlaybackControls } from "../../game/playback-controls";
 import { GamePane } from "./common";
 import { GapsBoardState } from "../../../logic/gaps-state";
+import { findCorrectlyPlacedCards, getRepeatedGaps, getDeadGaps, getEstimatedDistanceToSolution } from "../../../logic/rules";
 
 export interface AStarPaneState {
     initialBoard: Board<Card | null>,
@@ -41,7 +42,11 @@ export function AStarGamePane({
         const astar = new AStar.AStarSearch(
             new GapsBoardState(rules, state.initialBoard),
             configuration.timeout,
-            (state) => 1.0 - state.getScore(),
+            (state) => {
+                const estimatedDistance = getEstimatedDistanceToSolution(state.get(), 0);
+                return estimatedDistance;
+            },
+            () => 1,
         );
 
         const path = await astar.findPath();
@@ -75,7 +80,7 @@ export function AStarGamePane({
     // }, [playbackBoard.board]);
 
     const score = React.useMemo(() => {
-        return 1.0 - rules.getScore(playbackBoard.board);
+        return getEstimatedDistanceToSolution(playbackBoard.board, 0);
     }, [rules, playbackBoard.board]);
 
     return <>

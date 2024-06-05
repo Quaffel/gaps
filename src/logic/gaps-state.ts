@@ -29,8 +29,8 @@ export class GapsBoardState implements State<Board<Card | null>, Move> {
         return this.rules.isSolved(this.board);
     }
 
-    getScore(): number {
-        return this.rules.getScore(this.board);
+    getScore(normalize: boolean = true): number {
+        return this.rules.getScore(this.board, normalize);
     }
 
     equals(other: State<Board<Card | null>, Move>): boolean {

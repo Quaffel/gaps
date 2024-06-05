@@ -1,128 +1,6836 @@
 [
     {
         "method": "astar",
-        "rows": 4,
-        "columns": 6,
-        "seed": 42,
         "solved": true,
-        "pathLength": 17,
-        "time": 0.013
+        "pathLength": 14,
+        "timeout": 60,
+        "timeElapsed": 0.028,
+        "rows": 4,
+        "columns": 5,
+        "complexity": 20,
+        "seed": 1,
+        "board": [
+            [
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                null,
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                },
+                null,
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                null
+            ]
+        ]
     },
     {
         "method": "mcts",
-        "rows": 4,
-        "columns": 6,
-        "seed": 42,
         "solved": true,
         "pathLength": 15,
-        "time": 6.44
+        "timeout": 60,
+        "timeElapsed": 0.85,
+        "rows": 4,
+        "columns": 5,
+        "complexity": 20,
+        "seed": 1,
+        "board": [
+            [
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                null,
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                },
+                null,
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                null
+            ]
+        ]
     },
     {
         "method": "astar",
-        "rows": 4,
-        "columns": 6,
-        "seed": 43,
         "solved": true,
-        "pathLength": 42,
-        "time": 0.066
+        "pathLength": 9,
+        "timeout": 60,
+        "timeElapsed": 0.015,
+        "rows": 4,
+        "columns": 5,
+        "complexity": 20,
+        "seed": 2,
+        "board": [
+            [
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                null
+            ],
+            [
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                },
+                null
+            ]
+        ]
     },
     {
         "method": "mcts",
+        "solved": true,
+        "pathLength": 21,
+        "timeout": 60,
+        "timeElapsed": 1.127,
         "rows": 4,
-        "columns": 6,
-        "seed": 43,
-        "solved": false,
-        "pathLength": 11,
-        "time": 20.068
+        "columns": 5,
+        "complexity": 20,
+        "seed": 2,
+        "board": [
+            [
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                null
+            ],
+            [
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                },
+                null
+            ]
+        ]
     },
     {
         "method": "astar",
+        "solved": true,
+        "pathLength": 12,
+        "timeout": 60,
+        "timeElapsed": 0.052,
         "rows": 4,
-        "columns": 6,
-        "seed": 44,
-        "solved": false,
-        "pathLength": 64,
-        "time": 20
+        "columns": 5,
+        "complexity": 20,
+        "seed": 3,
+        "board": [
+            [
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                }
+            ],
+            [
+                null,
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                }
+            ]
+        ]
     },
     {
         "method": "mcts",
+        "solved": true,
+        "pathLength": 31,
+        "timeout": 60,
+        "timeElapsed": 1.516,
         "rows": 4,
-        "columns": 6,
-        "seed": 44,
-        "solved": false,
-        "pathLength": 16,
-        "time": 40.509
+        "columns": 5,
+        "complexity": 20,
+        "seed": 3,
+        "board": [
+            [
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                }
+            ],
+            [
+                null,
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                }
+            ]
+        ]
     },
     {
         "method": "astar",
+        "solved": true,
+        "pathLength": 10,
+        "timeout": 75,
+        "timeElapsed": 0.007,
         "rows": 4,
-        "columns": 6,
-        "seed": 45,
+        "columns": 5,
+        "complexity": 30,
+        "seed": 2,
+        "board": [
+            [
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                null,
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                }
+            ],
+            [
+                null,
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                }
+            ]
+        ]
+    },
+    {
+        "method": "mcts",
+        "solved": true,
+        "pathLength": 17,
+        "timeout": 75,
+        "timeElapsed": 0.796,
+        "rows": 4,
+        "columns": 5,
+        "complexity": 30,
+        "seed": 2,
+        "board": [
+            [
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                null,
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                }
+            ],
+            [
+                null,
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                }
+            ]
+        ]
+    },
+    {
+        "method": "astar",
+        "solved": true,
+        "pathLength": 15,
+        "timeout": 75,
+        "timeElapsed": 0.026,
+        "rows": 4,
+        "columns": 5,
+        "complexity": 30,
+        "seed": 3,
+        "board": [
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                },
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                null
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                }
+            ]
+        ]
+    },
+    {
+        "method": "mcts",
+        "solved": true,
+        "pathLength": 17,
+        "timeout": 75,
+        "timeElapsed": 0.814,
+        "rows": 4,
+        "columns": 5,
+        "complexity": 30,
+        "seed": 3,
+        "board": [
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                },
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                null
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                }
+            ]
+        ]
+    },
+    {
+        "method": "astar",
+        "solved": true,
+        "pathLength": 15,
+        "timeout": 75,
+        "timeElapsed": 0.147,
+        "rows": 4,
+        "columns": 5,
+        "complexity": 30,
+        "seed": 4,
+        "board": [
+            [
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                }
+            ],
+            [
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                }
+            ],
+            [
+                null,
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                },
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                }
+            ]
+        ]
+    },
+    {
+        "method": "mcts",
+        "solved": true,
+        "pathLength": 29,
+        "timeout": 75,
+        "timeElapsed": 1.253,
+        "rows": 4,
+        "columns": 5,
+        "complexity": 30,
+        "seed": 4,
+        "board": [
+            [
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                }
+            ],
+            [
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                }
+            ],
+            [
+                null,
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                },
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                }
+            ]
+        ]
+    },
+    {
+        "method": "astar",
         "solved": false,
         "pathLength": 1,
-        "time": 0.001
+        "timeout": 90,
+        "timeElapsed": 0,
+        "rows": 4,
+        "columns": 5,
+        "complexity": 40,
+        "seed": 3,
+        "board": [
+            [
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                null,
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                }
+            ]
+        ]
     },
     {
         "method": "mcts",
-        "rows": 4,
-        "columns": 6,
-        "seed": 45,
         "solved": false,
         "pathLength": 1,
-        "time": 20.01
+        "timeout": 90,
+        "timeElapsed": 0.237,
+        "rows": 4,
+        "columns": 5,
+        "complexity": 40,
+        "seed": 3,
+        "board": [
+            [
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                null,
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                }
+            ]
+        ]
     },
     {
         "method": "astar",
+        "solved": true,
+        "pathLength": 15,
+        "timeout": 90,
+        "timeElapsed": 0.168,
         "rows": 4,
-        "columns": 6,
-        "seed": 46,
-        "solved": false,
-        "pathLength": 30,
-        "time": 20
+        "columns": 5,
+        "complexity": 40,
+        "seed": 4,
+        "board": [
+            [
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                }
+            ],
+            [
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                null,
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                }
+            ],
+            [
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                }
+            ]
+        ]
     },
     {
         "method": "mcts",
+        "solved": true,
+        "pathLength": 39,
+        "timeout": 90,
+        "timeElapsed": 1.743,
+        "rows": 4,
+        "columns": 5,
+        "complexity": 40,
+        "seed": 4,
+        "board": [
+            [
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                }
+            ],
+            [
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                null,
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                }
+            ],
+            [
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                }
+            ]
+        ]
+    },
+    {
+        "method": "astar",
+        "solved": true,
+        "pathLength": 14,
+        "timeout": 90,
+        "timeElapsed": 0.029,
+        "rows": 4,
+        "columns": 5,
+        "complexity": 40,
+        "seed": 5,
+        "board": [
+            [
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                },
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                null
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                null,
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                }
+            ]
+        ]
+    },
+    {
+        "method": "mcts",
+        "solved": true,
+        "pathLength": 15,
+        "timeout": 90,
+        "timeElapsed": 1.114,
+        "rows": 4,
+        "columns": 5,
+        "complexity": 40,
+        "seed": 5,
+        "board": [
+            [
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                },
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                null
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                null,
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                }
+            ]
+        ]
+    },
+    {
+        "method": "astar",
+        "solved": true,
+        "pathLength": 15,
+        "timeout": 105,
+        "timeElapsed": 0.059,
+        "rows": 4,
+        "columns": 5,
+        "complexity": 50,
+        "seed": 4,
+        "board": [
+            [
+                null,
+                null,
+                null,
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                }
+            ],
+            [
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                }
+            ]
+        ]
+    },
+    {
+        "method": "mcts",
+        "solved": true,
+        "pathLength": 15,
+        "timeout": 105,
+        "timeElapsed": 0.652,
+        "rows": 4,
+        "columns": 5,
+        "complexity": 50,
+        "seed": 4,
+        "board": [
+            [
+                null,
+                null,
+                null,
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                }
+            ],
+            [
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                }
+            ]
+        ]
+    },
+    {
+        "method": "astar",
+        "solved": true,
+        "pathLength": 15,
+        "timeout": 105,
+        "timeElapsed": 1.436,
+        "rows": 4,
+        "columns": 5,
+        "complexity": 50,
+        "seed": 5,
+        "board": [
+            [
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                },
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                null
+            ]
+        ]
+    },
+    {
+        "method": "mcts",
+        "solved": true,
+        "pathLength": 28,
+        "timeout": 105,
+        "timeElapsed": 1.426,
+        "rows": 4,
+        "columns": 5,
+        "complexity": 50,
+        "seed": 5,
+        "board": [
+            [
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                },
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                null
+            ]
+        ]
+    },
+    {
+        "method": "astar",
+        "solved": true,
+        "pathLength": 15,
+        "timeout": 105,
+        "timeElapsed": 0.174,
+        "rows": 4,
+        "columns": 5,
+        "complexity": 50,
+        "seed": 6,
+        "board": [
+            [
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                }
+            ],
+            [
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                null,
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                }
+            ],
+            [
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                null
+            ],
+            [
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                null
+            ]
+        ]
+    },
+    {
+        "method": "mcts",
+        "solved": true,
+        "pathLength": 33,
+        "timeout": 105,
+        "timeElapsed": 1.908,
+        "rows": 4,
+        "columns": 5,
+        "complexity": 50,
+        "seed": 6,
+        "board": [
+            [
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                }
+            ],
+            [
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                null,
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                }
+            ],
+            [
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                null
+            ],
+            [
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                null
+            ]
+        ]
+    },
+    {
+        "method": "astar",
+        "solved": true,
+        "pathLength": 8,
+        "timeout": 120,
+        "timeElapsed": 0.005,
         "rows": 4,
         "columns": 6,
-        "seed": 46,
+        "complexity": 20,
+        "seed": 1,
+        "board": [
+            [
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "5"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                null,
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "5"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "5"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                null,
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "5"
+                },
+                null
+            ]
+        ]
+    },
+    {
+        "method": "mcts",
+        "solved": true,
+        "pathLength": 8,
+        "timeout": 120,
+        "timeElapsed": 0.528,
+        "rows": 4,
+        "columns": 6,
+        "complexity": 20,
+        "seed": 1,
+        "board": [
+            [
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "5"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                null,
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "5"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "5"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                null,
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "5"
+                },
+                null
+            ]
+        ]
+    },
+    {
+        "method": "astar",
+        "solved": true,
+        "pathLength": 14,
+        "timeout": 120,
+        "timeElapsed": 0.134,
+        "rows": 4,
+        "columns": 6,
+        "complexity": 20,
+        "seed": 2,
+        "board": [
+            [
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "5"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "5"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "5"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                null,
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "5"
+                },
+                null
+            ]
+        ]
+    },
+    {
+        "method": "mcts",
+        "solved": true,
+        "pathLength": 19,
+        "timeout": 120,
+        "timeElapsed": 1.916,
+        "rows": 4,
+        "columns": 6,
+        "complexity": 20,
+        "seed": 2,
+        "board": [
+            [
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "5"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "5"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "5"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                null,
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "5"
+                },
+                null
+            ]
+        ]
+    },
+    {
+        "method": "astar",
+        "solved": true,
+        "pathLength": 14,
+        "timeout": 120,
+        "timeElapsed": 0.321,
+        "rows": 4,
+        "columns": 6,
+        "complexity": 20,
+        "seed": 3,
+        "board": [
+            [
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "5"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "5"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "5"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                }
+            ],
+            [
+                null,
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "5"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                }
+            ]
+        ]
+    },
+    {
+        "method": "mcts",
+        "solved": true,
+        "pathLength": 21,
+        "timeout": 120,
+        "timeElapsed": 1.665,
+        "rows": 4,
+        "columns": 6,
+        "complexity": 20,
+        "seed": 3,
+        "board": [
+            [
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "5"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "5"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "5"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                }
+            ],
+            [
+                null,
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "5"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                }
+            ]
+        ]
+    },
+    {
+        "method": "astar",
+        "solved": true,
+        "pathLength": 22,
+        "timeout": 135,
+        "timeElapsed": 44.614,
+        "rows": 4,
+        "columns": 6,
+        "complexity": 30,
+        "seed": 2,
+        "board": [
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "5"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                }
+            ],
+            [
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                },
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "5"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                }
+            ],
+            [
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "5"
+                },
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "5"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                }
+            ]
+        ]
+    },
+    {
+        "method": "mcts",
+        "solved": true,
+        "pathLength": 38,
+        "timeout": 135,
+        "timeElapsed": 2.878,
+        "rows": 4,
+        "columns": 6,
+        "complexity": 30,
+        "seed": 2,
+        "board": [
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "5"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                }
+            ],
+            [
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                },
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "5"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                }
+            ],
+            [
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "5"
+                },
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "5"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                }
+            ]
+        ]
+    },
+    {
+        "method": "astar",
+        "solved": true,
+        "pathLength": 22,
+        "timeout": 135,
+        "timeElapsed": 0.835,
+        "rows": 4,
+        "columns": 6,
+        "complexity": 30,
+        "seed": 3,
+        "board": [
+            [
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                },
+                null
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "5"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "5"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "5"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "5"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                }
+            ]
+        ]
+    },
+    {
+        "method": "mcts",
+        "solved": true,
+        "pathLength": 24,
+        "timeout": 135,
+        "timeElapsed": 1.451,
+        "rows": 4,
+        "columns": 6,
+        "complexity": 30,
+        "seed": 3,
+        "board": [
+            [
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                },
+                null
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "5"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "5"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "5"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "5"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                }
+            ]
+        ]
+    },
+    {
+        "method": "astar",
         "solved": false,
         "pathLength": 8,
-        "time": 40.684
-    },
-    {
-        "method": "astar",
+        "timeout": 135,
+        "timeElapsed": 135.006,
         "rows": 4,
         "columns": 6,
-        "seed": 47,
-        "solved": true,
-        "pathLength": 62,
-        "time": 0.069
+        "complexity": 30,
+        "seed": 4,
+        "board": [
+            [
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                null,
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                }
+            ],
+            [
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                }
+            ],
+            [
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "5"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "5"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "5"
+                },
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "5"
+                }
+            ]
+        ]
     },
     {
         "method": "mcts",
+        "solved": true,
+        "pathLength": 42,
+        "timeout": 135,
+        "timeElapsed": 4.144,
         "rows": 4,
         "columns": 6,
-        "seed": 47,
+        "complexity": 30,
+        "seed": 4,
+        "board": [
+            [
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                null,
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                }
+            ],
+            [
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                }
+            ],
+            [
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "5"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "5"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "5"
+                },
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "5"
+                }
+            ]
+        ]
+    },
+    {
+        "method": "astar",
+        "solved": true,
+        "pathLength": 23,
+        "timeout": 150,
+        "timeElapsed": 0.251,
+        "rows": 4,
+        "columns": 6,
+        "complexity": 40,
+        "seed": 3,
+        "board": [
+            [
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "5"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "5"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                null,
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "5"
+                },
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "5"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                }
+            ]
+        ]
+    },
+    {
+        "method": "mcts",
+        "solved": true,
+        "pathLength": 30,
+        "timeout": 150,
+        "timeElapsed": 2.4,
+        "rows": 4,
+        "columns": 6,
+        "complexity": 40,
+        "seed": 3,
+        "board": [
+            [
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "5"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "5"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                null,
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "5"
+                },
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "5"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                }
+            ]
+        ]
+    },
+    {
+        "method": "astar",
+        "solved": false,
+        "pathLength": 1,
+        "timeout": 150,
+        "timeElapsed": 150.089,
+        "rows": 4,
+        "columns": 6,
+        "complexity": 40,
+        "seed": 4,
+        "board": [
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "5"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                null,
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                }
+            ],
+            [
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                null,
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "5"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "5"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "5"
+                }
+            ]
+        ]
+    },
+    {
+        "method": "mcts",
+        "solved": true,
+        "pathLength": 50,
+        "timeout": 150,
+        "timeElapsed": 6.755,
+        "rows": 4,
+        "columns": 6,
+        "complexity": 40,
+        "seed": 4,
+        "board": [
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "5"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                null,
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                }
+            ],
+            [
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                null,
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "5"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "5"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "5"
+                }
+            ]
+        ]
+    },
+    {
+        "method": "astar",
+        "solved": false,
+        "pathLength": 1,
+        "timeout": 150,
+        "timeElapsed": 150.008,
+        "rows": 4,
+        "columns": 6,
+        "complexity": 40,
+        "seed": 5,
+        "board": [
+            [
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                null,
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                }
+            ],
+            [
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "5"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "5"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                }
+            ],
+            [
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "5"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                null
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                null,
+                {
+                    "suit": "spades",
+                    "rank": "5"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                }
+            ]
+        ]
+    },
+    {
+        "method": "mcts",
+        "solved": false,
+        "pathLength": 13,
+        "timeout": 150,
+        "timeElapsed": 8.176,
+        "rows": 4,
+        "columns": 6,
+        "complexity": 40,
+        "seed": 5,
+        "board": [
+            [
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                null,
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                }
+            ],
+            [
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "5"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "5"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                }
+            ],
+            [
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "5"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                null
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                null,
+                {
+                    "suit": "spades",
+                    "rank": "5"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                }
+            ]
+        ]
+    },
+    {
+        "method": "astar",
+        "solved": true,
+        "pathLength": 19,
+        "timeout": 165,
+        "timeElapsed": 0.148,
+        "rows": 4,
+        "columns": 6,
+        "complexity": 50,
+        "seed": 4,
+        "board": [
+            [
+                null,
+                null,
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                null,
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                }
+            ],
+            [
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "5"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                }
+            ],
+            [
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "5"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "5"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "5"
+                }
+            ]
+        ]
+    },
+    {
+        "method": "mcts",
+        "solved": true,
+        "pathLength": 24,
+        "timeout": 165,
+        "timeElapsed": 2.107,
+        "rows": 4,
+        "columns": 6,
+        "complexity": 50,
+        "seed": 4,
+        "board": [
+            [
+                null,
+                null,
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                null,
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                }
+            ],
+            [
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "5"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                }
+            ],
+            [
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "5"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "5"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "5"
+                }
+            ]
+        ]
+    },
+    {
+        "method": "astar",
+        "solved": true,
+        "pathLength": 20,
+        "timeout": 165,
+        "timeElapsed": 81.751,
+        "rows": 4,
+        "columns": 6,
+        "complexity": 50,
+        "seed": 5,
+        "board": [
+            [
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                }
+            ],
+            [
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "5"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "5"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "5"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                }
+            ],
+            [
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                null
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "5"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                null
+            ]
+        ]
+    },
+    {
+        "method": "mcts",
+        "solved": true,
+        "pathLength": 27,
+        "timeout": 165,
+        "timeElapsed": 2.168,
+        "rows": 4,
+        "columns": 6,
+        "complexity": 50,
+        "seed": 5,
+        "board": [
+            [
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                }
+            ],
+            [
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "5"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "5"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "5"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                }
+            ],
+            [
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                null
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "5"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                null
+            ]
+        ]
+    },
+    {
+        "method": "astar",
         "solved": false,
         "pathLength": 3,
-        "time": 23.976
-    },
-    {
-        "method": "astar",
+        "timeout": 165,
+        "timeElapsed": 165.001,
         "rows": 4,
         "columns": 6,
-        "seed": 48,
-        "solved": false,
-        "pathLength": 86,
-        "time": 20
+        "complexity": 50,
+        "seed": 6,
+        "board": [
+            [
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                }
+            ],
+            [
+                null,
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "5"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                }
+            ],
+            [
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "5"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                null
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "5"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "5"
+                }
+            ]
+        ]
     },
     {
         "method": "mcts",
+        "solved": true,
+        "pathLength": 36,
+        "timeout": 165,
+        "timeElapsed": 4.107,
         "rows": 4,
         "columns": 6,
-        "seed": 48,
+        "complexity": 50,
+        "seed": 6,
+        "board": [
+            [
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                }
+            ],
+            [
+                null,
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "5"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                }
+            ],
+            [
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "5"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                null
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "5"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "5"
+                }
+            ]
+        ]
+    },
+    {
+        "method": "astar",
+        "solved": true,
+        "pathLength": 20,
+        "timeout": 180,
+        "timeElapsed": 0.037,
+        "rows": 4,
+        "columns": 7,
+        "complexity": 20,
+        "seed": 1,
+        "board": [
+            [
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "5"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "6"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "6"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                null,
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "5"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                }
+            ],
+            [
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "5"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "6"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "5"
+                },
+                null,
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "6"
+                },
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                }
+            ]
+        ]
+    },
+    {
+        "method": "mcts",
+        "solved": true,
+        "pathLength": 29,
+        "timeout": 180,
+        "timeElapsed": 3.556,
+        "rows": 4,
+        "columns": 7,
+        "complexity": 20,
+        "seed": 1,
+        "board": [
+            [
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "5"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "6"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "6"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                null,
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "5"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                }
+            ],
+            [
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "5"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "6"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "5"
+                },
+                null,
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "6"
+                },
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                }
+            ]
+        ]
+    },
+    {
+        "method": "astar",
+        "solved": true,
+        "pathLength": 14,
+        "timeout": 180,
+        "timeElapsed": 0.073,
+        "rows": 4,
+        "columns": 7,
+        "complexity": 20,
+        "seed": 2,
+        "board": [
+            [
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "5"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "6"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "5"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "6"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "5"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                },
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "6"
+                }
+            ],
+            [
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "5"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "6"
+                },
+                null
+            ]
+        ]
+    },
+    {
+        "method": "mcts",
+        "solved": true,
+        "pathLength": 23,
+        "timeout": 180,
+        "timeElapsed": 3.049,
+        "rows": 4,
+        "columns": 7,
+        "complexity": 20,
+        "seed": 2,
+        "board": [
+            [
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "5"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "6"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "5"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "6"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "5"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                },
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "6"
+                }
+            ],
+            [
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "5"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "6"
+                },
+                null
+            ]
+        ]
+    },
+    {
+        "method": "astar",
+        "solved": true,
+        "pathLength": 13,
+        "timeout": 180,
+        "timeElapsed": 0.137,
+        "rows": 4,
+        "columns": 7,
+        "complexity": 20,
+        "seed": 3,
+        "board": [
+            [
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "5"
+                },
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "5"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "6"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "6"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "6"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                }
+            ],
+            [
+                null,
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "5"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "6"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "5"
+                }
+            ]
+        ]
+    },
+    {
+        "method": "mcts",
+        "solved": true,
+        "pathLength": 26,
+        "timeout": 180,
+        "timeElapsed": 2.499,
+        "rows": 4,
+        "columns": 7,
+        "complexity": 20,
+        "seed": 3,
+        "board": [
+            [
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "5"
+                },
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "5"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "6"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "6"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "6"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                }
+            ],
+            [
+                null,
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "5"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "6"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "5"
+                }
+            ]
+        ]
+    },
+    {
+        "method": "astar",
+        "solved": true,
+        "pathLength": 26,
+        "timeout": 195,
+        "timeElapsed": 122.891,
+        "rows": 4,
+        "columns": 7,
+        "complexity": 30,
+        "seed": 2,
+        "board": [
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "5"
+                }
+            ],
+            [
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "5"
+                },
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "5"
+                },
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "6"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "6"
+                }
+            ],
+            [
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "6"
+                },
+                null,
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "5"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "6"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                }
+            ]
+        ]
+    },
+    {
+        "method": "mcts",
+        "solved": true,
+        "pathLength": 33,
+        "timeout": 195,
+        "timeElapsed": 3.516,
+        "rows": 4,
+        "columns": 7,
+        "complexity": 30,
+        "seed": 2,
+        "board": [
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "5"
+                }
+            ],
+            [
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "5"
+                },
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "5"
+                },
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "6"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "6"
+                }
+            ],
+            [
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "6"
+                },
+                null,
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "5"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "6"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                }
+            ]
+        ]
+    },
+    {
+        "method": "astar",
+        "solved": true,
+        "pathLength": 19,
+        "timeout": 195,
+        "timeElapsed": 0.576,
+        "rows": 4,
+        "columns": 7,
+        "complexity": 30,
+        "seed": 3,
+        "board": [
+            [
+                {
+                    "suit": "spades",
+                    "rank": "6"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "5"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                null
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "6"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "6"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "6"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "5"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "5"
+                },
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "5"
+                }
+            ]
+        ]
+    },
+    {
+        "method": "mcts",
+        "solved": true,
+        "pathLength": 35,
+        "timeout": 195,
+        "timeElapsed": 3.044,
+        "rows": 4,
+        "columns": 7,
+        "complexity": 30,
+        "seed": 3,
+        "board": [
+            [
+                {
+                    "suit": "spades",
+                    "rank": "6"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "5"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                null
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "6"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "6"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "6"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "5"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "5"
+                },
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "5"
+                }
+            ]
+        ]
+    },
+    {
+        "method": "astar",
         "solved": false,
-        "pathLength": 5,
-        "time": 43.412
+        "pathLength": 4,
+        "timeout": 195,
+        "timeElapsed": 195.146,
+        "rows": 4,
+        "columns": 7,
+        "complexity": 30,
+        "seed": 4,
+        "board": [
+            [
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                },
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "5"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "5"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                }
+            ],
+            [
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "5"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "5"
+                },
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "6"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "6"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "6"
+                },
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "6"
+                }
+            ]
+        ]
+    },
+    {
+        "method": "mcts",
+        "solved": true,
+        "pathLength": 55,
+        "timeout": 195,
+        "timeElapsed": 4.987,
+        "rows": 4,
+        "columns": 7,
+        "complexity": 30,
+        "seed": 4,
+        "board": [
+            [
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                },
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "5"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "5"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                }
+            ],
+            [
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "5"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "5"
+                },
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "6"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "6"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "6"
+                },
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "6"
+                }
+            ]
+        ]
+    },
+    {
+        "method": "astar",
+        "solved": true,
+        "pathLength": 28,
+        "timeout": 210,
+        "timeElapsed": 0.677,
+        "rows": 4,
+        "columns": 7,
+        "complexity": 40,
+        "seed": 3,
+        "board": [
+            [
+                {
+                    "suit": "spades",
+                    "rank": "6"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "5"
+                },
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "6"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "6"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                null,
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "6"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "5"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "5"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "5"
+                }
+            ]
+        ]
+    },
+    {
+        "method": "mcts",
+        "solved": true,
+        "pathLength": 41,
+        "timeout": 210,
+        "timeElapsed": 3.66,
+        "rows": 4,
+        "columns": 7,
+        "complexity": 40,
+        "seed": 3,
+        "board": [
+            [
+                {
+                    "suit": "spades",
+                    "rank": "6"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "5"
+                },
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "6"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "6"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                null,
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "6"
+                }
+            ],
+            [
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "5"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "5"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "5"
+                }
+            ]
+        ]
+    },
+    {
+        "method": "astar",
+        "solved": true,
+        "pathLength": 21,
+        "timeout": 210,
+        "timeElapsed": 0.571,
+        "rows": 4,
+        "columns": 7,
+        "complexity": 40,
+        "seed": 4,
+        "board": [
+            [
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                },
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                null,
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                }
+            ],
+            [
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "5"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "5"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "5"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "6"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "5"
+                },
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "6"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "6"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "6"
+                }
+            ]
+        ]
+    },
+    {
+        "method": "mcts",
+        "solved": true,
+        "pathLength": 46,
+        "timeout": 210,
+        "timeElapsed": 3.768,
+        "rows": 4,
+        "columns": 7,
+        "complexity": 40,
+        "seed": 4,
+        "board": [
+            [
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                },
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                },
+                null,
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                }
+            ],
+            [
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "5"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "5"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "5"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "6"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "5"
+                },
+                null,
+                {
+                    "suit": "diamonds",
+                    "rank": "6"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "6"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "6"
+                }
+            ]
+        ]
+    },
+    {
+        "method": "astar",
+        "solved": true,
+        "pathLength": 18,
+        "timeout": 210,
+        "timeElapsed": 0.069,
+        "rows": 4,
+        "columns": 7,
+        "complexity": 40,
+        "seed": 5,
+        "board": [
+            [
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "5"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "6"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                }
+            ],
+            [
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "6"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "5"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                null,
+                {
+                    "suit": "spades",
+                    "rank": "5"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "6"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                null,
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "5"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "6"
+                }
+            ]
+        ]
+    },
+    {
+        "method": "mcts",
+        "solved": true,
+        "pathLength": 36,
+        "timeout": 210,
+        "timeElapsed": 3.465,
+        "rows": 4,
+        "columns": 7,
+        "complexity": 40,
+        "seed": 5,
+        "board": [
+            [
+                {
+                    "suit": "hearts",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "ace"
+                },
+                null,
+                {
+                    "suit": "hearts",
+                    "rank": "5"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "6"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "4"
+                }
+            ],
+            [
+                {
+                    "suit": "clubs",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "2"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "3"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "6"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "4"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "5"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "ace"
+                }
+            ],
+            [
+                {
+                    "suit": "clubs",
+                    "rank": "ace"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "2"
+                },
+                null,
+                {
+                    "suit": "spades",
+                    "rank": "5"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "6"
+                },
+                {
+                    "suit": "hearts",
+                    "rank": "3"
+                },
+                {
+                    "suit": "spades",
+                    "rank": "3"
+                }
+            ],
+            [
+                {
+                    "suit": "spades",
+                    "rank": "4"
+                },
+                null,
+                null,
+                {
+                    "suit": "clubs",
+                    "rank": "4"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "5"
+                },
+                {
+                    "suit": "clubs",
+                    "rank": "3"
+                },
+                {
+                    "suit": "diamonds",
+                    "rank": "6"
+                }
+            ]
+        ]
     }
 ]

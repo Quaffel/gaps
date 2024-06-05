@@ -12,6 +12,7 @@ import { SetupPane } from "./ui/pane/setup";
 import { getResourcePath } from "./ui/resources";
 
 import "./index.css";
+import { GreedyGamePane } from "./ui/pane/game/greedy-game";
 
 const root = ReactDOM.createRoot(
     document.getElementById("root") as HTMLElement
@@ -71,9 +72,15 @@ function App(): JSX.Element {
                     icon: "icon-feather/play",
                 }, {
                     id: "astar",
-                    label: "Solve with Greedy",
+                    label: "Solve with A*",
                     icon: "icon-feather/star",
-                }, {
+                },
+                {
+                    id: "greedy",
+                    label: "Solve with Greedy BFS",
+                    icon: "icon-feather/star",
+                },
+                {
                     id: "mcts",
                     label: "Solve with MCTS",
                     icon: "icon-feather/git-merge",
@@ -143,6 +150,14 @@ function GameSession({
                     state={state}
                     onStateChange={state => {
                         const interactiveSession: Session<"astar"> = { display, state };
+                        setSession(interactiveSession);
+                    }} />
+            case "greedy":
+                return <GreedyGamePane
+                    rules={solitaireGapsRules}
+                    state={state}
+                    onStateChange={state => {
+                        const interactiveSession: Session<"greedy"> = { display, state };
                         setSession(interactiveSession);
                     }} />
             case "mcts":

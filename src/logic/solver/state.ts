@@ -11,7 +11,7 @@ export interface State<TState, TAction> {
     withActionApplied(action: TAction): State<TState, TAction>;
     getPossibleActions(): TAction[];
     isSolved(): boolean;
-    getScore(): number;
+    getScore(normalize: boolean): number;
     equals(other: State<TState, TAction>): boolean;
     hash(): string;
 }

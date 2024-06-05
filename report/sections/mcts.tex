@@ -1,0 +1,85 @@
+\chapter{Application of the MCTS}
+A way to evaluate the possible cards moves, is to use Stochastic optimization method. Stochastic optimization introduce a random element into the solution-finding process, making probabilistic updates at each iteration. This randomness often helps them avoid getting stuck in local minima, improving performance for certain tasks. For example, Monte Carlo Tree Search (MCTS) uses random simulations to estimate the expected score of each option.
+
+These methods efficiently generate solutions with good performance across many problem types, making probabilistic decisions. In our case, we chose the Monte Carlo method due to its effectiveness and relevance to our course.
+
+\section{General concept}
+Monte Carlo Tree Search (MCTS) \cite{6145622} is a technique used mainly for decision-making, the main idea is to explore possible options in order to make the best decision.
+
+\begin{itemize}
+    \item \textbf{Expansion}: The process starts by representing the current state in the game with a node. The algorithm generates new nodes (child nodes) for any actions that haven’t been explored yet, representing possible next moves.
+    \item \textbf{Selection}: The algorithm chooses a promising path through the tree. It selects actions based on the scores from past simulations. If an action hasn't been explored yet, it stops expanding here and proceeds with simulation.
+    \item \textbf{Simulation/Playout}: From the selected node, the algorithm simulates what might happen next by playing out a series of random moves. The simulation continues until reaching the end of the game or a predefined depth.
+    \item \textbf{Return} : Once the simulation ends, the algorithm scores the resulting game state and propagates this score back up the path, updating all nodes involved. Each node's scores are updated to reflect the results of the new simulation.
+    \item \textbf{Reiteration/Backpropagation}: The process repeats many times, progressively improving the decision tree's information (quality of choices). Each iteration provides more data, refining the choices and increasing the probability of selecting the best move.
+\end{itemize}
+
+\figureWithCaption{mcts}{Monte-Carlo Tree Search scheme from \cite{inbook}}{\textwidth}
+
+\section{Application to the Gaps game}
+Our solver for the Gaps card game uses the standard four phases of MCTS: Selection, Expansion, Simulation, and Backpropagation.
+
+Here is how these steps are implemented:
+\subsection{Selection}
+We start from the root node and select the child node with the highest score, based on the Upper Confidence Bound (UCB) formula. This formula balances the exploration of new nodes with the exploitation of known nodes. The UCB formula is defined as:
+\begin{align*}
+    \text{UCB}(G^t, W_c) = \frac{w_i}{n_i} + W_c \sqrt{\frac{\ln{N}}{n_i}}
+\end{align*}
+From this we add an additional term to the UCB formula to include a heuristic score $S$ with a certain weight $w$:
+\begin{align*}
+    \text{UCB}(G^t, W_c, W_S) = \frac{w_i}{n_i} + W_c \sqrt{\frac{\ln{N}}{n_i}} + W_SS(G^t)
+\end{align*}
+Having a higher UCB value means that the node is more promising and should be selected for further exploration, therefore adding the heuristic score to the UCB formula helps to guide the search towards more promising nodes. However we still want to explore new nodes, so we keep the exploration term in the formula and set a relatively low weight for the heuristic score.
+
+Recall that $S\left(G^t\right)=\infty$ for solved states, this means that the algorithm will always select a node if promise to provide a solution since $\infty >$ UCB for any node
+
+We used $S$ function with MCTS with the parameters $W_X = 10$, $W_Y = 2$, and $W_Z = 1$. These values were chosen experimentally and can be adjusted to improve the performance of the algorithm. We decide to use $S$ and not $H$ because it is easier to determine a good value for the $W_c$ parameter, which is used to balance exploration and exploitation. Aswell as the weight of the heuristic $W_S$. If we used the function $H$ as the heuristic, it would be harder to determine a good value for $W_c$ and $W_S$ since the two terms are not on the same scale.
+
+\subsection{Expansion}
+From the selected node, the algorithm expands the tree by generating child nodes for all possible actions. This step is crucial for exploring new paths and increasing the tree's depth.
+
+To select the next move, the algorithm select the 4 first best child node based on their respective value given by $S$ and sample one of them randomly with a linearly decreasing probability. This allows the algorithm to explore new paths while still focusing on the most promising ones. If one of these most promising nodes present a score of $\infty$, the algorithm will select it without any randomness.
+
+\subsection{Simulation}
+From the newly expanded node, the algorithm simulates the game's progress using random moves until we either:
+\begin{enumerate}
+    \item Reach a solved state
+    \item Reach a trap state
+    \item Reach the computational depth limits (set to 100 in our experiments)
+\end{enumerate}
+The exploration is done similarly to the expansion phase, we select the 4 best child nodes based on their respective score $S$ and sample one of them randomly with a linearly decreasing probability. If one of these most promising nodes present a score of $\infty$, the algorithm will select it without any randomness.
+
+\subsection{Backpropagation}
+After the simulation ends, the algorithm updates the scores of all nodes involved in the simulation. The score is updated based on the simulation result, with the score of the solved state being $\infty$ this will propagate back to the current node being explored, indicating that the node will lead to a solved state.
+
+\subsection{Path finding}
+The algorithm repeats these steps for a predefined number of iterations, in our case 1,000. After the iterations are completed, the algorithm selects the child node with the highest score and returns the path from the root node to this node. We can reconstruct the path because through the expansion phase we created the children we wanted to explore, and we can keep track of the parent of each node.
+
+% \section{State Scoring System}\label{State_Score_MCTS}
+% The scoring system is based on four key metrics and weighted according to their importance:
+
+% \begin{itemize}
+%     \item \textbf{Well-Placed Cards}:
+%     \begin{itemize}
+%         \item This metric checks how many cards are positioned in their correct columns, representing how close the game is to being solved.
+%         \item It has the highest weight because it directly contributes to the game’s objective. The score calculation considers both the count of cards in the right places and any remaining gaps at the end of the game board.
+%     \end{itemize}
+%     \item \textbf{Dead Gaps}:
+%     \begin{itemize}
+%         \item Dead gaps are empty spaces that cannot be filled because of cards preceding them, due to rank order restrictions.
+%         \item This metric has a moderate weight since these gaps can restrict available moves and prevent proper card placement.
+%     \end{itemize}
+%     \item \textbf{Double Gaps}:
+%     \begin{itemize}
+%         \item Identifies consecutive empty gaps, which usually signal a possible not optimal arrangement. 
+%         \item Although it receives a lower weight, detecting these gaps remains important as they can make solving the game more challenging.
+%     \end{itemize}
+%     \item \textbf{Possible Actions}:
+%     \begin{itemize}
+%         \item This metric reflects the number of available moves in the current state, representing potential strategies that can still be pursued 
+%         \item Even though this metric receives the lowest weight, it is still valuable. It is important to maximize possible moves but not as critical as the other factors.
+%     \end{itemize}
+% \end{itemize}
+
+% \subsection{Weight Combination}
+% Each metric is weighted by its importance, and the weights are combined to generate a normalized score between 0 and 1. This weighted sum effectively reflects the state of the board, where a score of 1 represents a solved game. By prioritizing well-placed cards while minimizing dead and double gaps, the scoring system ensures that the MCTS algorithm consistently identifies moves that efficiently lead to solving the Gaps card game.

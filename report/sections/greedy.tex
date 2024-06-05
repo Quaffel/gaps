@@ -1,0 +1,50 @@
+\chapter{Greedy BFS Algorithm}
+Another deterministic approach for evaluating and choosing moves in the Gaps game is to use a greedy algorithm. Greedy algorithms are known for making the best choice at each step, with the hope that this will lead to the best possible solution. In the context of the Gaps game, this means selecting the move that will maximize the number of well-placed cards while being penalized for dead gaps and repeated gaps.
+
+This algorithm is well suited for the Gaps game because we aim to reach a leaf node as quickly as possible. The algorithm is guided by the score $S$, which helps the search converge to a solution leaf instead of a terminal one. However, it is still prone to ending up in non-solution terminal nodes since it lacks knowledge of the deeper node states.
+
+\section{Algorithm}
+Essentially, in our implementation, we used the code for A$^*$ as a base for our Greedy BFS algorithm. The main difference between the two algorithms is the G-cost calculation.
+
+In A$^*$, the G-cost is the number of moves made to reach the current state, while in Greedy BFS, we set the G-cost to 0 for all nodes, which makes the algorithm behave like a best-first search.
+
+To enable a more careful selection at each step than A$^*$, we chose to use $H(G^t, 2)$ as the heuristic. This heuristic takes into account the number of dead gaps and repeated gaps, and will account for at most 2 misplaced cards.
+
+Therefore we can use the same algorithm as A$^*$ with the following modifications:
+\begin{itemize}
+    \item Set the G-cost to 0 for all nodes
+    \item Use $H(G^t, 2)$ as the heuristic
+\end{itemize}
+
+This way at each step we will select the node that will minimize the number of misplaced cards in the game and avoid dead-gaps and repeated gaps.
+
+\begin{algorithm}[H]
+    \caption{Greedy Best-First Search for Gaps Game}
+    \begin{algorithmic}
+    \State open\_list $\gets$ priority queue containing the start node
+    \State closed\_list $\gets$ empty set
+    \While{open\_list is not empty}
+    \State current\_node $\gets$ node from open\_list with lowest heuristic value
+    \If{current\_node is the goal}
+        \State \Return the path to current\_node
+    \EndIf
+    \State remove current\_node from open\_list
+    \State add current\_node to closed\_list
+
+    \For{each neighbor in neighbors of current\_node}
+        \If{neighbor is in closed\_list}
+            \State continue
+        \EndIf
+        \State neighbor.g $\gets$ 0 \Comment{Set G-cost to 0 for all nodes}
+        \State neighbor.h $\gets H(G^{\text{neighbor}}, 2)$ \Comment{Calculate heuristic}
+        \State neighbor.f $\gets$ neighbor.g + neighbor.h \Comment{Calculate F-cost (here F-cost = H-cost)}
+
+        \If{neighbor is not in open\_list}
+            \State add neighbor to open\_list
+        \EndIf
+    \EndFor
+\EndWhile
+
+\State \Return failure
+\end{algorithmic}
+\end{algorithm}

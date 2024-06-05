@@ -1,5 +1,5 @@
 import React from "react";
-import { Board } from "../../../board";
+import { Board, boardsEqual } from "../../../board";
 import { Card } from "../../../cards";
 import { GameRules, Move } from "../../../game";
 import { GapsBoardState } from "../../../logic/gaps-state";
@@ -11,7 +11,7 @@ import { PlaybackState, getBoardAtMove, getHighlightedMove } from "../../game/pl
 import { PlaybackBoard } from "../../game/playback-board";
 import { GamePlaybackControls } from "../../game/playback-controls";
 import { GamePane } from "./common";
-import { isSolved } from "../../../logic/rules";
+import { getScore, isSolved } from "../../../logic/rules";
 
 export interface MctsPaneState {
     initialBoard: Board<Card | null>,
@@ -41,34 +41,15 @@ export function MctsGamePane({
         // handle the communication with it.
         await new Promise(resolve => setTimeout(resolve, 100));
 
-        const mcts = new MCTS.MCTSSearch<Board<Card | null>, Move>(
-            state => state.getScore(),
-            1.41,
-            configuration.seed
+        const mcts = new MCTS.MCTSSearch(
+            new GapsBoardState(rules, state.initialBoard),
+            configuration.maxIterations,
+            configuration.maxDepth,
+            4,
+            configuration.timeout
         );
-
-        const path: Path<Board<Card | null>, Move> = [];
-        let board = state.initialBoard;
-
-        const startTime = Date.now();
-        const endTime = startTime + configuration.timeout * 1000;
-
-        while (Date.now() < endTime) {
-            const { done, element } = mcts.findNextMove(
-                new GapsBoardState(rules, board),
-                configuration.maxIterations
-            );
-
-            if (done && isSolved(board)) {
-                path.push(element);
-                break;
-            } else if (done) {
-                continue;
-            }
-
-            board = element.state;
-            path.push(element);
-        }
+    
+        const path = mcts.findPath(configuration.seed);
 
         console.log("path", path);
 
@@ -99,7 +80,7 @@ export function MctsGamePane({
     // }, [playbackBoard.board]);
 
     const score = React.useMemo(() => {
-        return rules.getScore(playbackBoard.board);
+        return rules.getScore(playbackBoard.board, true);
     }, [rules, playbackBoard.board]);
 
     return <>

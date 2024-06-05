@@ -1,0 +1,42 @@
+\chapter{Algorithms}
+\section{Well-placed cards} \label{appendix:algo}
+\begin{algorithm}[H]
+    \caption{Find Correctly Placed Cards}
+    \begin{algorithmic}
+        \State well\_placed\_cards $\gets$ []
+        \For{$r$ from 0 to $R$}
+            \State best\_suits $\gets$ array of zeros with length $R$
+            \For{$c$ from 0 to $C$}
+                \State card $\gets G^t_{r,c}$
+                \If{is\_gap(card)}
+                    \State continue
+                \EndIf
+                \If{column\_correct(card, $c$)}
+                    \State best\_suits[$i$] $\gets$ best\_suits[$i$] $+ 1$
+                \EndIf
+                \If{$c > 0$}
+                    \State previous\_card $\gets G^t_{r,c-1}$
+                    \If{is\_gap(previous\_card)}
+                        \State continue
+                    \EndIf
+                    \If{column\_correct(previous\_card, $c-1$) and suit(card) = suit(previous\_card)}
+                        \State best\_suits[$i$] $\gets$ best\_suits[$i$] $+ 1$
+                    \EndIf
+                \EndIf
+            \EndFor
+            \State best\_suit $\gets \text{argmax}(\text{best\_suits})$
+            \State row\_well\_placed\_cards $\gets$ []
+            \For{$c$ from 0 to $C$}
+                \State card $\gets G^t_{r,c}$
+                \If{is\_gap(card)}
+                    \State continue
+                \EndIf
+                \If{column\_correct(card, $c$) and suit(card) = max\_idx}
+                    \State append(row\_well\_placed\_cards, $(r,c)$)
+                \EndIf
+            \EndFor
+            \State append(well\_placed\_cards, row\_well\_placed\_cards)
+        \EndFor
+        \State \Return well\_placed\_cards
+    \end{algorithmic}
+\end{algorithm}

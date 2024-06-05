@@ -1,49 +1,111 @@
-import { Board } from "./board";
+import { Stream } from "stream";
+import { Board, boardsEqual, getCellCount, getRowCount } from "./board";
 import { Card } from "./cards";
 import { Move } from "./game";
 import { GapsBoardState } from "./logic/gaps-state";
 import { generateShuffledBoard } from "./logic/generation";
-import { isSolved, solitaireGapsRules } from "./logic/rules";
+import { findCorrectlyPlacedCards, findGaps, getRepeatedGaps, getScore, isSolved, solitaireGapsRules } from "./logic/rules";
+import { getDeadGaps } from "./logic/rules";
 import { AStar } from "./logic/solver/astar";
 import { MCTS } from "./logic/solver/mcts";
 import { Path } from "./logic/solver/state";
+import { getEstimatedDistanceToSolution } from "./logic/rules";
 import * as fs from "fs";
 
-const gamesForDimensions: Board<Card | null>[][] = [[]];
-const N: number = 10;
-const generationSeed: number = 42;
-const MCTSSeed: number = 42;
-const MCSTSMaxIterations: number = 1000;
-const dimensions: number[][] = [
-    [4, 5],
-    [4, 6],
-    [4, 7],
-    [4, 8],
-    [4, 9],
-    [4, 10],
-    [4, 11],
-    [4, 12],
-    [4, 13],
-];
-
-for (let i = 0; i < N; i++) {
-    let currentGames: Board<Card | null>[] = [];
-    for (const [rows, columns] of dimensions) {
-        const shuffledBoard = generateShuffledBoard({ rows, columns }, generationSeed + i);
-        currentGames.push(shuffledBoard);
-    }
-    gamesForDimensions.push(currentGames);
+interface GameConfig {
+    rows: number;
+    columns: number;
+    complexity: number;
+    seed: number;
+    board: Board<Card | null>;
 }
 
-function getTimeout(columns: number) {
-    return 10 * (columns - 4);
+interface Stats {
+    method: string;
+    solved: boolean;
+    pathLength: number;
+    timeout: number;
+    timeElapsed: number;
+    rows: number;
+    columns: number;
+    complexity: number;
+    seed: number;
+}
+
+class CSVWriter {
+    private filename: string;
+    private delimiter: string;
+
+    constructor(filename: string, delimiter: string = ",") {
+        this.filename = filename;
+        this.delimiter = delimiter;
+    }
+
+    writeRow(row: string[]) {
+        fs.appendFileSync(this.filename, row.join(this.delimiter) + "\n");
+    }
+}
+
+const games: GameConfig[] = [];
+const generationSeed: number = 1;
+const MCTSSeed: number = 42;
+const MCSTSMaxIterations: number = 3000;
+const MCTSMaxDepth: number = 100;
+const dimensions: number[][] = Array.from({ length: 9 }, (_, i) => [4, i + 5]);
+const complexities = Array.from({ length: 4 }, (_, i) => i * 5 + 20);
+const N = 5;
+
+const writer = new CSVWriter(`${__dirname}/results.csv`);
+const header = ["method", "solved", "pathLength", "timeout", "timeElapsed", "rows", "columns", "complexity", "seed"];
+writer.writeRow(header);
+
+for (let [rows, columns] of dimensions) {
+    for (let i = 0; i < complexities.length; i++) {
+        const complexity = complexities[i];
+        for (let j = 0; j < N; j++) {
+            const seed = generationSeed + i + j;
+            const shuffledBoard = generateShuffledBoard({ rows, columns }, complexity, seed);
+            console.log(`Generated game of dimensions ${rows}x${columns} with complexity ${complexity} and seed ${seed}`);
+            games.push({
+                rows,
+                columns,
+                complexity,
+                seed: seed,
+                board: shuffledBoard,
+            });
+        }
+    }
+}
+
+function getTimeout(columns: number, complexity: number) {
+    return 8 * (columns - 4) + 0.7*(complexity - 20);
 }
 
 function runAStar(game: Board<Card | null>,  timeout: number): Path<Board<Card | null>, Move> {
     const astar = new AStar.AStarSearch(
         new GapsBoardState(solitaireGapsRules, game),
         timeout,
-        (state) => 1.0 - state.getScore(),
+        (state) => {
+            const estimatedDistance = getEstimatedDistanceToSolution(state.get(), 0);
+            return estimatedDistance;
+        },
+        () => 1,
+    );
+
+    const path = astar.findPath()!;
+
+    return path;
+}
+
+function runGreedy(game: Board<Card | null>,  timeout: number): Path<Board<Card | null>, Move> {
+    const astar = new AStar.AStarSearch(
+        new GapsBoardState(solitaireGapsRules, game),
+        timeout,
+        (state) => {
+            const estimatedDistance = getEstimatedDistanceToSolution(state.get(), 2);
+            return estimatedDistance;
+        },
+        () => 0,
     );
 
     const path = astar.findPath()!;
@@ -52,68 +114,47 @@ function runAStar(game: Board<Card | null>,  timeout: number): Path<Board<Card |
 }
 
 function runMCTS(game: Board<Card | null>, timeout: number): Path<Board<Card | null>, Move> {
-    const mcts = new MCTS.MCTSSearch<Board<Card | null>, Move>(
-        state => state.getScore(),
-        1.41,
-        MCTSSeed,
+    const mcts = new MCTS.MCTSSearch(
+        new GapsBoardState(solitaireGapsRules, game),
+        MCSTSMaxIterations,
+        MCTSMaxDepth,
+        4,
+        timeout
     );
 
-    const path: Path<Board<Card | null>, Move> = [];
-
-    const startTime = Date.now();
-    const endTime = startTime + timeout * 1_000;
-
-    let board = game;
-    while (Date.now() < endTime) {
-        const { done, element } = mcts.findNextMove(
-            new GapsBoardState(solitaireGapsRules, board),
-            MCSTSMaxIterations,
-        );
-
-        if (done && isSolved(element.state)) {
-            path.push(element);
-            break;
-        } else if (done) {
-            continue;
-        }
-
-        board = element.state;
-        path.push(element);
-    }
+    const path = mcts.findPath(MCTSSeed)!;
 
     return path;
 }
 
 const methods: { [key: string]: (game: Board<Card | null>, timeout: number) => Path<Board<Card | null>, Move> } = {
-    astar: runAStar,
-    mcts: runMCTS
+    "A*": runAStar,
+    Greedy: runGreedy,
+    MCTS: runMCTS,
 }
 
 let stats = [];
 
-for (let i = 0; i < dimensions.length; i++) {
-    const [rows, columns] = dimensions[i];
-    const games = gamesForDimensions[i];
-    const timeout = getTimeout(columns);
-    for (let j = 0; j < games.length; j++) {
+for (let i = 0; i < games.length; i++) {
+    const game = games[i];
+    const timeout = getTimeout(game.columns, game.complexity);
+    for (const method in methods) {
         const startTime = Date.now();
-        console.log(`Solving game with seed ${generationSeed} and board size ${rows}x${columns} with timeout ${timeout}s`);
-        for (const method in methods) {
-            const path = methods[method](games[j], timeout);
-            const currentStats = {
-                method,
-                rows,
-                columns,
-                seed: generationSeed + j,
-                solved: isSolved(path[path.length - 1].state),
-                pathLength: path.length,
-                time: (Date.now() - startTime) / 1_000
-            };
-            stats.push(currentStats);
-            console.log(currentStats);
-        }
-
-        // Save stats to file
-        fs.writeFileSync("stats.json", JSON.stringify(stats, null, 4));
+        console.log(`Solving game ${i} with ${method} method (timeout: ${timeout}s, complexity: ${game.complexity}, seed: ${game.seed}, dimensions: ${game.rows}x${game.columns})`);
+        const path = methods[method](game.board, timeout);
+        const currentStats: Stats = {
+            method,
+            solved: path.length > 0 && isSolved(path[path.length - 1].state),
+            pathLength: path.length,
+            timeout: timeout,
+            timeElapsed: (Date.now() - startTime) / 1_000,
+            rows: game.rows,
+            columns: game.columns,
+            complexity: game.complexity,
+            seed: game.seed,
+        };
+        stats.push(currentStats);
+        console.log(currentStats);
+        writer.writeRow(Object.values(currentStats).map(String));
     }
 }

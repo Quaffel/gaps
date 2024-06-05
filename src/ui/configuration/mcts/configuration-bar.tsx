@@ -62,17 +62,30 @@ function useMctsConfiguration(): [JSX.Element, Configuration | null] {
         }
     });
 
+
+    const [maxDepthElement, maxDepth] = useValidatedNumberInput({
+        validator: buildIntegerRangeValidator({ min: 1, max: 100000 }),
+        hint: "Max iterations",
+        defaultValue: 100,
+        valueRange: {
+            min: 1,
+            max: 100000,
+        }
+    });
+
     const configElement = <div className="option flex-row">
         <label>Timeout in seconds</label>
         {timeoutElement}
         <label>Max iterations</label>
         {maxIterationsElement}
+        <label>Max depth</label>
+        {maxDepthElement}
         <label>Seed</label>
         {seedElement}
     </div>;
 
-    const config: Configuration | null = timeout !== null && seed !== null && maxIterations !== null
-        ? { timeout: timeout, seed: seed, maxIterations: maxIterations }
+    const config: Configuration | null = timeout !== null && seed !== null && maxIterations !== null && maxDepth !== null
+        ? { timeout: timeout, seed: seed, maxIterations: maxIterations, maxDepth: maxDepth }
         : null;
 
     return [configElement, config];

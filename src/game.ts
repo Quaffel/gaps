@@ -7,7 +7,7 @@ export interface Move {
 }
 
 export interface GameRules {
-    getScore(board: Board<Card | null>): number;
+    getScore(board: Board<Card | null>, normalize: boolean): number;
 
     getPossibleMoves(board: Board<Card | null>): Array<Move>;
 

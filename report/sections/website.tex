@@ -1,0 +1,50 @@
+\chapter{Code and final product}
+We chose to implement our algorithms in TypeScript\footnote{\url{https://www.typescriptlang.org/}} using React\footnote{\url{https://react.dev/}}. This is because we wanted to showcase our algorithms in a user-friendly way. This way one can play the game, see the algorithms in action, and understand how they work simply by visiting our website at the following URL: \textbf{\url{https://quaffel.github.io/gaps/}}.
+
+\section{Algorithms}
+We implemented three algorithms: A*, MCTS, and Greedy BFS. The A* and MCTS algorithms in a separated logic file, there are located in folder \texttt{src/logic/solver}. The Greedy BFS algorithm is implemented in the same file as the A$^*$ algorithm, but it is called with different parameters.
+
+% \begin{enumerate}
+%     \item Click on the card you are willing to move
+%     \begin{enumerate}
+%         \item Click on the same card to unselect (back to 1.)
+%         \item Click on the gap where you want to move the card at
+%         \begin{enumerate}
+%             \item If you can move the care at that gap, then the card will be moved and you are back at 1.
+%             \item If nothing happens the card cannot be moved there, you have to go at step (a)
+%         \end{enumerate}
+%     \end{enumerate}
+% \end{enumerate}
+
+% \section{Important features}
+
+% \subsection{Move verification}
+% By un-checking this checkbox we allow our-self to perform any moves even if they do not comply with the game rules. This is very useful to try different algorithms on specific custom states.
+
+% \subsection{Hints highlight}
+% We implemented a feature that highlights possible cards that can be moved in red. Once a card is selected, it highlights the selected card in red and the possible locations it can be moved at in blue.
+
+% \subsection{Algorithm complexity bound}\label{Algo_complexity_bound}
+% To avoid having the algorithm make your browser panic, we set an upper bound of complexity to the algorithm we are performing. The definition of the complexity depends on the algorithm, for A* the complexity corresponds to the max element the "visited" set contains. For MCTS the complexity correspond to the maximum number of iterations it has to perform during the simulation process.
+
+% \subsection{Seed}
+% All state of games a unique string representation that we call a seed. That way we can load previously played games and export them to be loaded later.
+
+% \subsection{Settings and game state persistence}
+% All the settings and the current game state is saved so after you reload the page or come back later nothing changes from your previous sessions.
+
+% \newpage
+% \section{The website}
+% We build our website entirely in TypeScript\footnote{\url{https://www.typescriptlang.org/}} using React\footnote{\url{https://react.dev/}}. We also have setup a GitHub pages CI job that builds our website automatically after an update on the repository and publish it online at the following URL: \textbf{\url{https://quaffel.github.io/gaps-web/}}
+% \figureWithCaption{website}{}{\textwidth}
+
+% \newpage
+% \section{Local development environment}
+% It is very simple to run the website locally, we simply need to install Node.js\footnote{\url{https://nodejs.org/en}} first. Afterward you can just run the following commands in your terminal:
+% \begin{lstlisting}
+% $ git clone git@github.com:Quaffel/gaps-web.git
+% $ cd gaps-web
+% $ npm i
+% $ npm run start-localhost
+% \end{lstlisting}
+% And access the given URL with your favorite browser.

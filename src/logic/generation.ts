@@ -1,4 +1,4 @@
-import { Board, BoardDimensions, swapCardsAt } from "../board";
+import { Board, BoardDimensions, filterBoard, swapCardsAt } from "../board";
 import { Card, RANKS, SUITS } from "../cards";
 import { PseudoRandom } from "./pseudo-random";
 
@@ -18,18 +18,23 @@ export function generateSolvedBoard(dimensions: BoardDimensions): Board<Card | n
     });
 }
 
-export function generateShuffledBoard(dimensions: BoardDimensions, seed: number = 42): Board<Card | null> {
+export function generateShuffledBoard(dimensions: BoardDimensions, n: number = 100, seed: number = 42): Board<Card | null> {
     // TODO: Extend to only generate valid/solvable boards
-    const board = generateSolvedBoard(dimensions);
+    let board = generateSolvedBoard(dimensions);
     const random = new PseudoRandom(seed);
 
-    for (let columnIdx = 0; columnIdx < dimensions.columns; columnIdx++) {
-        for (let rowIdx = 0; rowIdx < dimensions.rows; rowIdx++) {
-            let randomColumnIdx = random.nextInt(dimensions.columns);
-            let randomRowIdx = random.nextInt(dimensions.rows);
-
-            swapCardsAt(board, { row: rowIdx, column: columnIdx }, { row: randomRowIdx, column: randomColumnIdx });
-        }
+    for (let i = 0; i < n; i++) {
+        const gapsPositions = filterBoard(board, (card) => card == null);
+        const nonGapCardsPositions = filterBoard(board, (card) => card != null);
+        const pickedGapIndex = random.nextInt(gapsPositions.length);
+        const pickedCardIndex = random.nextInt(nonGapCardsPositions.length);
+        const selectedGap = gapsPositions[pickedGapIndex];
+        const selectedCard = nonGapCardsPositions[pickedCardIndex];
+        const move = {
+            from: selectedCard.position,
+            to: selectedGap.position
+        };
+        swapCardsAt(board, move.from, move.to);
     }
 
     return board;

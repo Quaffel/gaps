@@ -1,0 +1,19 @@
+\chapter{Further works}
+\section{Hybrid approach}
+Combining elements of both MCTS and A* could create a hybrid algorithm that leverages the strengths of each. For instance, the initial exploration phase could use MCTS to explore a broader set of possibilities and identify promising paths. Once the solution space is narrowed down, A* could then be employed to find an optimal path efficiently. This hybrid method could ensure robust exploration while also benefiting from the deterministic precision of A*.
+
+\section{Automated tuning of parameters}
+Automated methods like grid search or Bayesian optimization could be used to fine-tune the algorithms' hyperparameters. This includes determining the ideal exploration-exploitation balance for MCTS or finding the most appropriate heuristic weight combinations for A*. By automating parameter optimization, future implementations can ensure more optimal performance in solving the Gaps game.
+
+\section{Dynamic heuristic adjustments}
+The current implementations of MCTS and A* rely on static weights for evaluating game states. An improvement could involve dynamic adjustments to these weights based on game progression. For example, as the game approach its completion, the weight given to double gaps might be decreased while emphasizing well-placed cards. Adaptive weight adjustments could improve each algorithm's ability to make more contextually relevant decisions, further improving their pathfinding efficacy.
+
+\section{Using Constraint Satisfaction Problems (CSP) to model the Gaps game}
+As mentioned in the discussion, finding a good way of counting the number of well-placed cards is not trivial. A better solution could be found by improving this function. A possible approach could involve using Constraint Satisfaction Problems (CSP) to model the Gaps game and find a more efficient way of counting well-placed cards. By exploring alternative methods for evaluating game states, we can potentially enhance the performance of our algorithms in solving the Gaps game since they all heavily rely on the heuristic function.
+
+
+% \section{Pruning visited states in }
+% An action can lead to a state and this state can have an available action that leads to a state that has already been visited. In this case, the algorithm should not explore this state again otherwise loops can occur and the algorithms can get stuck in them. This can be done by keeping track of the visited states and not exploring them again.
+
+% \section{Comparing current algorithms with baseline approaches}
+% Comparing MCTS and A* with more traditional, baseline algorithms can offer valuable insights into their strengths and limitations. Depth-First Search explores each path fully, while Breadth-First Search examines game levels step by step to identify the shortest path. Iterative Deepening Search combines DFS and BFS, gradually expanding the search depth for deep exploration with efficient memory use. Best-First Search focuses on the paths with the best scores, similar to A* but without guaranteeing the optimal path. By comparing these methods with our current algorithms, we can better understand the most efficient strategies and refine our solver's approach to tackle the Gaps game effectively.
