@@ -31,6 +31,7 @@ export function useConfiguration(): [JSX.Element, Configuration | null] {
     const [rowsElement, rows] = useValidatedNumberInput({
         validator: buildIntegerRangeValidator({ min: 1, max: 4 }),
         valueRange: { min: 1, max: 4 },
+        defaultValue: 4,
         hint: "from 1 to 4",
         placeholder: "from 1 to 4"
     });
@@ -38,13 +39,23 @@ export function useConfiguration(): [JSX.Element, Configuration | null] {
     const [columnsElement, columns] = useValidatedNumberInput({
         validator: buildIntegerRangeValidator({ min: 1, max: 13 }),
         valueRange: { min: 1, max: 13 },
+        defaultValue: 8,
         hint: "from 1 to 13",
         placeholder: "from 1 to 13"
+    });
+
+    const [complexityElement, complexity] = useValidatedNumberInput({
+        validator: buildIntegerRangeValidator({ min: 1, max: 1000 }),
+        valueRange: { min: 1, max: 1000 },
+        defaultValue: 30,
+        hint: "from 1 to 10",
+        placeholder: "from 1 to 10"
     });
 
     const [seedElement, seed] = useValidatedNumberInput({
         validator: buildIntegerRangeValidator({ min: 1, max: 100000 }),
         valueRange: { min: 0, max: 100000 },
+        defaultValue: 42,
         hint: "42",
         placeholder: "42"
     });
@@ -65,6 +76,7 @@ export function useConfiguration(): [JSX.Element, Configuration | null] {
                         rows,
                     },
                     seed: seed ?? 42,
+                    complexity: complexity ?? 30,
                 }
             };
         }
@@ -92,6 +104,11 @@ export function useConfiguration(): [JSX.Element, Configuration | null] {
         <div className="option">
             <label>Columns</label>
             {columnsElement}
+        </div>
+
+        <div className="option">
+            <label>Complexity</label>
+            {complexityElement}
         </div>
 
         <div className="option">

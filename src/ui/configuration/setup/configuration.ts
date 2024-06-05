@@ -8,6 +8,7 @@ export interface Configuration {
         method: "random",
         dimensions: BoardDimensions,
         seed: number,
+        complexity: number,
     } | {
         method: "seed",
         seed: string,
@@ -17,7 +18,7 @@ export interface Configuration {
 export function deriveBoardFromConfiguration(configuration: Configuration): Board<Card | null> {
     switch (configuration.boardGeneration.method) {
         case "random":
-            return generateShuffledBoard(configuration.boardGeneration.dimensions, configuration.boardGeneration.seed);
+            return generateShuffledBoard(configuration.boardGeneration.dimensions, configuration.boardGeneration.complexity, configuration.boardGeneration.seed);
         case "seed":
             const board = getBoardOfSeed(configuration.boardGeneration.seed);
             if (board === null)
