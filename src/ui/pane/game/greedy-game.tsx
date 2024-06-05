@@ -1,5 +1,5 @@
 import React from "react";
-import { Board, getCellCount } from "../../../board";
+import { Board } from "../../../board";
 import { Card } from "../../../cards";
 import { GameRules, Move } from "../../../game";
 import { AStar } from "../../../logic/solver/astar";
@@ -10,7 +10,7 @@ import { PlaybackBoard } from "../../game/playback-board";
 import { GamePlaybackControls } from "../../game/playback-controls";
 import { GamePane } from "./common";
 import { GapsBoardState } from "../../../logic/gaps-state";
-import { findCorrectlyPlacedCards, getRepeatedGaps, getDeadGaps, getEstimatedDistanceToSolution } from "../../../logic/rules";
+import { getEstimatedDistanceToSolution } from "../../../logic/rules";
 
 export interface GreedyPaneState {
     initialBoard: Board<Card | null>,
