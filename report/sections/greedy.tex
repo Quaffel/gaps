@@ -1,5 +1,6 @@
-\chapter{Greedy BFS Algorithm}
-Another deterministic approach for evaluating and choosing moves in the Gaps game is to use a greedy algorithm. Greedy algorithms are known for making the best choice at each step, with the hope that this will lead to the best possible solution. In the context of the Gaps game, this means selecting the move that will maximize the number of well-placed cards while being penalized for dead gaps and repeated gaps.
+\chapter{Application of Greedy BFS}
+% Another deterministic approach for evaluating and choosing moves in the Gaps game is to use a greedy algorithm.
+Greedy algorithms make the best choice at each step without taking deeper states into account, with the hope that this will lead to the best possible solution. In the context of the Gaps game, this means selecting the move that will maximize the number of well-placed cards (with a small penalty term for dead gaps and repeated gaps).
 
 This algorithm is well suited for the Gaps game because we aim to reach a leaf node as quickly as possible. The algorithm is guided by the score $S$, which helps the search converge to a solution leaf instead of a terminal one. However, it is still prone to ending up in non-solution terminal nodes since it lacks knowledge of the deeper node states.
 

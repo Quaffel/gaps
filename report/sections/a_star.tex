@@ -1,20 +1,20 @@
-\chapter{A$^*$ Algorithm}
+\chapter{Application of A$^*$}
 Another approach for evaluating and choosing moves in the Gaps game is to use a deterministic method. Unlike stochastic methods, this approach will always produce the same output given a specific input.
 
-A$^*$ (A-star) is a pathfinding and graph-searching algorithm known for efficiently finding the shortest path between nodes using a combination of cost-based metrics. It maintains a record of the lowest known cost to reach each node from a starting point (G-cost), while estimating the remaining distance to the goal (H-cost). The combination of these values (F-cost) helps prioritize exploration paths, balancing between the cost so far and the estimated cost to reach the goal. This consistency is beneficial for solving the Gaps game effectively and reproducibly.
+A$^*$ is a path-finding and graph-search algorithm known for efficiently determining the shortest path between nodes using a combination of cost-based metrics. It maintains a record of the lowest known cost to reach each node from a starting point (G-cost), while estimating the remaining distance to the goal (H-cost). The combination of these values (F-cost) helps prioritize exploration paths, creating a balance between the cost to reach the current node and the estimated cost to reach the goal. This consistency is beneficial for solving the Gaps game effectively and in a reproducible manner.
 
-Unlike the two other methods we have discussed, A$^*$ aims to provide the shortest path to the solution, likely yielding a smaller number of moves to solve the game. However, this strength comes with a cost. Since it blends depth-first and breadth-first exploration, and given that in our game the goal is located at the end of the tree, it might take more time to find the solution compared to the other methods.
+Unlike the two other methods, A$^*$ aims to provide the shortest path to the solution, likely yielding a smaller number of moves to solve the game. However, this strength comes at a cost. Since it blends depth-first and breadth-first exploration, and given that in our game the goal is located at the end of the tree, it might take more time to find the solution compared to the other methods.
 
 \section{Application to the Gaps game}
-Our A$^*$ implementation does not deviate from the standard A$^*$ algorithm. As a cost for an action (arc), we chose to use the number of moves made to reach the current state. This cost is incremented by one for each move made. The heuristic is simply our estimate $H(G^t, 0)$ that we defined in section \ref{heuristic}.
+Our A$^*$ implementation does not deviate from the standard A$^*$ algorithm. All arcs have a weight of one, meaning that the cost of reaching a particular state corresponds to the number of moves made. The heuristic is simply our estimate $H(G^t, 0)$ that we defined in section \ref{heuristic}.
 
-The open and closed sets are managed using a hash value that represents the state of the game. This hash value is calculated based on the current state and is used to check if a state is already in either the open or closed list. This mechanism helps prevent revisiting equivalent states and avoids loops.
+The open and closed sets are managed using a hash value that represents the state of the game. This hash value is calculated based on the current state and is used to check if a state is already in either the open or closed list. This mechanism helps prevent revisiting equivalent states and thus avoids loops.
 
-For instance, consider a state $G^t$. If we apply an action $ a^t$ to $G^t$, resulting in state $G^{t+1}$, it is possible that in $G^{t+1}$, the optimal action $a^{t+1}$ might lead us back to a state equivalent to $G^t$ (i.e., $G^{t+2} \equiv G^t$). Using hash values to track states ensures that once a state has been explored, it won't be revisited, thus maintaining the efficiency of the algorithm by avoiding loops and redundant calculations.
+For instance, consider a state $G^t$. If we apply an action $ a^t$ to $G^t$, resulting in state $G^{t+1}$, it is possible that in $G^{t+1}$, the optimal action $a^{t+1}$ might lead us back to a state equivalent to $G^t$ (i.e., $G^{t+2} \equiv G^t$). We can prevent the algorithm to revisit known states by using hash values, thus maintaining the efficiency of the algorithm.
 
 \subsection{Initialization}
 \begin{enumerate}
-    \item We start by adding the initial state to the open list.
+    \item Add the initial state to the open list.
     \item Create an empty closed list.
 \end{enumerate}
 
@@ -41,7 +41,7 @@ For instance, consider a state $G^t$. If we apply an action $ a^t$ to $G^t$, res
     \end{enumerate}
 \end{enumerate}
 
-\subsection{Reiteration}
+\subsection{Re-iteration}
 \begin{enumerate}
     \item Repeat the process until the open list is empty or the goal state is reached.
 \end{enumerate}
@@ -78,4 +78,4 @@ For instance, consider a state $G^t$. If we apply an action $ a^t$ to $G^t$, res
 \end{algorithm}
 
 \section{Heuristic Function}
-The heuristic function is a critical component of the A$^*$ algorithm, guiding the search towards the goal. For the Gaps game, we chose the function $H\left(G^t, 0\right)$ \ref{heuristic} as being our heuristic, which we consider to be admissible. This means that the $H\left(G^t, 0\right)$ will never overestimate the number of moves needed to reach the goal. If this heuristic is found to not be admissible, the algorithm may not find the optimal solution or may take longer to find it.
+The heuristic function is a critical component of the A$^*$ algorithm, guiding the search towards the goal. For the Gaps game, we chose the function $H\left(G^t, 0\right)$ \ref{heuristic} to be our heuristic, which we consider to be admissible. This means that $H\left(G^t, 0\right)$ will never overestimate the number of moves needed to reach the goal. If this heuristic were found not to be admissible, the algorithm may not find the optimal solution or may take longer to find it.

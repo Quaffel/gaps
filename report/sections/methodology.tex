@@ -3,29 +3,40 @@
 \subsection{Well-placed cards function} \label{ssec:wellplaced}
 Defining the number of correctly placed cards for a certain game state might seem trivial, but it is actually quite complex. This challenge proved to be one of the most complicated tasks we faced.
 
-Figure \ref{fig:wellplaced} illustrates the problem. Should the diamonds continue to populate the first row, moving the ones from the second row upward? Or should the diamonds dominate the second row instead, moving the remaining diamonds from the first row to the second? This would mean that even if the spades in the second row are well positioned, we will have to move them.
+In our first attempt, we defined cards to be well-placed if their position corresponds to the card's position in the final state.
+It is trivial to determine whether a card is located in the correct column, as one column corresponds to exactly one rank.
+This does not hold for the rows, as any row could contain any suit in the solved state.
 
-To address this, we needed to find a way to count the number of well-placed cards. First, we must ensure that this number equals the number of cells ($RC - R$) in the game when it is solved. To compute this number, we determine which suit dominates each column based on the number of correctly positioned cards in each row for every suit. The process is as follows:
+Figure \ref{fig:wellplaced} illustrates the problem. Should the cards of suit "diamonds" be located in the first row, moving the ones from the second row upward? Or should the diamonds end up in the second row instead, moving the remaining diamonds from the first row to the second? This would mean that even if the spades in the second row are well positioned, we will have to move them.
+
+Intuitively, we expect a row to contain the suit in the final solved state that it already contains most cards of in the current state.
+That is, if a row contains 5 cards of the suit "hearts" and less cards of any other suit, we would expect this row to contain "hearts" in the final state as well.
+We therefore introduced the notion of "suits dominating rows".
+In the given example, "hearts" is said to "dominate" the given row.
+
+This simple definition would allow a suit to dominate multiple rows.
+Since this can never occur in a solved state, we only consider the most important row to be dominant. 
+
+Our heuristic determines the amount of correctly placed cards as follows:
 
 \begin{enumerate}
-    \item Distribute points to each suit within the row. A suit receives one point whenever:
+    \item For every row, distribute points to each suit that appears in the row. A suit receives one point whenever:
     \begin{enumerate}
         \item One of its cards is placed in the correct column (e.g., \MainMiniCartesJeu{6.C} is in the 6th column).
         \item It contains a chain of cards (e.g., \MainMiniCartesJeu{6.C} is directly followed by \MainMiniCartesJeu{7.C}).
     \end{enumerate}
     \item Identify the suit that dominates the current row based on their number of points.
-    \item Count all the cards that are in the correct column and belong to the dominant suit as well placed.
+    \item All cards that are in the correct column and belong to the dominant suit are considered well-placed.
 \end{enumerate}
 
 This scoring method encourages heuristic-based approaches to gather a single suit within a row and sort them in the correct order without initially enforcing a specific suit to fill a particular row. Any row can be filled with any suit.
 
-Retrieving the length of the list of well-placed cards for a certain state $X\left(G^t\right)$ gives us the number of well-placed cards. We normalize the number of well-placed cards $X\left(G^t\right)$ from 0 to 1 by dividing it by the number of cards the game has, as follow:
+Retrieving the length of the list of well-placed cards for a certain state $X\left(G^t\right)$ gives us the number of well-placed cards. We normalize the number of well-placed cards $X\left(G^t\right)$ from 0 to 1 by dividing it by the number of cards the game has ($RC - R$, with $-R$ account for the gaps). This leaves us with the following equation:
 \begin{align}
 X_n\left(G^t\right) = \frac{X\left(G^t\right)}{RC-R}
 \end{align}
-The term "$-R$" accounts for the number of gaps, there is $R$ gaps in our game and the well-placed cards function do not take them into account.
 
-The pseudo-code of this function is given in the algorithm \ref{algo:wellplaced}.
+The pseudo-code of this function is given in algorithm \ref{algo:wellplaced}.
 
 \figureWithCaption{wellplaced}{}{10cm}
 
@@ -73,7 +84,7 @@ The pseudo-code of this function is given in the algorithm \ref{algo:wellplaced}
 
 \newpage
 \subsection{Dead gaps}
-We establish a function that returns the list of positions within the game where dead gaps are located. A dead gap can be identified by checking if the preceding card for each gap is the card with the highest possible rank in the game.
+We establish a function that returns a list with the positions of all dead gaps. A dead gap can be identified by checking if the card that preceded a gap is of the highest possible rank in the game.
 
 Retrieving the size of this list gives us the number of dead gaps for a certain state $Y\left(G^t\right)$. We can normalize this value from 0 to 1 by dividing it by $R$ since its maximum value is the number of gaps $R$:
 \begin{align}
@@ -99,9 +110,11 @@ Retrieving the size of this list gives us the number of dead gaps for a certain 
 \end{algorithm}
 
 \subsection{Repeated gaps}
-The method is similar to the previous one but instead retrieves the list of positions of gaps that have another gap preceding them.
+Determining the positions of repeated gaps (i.e., gaps that are preceded by another gap) is similar to finding dead gaps.
 
-As with the dead gaps function, retrieving the size of this list gives us the number of repeated gaps for a certain state $Z\left(G^t\right)$. We can normalize this value from 0 to 1 by dividing it by $R-1$ since the maximum number of repeated gaps is $R-1$ (the initial gap is not considered as part of a chain of repeated gaps):
+As for the dead gaps function, retrieving the size of this list gives us the number of repeated gaps for a certain state $Z\left(G^t\right)$. We can normalize this value from 0 to 1 by dividing it by $R-1$.
+Note that the maximum number of repeated gaps is $R-1$ and not $R$ as the first gap in a chain of gaps is not a repeated one.
+
 \begin{align}
     Z_n\left(G^t\right) = \frac{Z\left(G^t\right)}{R-1}
 \end{align}
@@ -123,8 +136,8 @@ As with the dead gaps function, retrieving the size of this list gives us the nu
     \end{algorithmic}
 \end{algorithm}
 
-\section{Normalized score} \label{score}
-We designed a scoring function to measure how "good" a state is. This score ranges from 0 to 1\footnote{This range facilitates determining an exploration parameter $W_c$ for MCTS} and is composed of the number of well-placed cards, the number of dead gaps, and the number of repeated gaps. To achieve this, we perform a weighted average of these values. We experimentally chose our weights, with further research required to determine the optimal weights.
+\section{Scoring function} \label{score}
+We designed a scoring function to measure how "good" a state is. This score ranges from 0 to 1\footnote{This range facilitates determining an exploration parameter $W_c$ for MCTS} and is composed of the number of well-placed cards, the number of dead gaps, and the number of repeated gaps. To achieve this, we calculate the weighted average of these values. We experimentally selected our weights, with further research being required to determine the optimal weights.
 
 This scoring function will be used by our algorithms to progress towards a solved state.
 \begin{align}
@@ -134,30 +147,37 @@ This scoring function will be used by our algorithms to progress towards a solve
     \end{cases}
 \end{align}
 
-\section{Estimate distance to goal} \label{heuristic}
-To provide an estimate of the distance to the goal $H$. We start with the number of cards in our game to which we substract the number well-placed cards, providing the number of misplaced cards. Additionally, we add a penalty term to this estimate, which accounts for the number of dead gaps and repeated gaps. We gathered them in a single term because it makes it easier to interpret the value, this way $W_p$ indicates how many misplaced cards the penalty terms should account for. In other words, it represents how much further from the goal the value of the penalty term places us.
+\section{Estimate distance to the goal} \label{heuristic}
+We provide an estimate of the distance to the goal $H$ based on the number of misplaced cards, which can be easily obtained by subtracting the number well-placed cards from the total number of cards.
+
+Additionally, we add a penalty term to the estimate, which accounts for the number of dead gaps and repeated gaps. We gathered them in a single normalized term because it makes it easier to interpret the value.
+Due to the normalization, the penalty factor $W_p$ can be interpreted as the number of cards that the penalty terms should account for. In other words, it represents how much further (in terms of misplaced cards) the value of the penalty term puts us from the goal.
 
 \begin{align}
-H\left(W_p, G^t\right) &= X\left(G^t\right) + W_p\frac{X_n\left(G^t\right) + Y_n\left(G^t\right)}{2}
+H\left(W_p, G^t\right) &= (RC - R) - X\left(G^t\right) + W_p\frac{X_n\left(G^t\right) + Y_n\left(G^t\right)}{2}
 \end{align}
 
-$H\left(0, G^t\right)$ an admissible heuristic, this means that $H\left(0, G^t\right)$ will never overestimate the distance to the goal because from $n$ misplaced cards in the game, we can reach the goal in at least $n$ moves but it usually takes more moves to reach the goal.
+$H\left(0, G^t\right)$ is an admissible heuristic, meaning that $H\left(0, G^t\right)$ never overestimates the actual distance to the goal.
+This can easily be made apparent: the number of misplaced cards is a trivial lower bound of the amount of required moves. If we always estimate the lower bound itself, our heuristic is admissible by definition.
 
+Note that we do not claim $H\left(W_p, G^t\right)$ (with $W_p \neq 0$) to be an admissible heuristic, as the penalty term could cause us to overestimate the actual cost.
 
 \section{Selected algorithms}
 \subsection{Greedy BFS}
-Solving our game involves progressing from a root state to possible leaf states. A leaf state can be either a trap state, where no action is available, or a solved state. Thus, our algorithm aims to reach the leaf states as quickly as possible, making Depth-First Search (DFS) an appropriate approach for this problem. To guide our search, we rely on the score $S$, which helps the search converge to a solution leaf instead of a terminal one. However, it is still prone to ending up in non-solution terminal nodes since it lacks knowledge of the deeper node states.
+Solving our game involves progressing from a root state to possible leaf states. A leaf state can be either a trap state, an unsolved state in which no further action can be taken, or a solved state. Thus, our algorithm aims to reach the leaf states as quickly as possible, making Depth-First Search (DFS) an appropriate approach for this problem. To guide our search, we rely on the score $S$, which helps the search converge to a solution state instead of a trap state. However, it is still prone to ending up in non-solution terminal nodes since it lacks knowledge of the deeper node states.
 
 \subsection{A$^*$}
 Unlike the greedy search, A$^*$ explores the state space more methodically and comprehensively. While DFS attempts to go as deep as possible in a straightforward manner, A$^*$ maintains a balance between depth and breadth. This careful exploration makes A$^*$ less likely to end up in trap states compared to the greedy algorithm. However, A$^*$ may take more time due to its broader search frontiers. Despite this, A$^*$ is designed to find the shortest path to the solution, making it more efficient to find a solution with the least possible actions.
 
 \subsection{Monte Carlo Tree Search (MCTS)}
-Monte Carlo Tree Search (MCTS) is a heuristic search algorithm that uses random sampling to explore the state space. MCTS is particularly useful for problems with large and complex state spaces, like our solitaire game. It consists of four main steps: selection, expansion, simulation, and backpropagation.
-\begin{itemize}
-    \item \textbf{Selection:} Starting from the root node, the algorithm selects child nodes based on a policy that balances exploration and exploitation, typically using the Upper Confidence Bounds for Trees (UCT) formula.
-    \item \textbf{Expansion}: When a leaf node is reached, if it is not terminal, one or more child nodes are added to the tree.
-    \item \textbf{Simulation}: From the newly added node, a simulation (or playout) is run to the end of the game by making random moves.
-    \item \textbf{Backpropagation} The result of the simulation is propagated back up the tree, updating the nodes' values.
-\end{itemize}
+Monte Carlo Tree Search (MCTS) is a heuristic search algorithm that uses random sampling to explore the state space. MCTS is particularly useful for problems with large and complex state spaces, like our solitaire game.
 
-MCTS has several advantages for our problem. It doesn't require a heuristic function for every state and can handle the large branching factor efficiently through random sampling. The random simulations help MCTS to escape local optima, making it less prone to getting stuck in trap states compared to Greedy BFS or A$^*$. However, MCTS can be computationally intensive due to the number of simulations required to achieve reliable results. Despite this, its ability to balance exploration and exploitation makes it a robust choice for navigating the vast state space of our game.
+% It consists of four main steps: selection, expansion, simulation, and backpropagation.
+% \begin{itemize}
+%     \item \textbf{Selection:} Starting from the root node, the algorithm selects child nodes based on a policy that balances exploration and exploitation, typically using the Upper Confidence Bounds for Trees (UCT) formula.
+%     \item \textbf{Expansion}: When a leaf node is reached, if it is not terminal, one or more child nodes are added to the tree.
+%     \item \textbf{Simulation}: From the newly added node, a simulation (or playout) is run to the end of the game by making random moves.
+%     \item \textbf{Backpropagation} The result of the simulation is propagated back up the tree, updating the nodes' values.
+% \end{itemize}
+
+MCTS has several advantages for our problem. The random simulations help MCTS to escape local optima, making it less prone to getting stuck in trap states compared to Greedy BFS or A$^*$. However, MCTS can be computationally intensive due to the number of simulations required to achieve reliable results. Despite this, its ability to balance exploration and exploitation makes it a robust choice for navigating the vast state space of our game.

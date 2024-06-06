@@ -1,0 +1,122 @@
+\chapter{Methodology}
+\section{Game scoring}
+\subsection{Well-placed cards function}
+Defining the number of correctly placed cards in the game might seem trivial, but it is actually quite complex. This challenge proved to be one of the most complicated tasks we faced.
+
+Figure \ref{fig
+} illustrates the problem. Should the diamonds continue to populate the first row, moving the ones from the second row upward? Or should the diamonds dominate the second row instead, moving the remaining diamonds from the first row to the second? This would mean that even if the spades in the second row are well positioned, we will have to move them.
+
+To address this, we needed to find a way to count the number of well-placed cards. First, we must ensure that this number equals the number of cells ($RC - R$) in the game when it is solved. To compute this number, we determine which suit dominates each column based on the number of correctly positioned cards in each row for every suit. The process is as follows:
+
+\begin{enumerate}
+    \item Distribute points to each suit within the row. A suit receives one point whenever:
+    \begin{enumerate}
+        \item One of its cards is placed in the correct column (e.g., \MainMiniCartesJeu{6.C} is in the 6th column).
+        \item It contains a chain of cards (e.g., \MainMiniCartesJeu{6.C} is directly followed by \MainMiniCartesJeu{7.C}).
+    \end{enumerate}
+    \item Identify the suit that dominates the current row based on their number of points.
+    \item Count all the cards that are in the correct column and belong to the dominant suit as well placed.
+\end{enumerate}
+
+This scoring method encourages heuristic-based approaches to gather a single suit within a row and sort them in the correct order without initially enforcing a specific suit to fill a particular row. Any row can be filled with any suit.
+
+We normalize the number of well-placed cards $A$ from 0 to 1 by dividing it by the number of cards the game has, as follow:
+\begin{align}
+A_n = \frac{A}{RC-R}
+\end{align}
+The term "$-R$" accounts for the number of gaps, there is $R$ gaps in our game and the well-placed cards function do not take them into account.
+
+The pseudo-code of this function is given in the appendix \ref{appendix:algo}.
+
+\figureWithCaption{wellplaced}{}{\textwidth}
+
+\subsection{Dead gaps}
+We establish a function that returns the list of positions within the game where dead gaps are located. A dead gap can be identified by checking if the preceding card for each gap is the card with the highest possible rank in the game.
+
+Retrieving the size of this list gives us the number of dead gaps $B$. We can normalize this value from 0 to 1 by dividing it by $R$ since its maximum value is the number of gaps $R$:
+\begin{align}
+    B_n = \frac{B}{R}
+\end{align}
+
+\begin{algorithm}[H]
+    \caption{Get dead gaps}
+    \begin{algorithmic}
+        \State max\_rank $\gets$ QUEEN
+        \State dead\_gaps\_positions $\gets$ []
+        \For{$r$ from 0 to $R$}
+            \For{$c$ from 1 to $C$}
+                \State current\_card $\gets$ $B_{r,c}$
+                \State preceding\_card $\gets$ $B_{r,c - 1}$
+                \If{is\_gap(current\_card) and rank(preceding\_card) == max\_rank}
+                    \State append(dead\_gaps\_positions, $(r,c)$))
+                \EndIf
+            \EndFor
+        \EndFor
+    \end{algorithmic}
+\end{algorithm}
+
+\subsection{Repeated gaps}
+The method is similar to the previous one but instead retrieves the list of positions of gaps that have another gap preceding them.
+
+As with the dead gaps function, retrieving the size of this list gives us the number of repeated gaps $C$. We can normalize this value from 0 to 1 by dividing it by $R-1$ since the maximum number of repeated gaps is $R-1$ (the initial gap is not considered as part of a chain of repeated gaps):
+\begin{align}
+    C_n = \frac{C}{R-1}
+\end{align}
+
+\begin{algorithm}[H]
+    \caption{Get repeated gaps}
+    \begin{algorithmic}
+        \State repeated\_gaps\_positions $\gets$ []
+        \For{$r$ from 0 to $R$}
+            \For{$c$ from 1 to $C$}
+                \State current\_card $\gets$ $B_{c,r}$
+                \State preceding\_card $\gets$ $B_{r,c-1}$
+                \If{is\_gap(current\_card) and is\_gap(preceding\_card)}
+                    \State append(repeated\_gaps\_positions, $(r,c)$)
+                \EndIf
+            \EndFor
+        \EndFor
+    \end{algorithmic}
+\end{algorithm}
+
+\section{Normalized score}
+We designed a scoring function to measure how "good" a state is. This score ranges from 0 to 1\footnote{This range facilitates determining an exploration parameter $c$ for MCTS} and is composed of the number of well-placed cards, the number of dead gaps, and the number of repeated gaps. To achieve this, we perform a weighted average of these values. We experimentally chose our weights, with further research required to determine the optimal weights.
+
+This scoring function will be used by our algorithms to progress towards a solved state.
+\begin{align}
+    S = \begin{cases}
+       \infty, & \text{if solved} \\
+        \frac{10A_n + 2B_n + 1C_n}{13}, & \text{otherwise}
+    \end{cases}
+\end{align}
+
+\section{Estimate Distance to Goal}
+
+To provide an estimate of the distance to the goal $D$, we use this as a heuristic. We start with the number of well-placed cards. Additionally, we add a penalty term $P$ to this estimate, which accounts for the number of dead gaps and repeated gaps. The formula is as follows:
+
+\begin{align}
+W_p &= 2 \\
+P &= \frac{A_n + B_n}{2} \\
+D &= A + W_pP
+\end{align}
+
+In the formula above, $W_p$ indicates how many misplaced cards the penalty terms should account for. In other words, it represents how much further from the goal the value of the penalty term places us. In our implementation, we set $W_p = 2$.
+
+
+\section{Selected algorithms}
+\subsection{Greedy BFS}
+Solving our game involves progressing from a root state to possible leaf states. A leaf state can be either a trap state, where no action is available, or a solved state. Thus, our algorithm aims to reach the leaf states as quickly as possible, making Depth-First Search (DFS) an appropriate approach for this problem. To guide our search, we rely on the score $S$, which helps the search converge to a solution leaf instead of a terminal one. However, it is still prone to ending up in non-solution terminal nodes since it lacks knowledge of the deeper node states.
+
+\subsection{A$^*$}
+Unlike the greedy search, A$^*$ explores the state space more methodically and comprehensively. While DFS attempts to go as deep as possible in a straightforward manner, A$^*$ maintains a balance between depth and breadth. This careful exploration makes A$^*$ less likely to end up in trap states compared to the greedy algorithm. However, A$^*$ may take more time due to its broader search frontiers. Despite this, A$^*$ is designed to find the shortest path to the solution, making it more efficient to find a solution with the least possible actions.
+
+\subsection{Monte Carlo Tree Search (MCTS)}
+Monte Carlo Tree Search (MCTS) is a heuristic search algorithm that uses random sampling to explore the state space. MCTS is particularly useful for problems with large and complex state spaces, like our solitaire game. It consists of four main steps: selection, expansion, simulation, and backpropagation.
+\begin{itemize}
+    \item \textbf{Selection:} Starting from the root node, the algorithm selects child nodes based on a policy that balances exploration and exploitation, typically using the Upper Confidence Bounds for Trees (UCT) formula.
+    \item \textbf{Expansion}: When a leaf node is reached, if it is not terminal, one or more child nodes are added to the tree.
+    \item \textbf{Simulation}: From the newly added node, a simulation (or playout) is run to the end of the game by making random moves.
+    \item \textbf{Backpropagation} The result of the simulation is propagated back up the tree, updating the nodes' values.
+\end{itemize}
+
+MCTS has several advantages for our problem. It doesn't require a heuristic function for every state and can handle the large branching factor efficiently through random sampling. The random simulations help MCTS to escape local optima, making it less prone to getting stuck in trap states compared to Greedy BFS or A$^*$. However, MCTS can be computationally intensive due to the number of simulations required to achieve reliable results. Despite this, its ability to balance exploration and exploitation makes it a robust choice for navigating the vast state space of our game.

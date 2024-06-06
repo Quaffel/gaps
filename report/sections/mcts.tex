@@ -1,10 +1,14 @@
-\chapter{Application of the MCTS}
-A way to evaluate the possible cards moves, is to use Stochastic optimization method. Stochastic optimization introduce a random element into the solution-finding process, making probabilistic updates at each iteration. This randomness often helps them avoid getting stuck in local minima, improving performance for certain tasks. For example, Monte Carlo Tree Search (MCTS) uses random simulations to estimate the expected score of each option.
+\chapter{Application of MCTS}
+One possible way to evaluate the possible cards moves is to use a Stochastic optimization method. Stochastic optimization introduces a random element into the solution-finding process, making probabilistic updates at each iteration. This randomness often helps them avoid getting stuck at local minima. These methods efficiently generate solutions with good performance across many problem types, mostly in the domain of decision making. 
 
-These methods efficiently generate solutions with good performance across many problem types, making probabilistic decisions. In our case, we chose the Monte Carlo method due to its effectiveness and relevance to our course.
+One such optimization method is Monte Carlo Tree Search (MCTS)\cite{6145622} which uses random simulations to estimate the expected score of each option.
+The main idea is to first explore the possible options in more depth to then make the best decision.
+
+We chose the Monte Carlo method due to its effectiveness and relevance to our course.
 
 \section{General concept}
-Monte Carlo Tree Search (MCTS) \cite{6145622} is a technique used mainly for decision-making, the main idea is to explore possible options in order to make the best decision.
+
+MCTS is comprised of the following four phases:
 
 \begin{itemize}
     \item \textbf{Expansion}: The process starts by representing the current state in the game with a node. The algorithm generates new nodes (child nodes) for any actions that haven’t been explored yet, representing possible next moves.
@@ -19,41 +23,40 @@ Monte Carlo Tree Search (MCTS) \cite{6145622} is a technique used mainly for dec
 \section{Application to the Gaps game}
 Our solver for the Gaps card game uses the standard four phases of MCTS: Selection, Expansion, Simulation, and Backpropagation.
 
-Here is how these steps are implemented:
 \subsection{Selection}
-We start from the root node and select the child node with the highest score, based on the Upper Confidence Bound (UCB) formula. This formula balances the exploration of new nodes with the exploitation of known nodes. The UCB formula is defined as:
+We start from the root node and select the child node with the highest score based on the Upper Confidence Bound (UCB) formula. This formula balances the exploration of new nodes with the exploitation of known nodes. The UCB formula is defined as:
 \begin{align*}
     \text{UCB}(G^t, W_c) = \frac{w_i}{n_i} + W_c \sqrt{\frac{\ln{N}}{n_i}}
 \end{align*}
-From this we add an additional term to the UCB formula to include a heuristic score $S$ with a certain weight $w$:
+From this we add an additional term to the UCB formula to include a heuristic score $S$ with a certain weight $W_S$:
 \begin{align*}
     \text{UCB}(G^t, W_c, W_S) = \frac{w_i}{n_i} + W_c \sqrt{\frac{\ln{N}}{n_i}} + W_SS(G^t)
 \end{align*}
-Having a higher UCB value means that the node is more promising and should be selected for further exploration, therefore adding the heuristic score to the UCB formula helps to guide the search towards more promising nodes. However we still want to explore new nodes, so we keep the exploration term in the formula and set a relatively low weight for the heuristic score.
+Having a higher UCB value means that the node is more promising and should be selected for further exploration. Adding the heuristic score to the UCB formula therefore guides the search towards more promising nodes. However, we still want to explore new nodes, so we keep the exploration term in the formula and set a relatively low weight for the heuristic score.
 
-Recall that $S\left(G^t\right)=\infty$ for solved states, this means that the algorithm will always select a node if promise to provide a solution since $\infty >$ UCB for any node
-
-We used $S$ function with MCTS with the parameters $W_X = 10$, $W_Y = 2$, and $W_Z = 1$. These values were chosen experimentally and can be adjusted to improve the performance of the algorithm. We decide to use $S$ and not $H$ because it is easier to determine a good value for the $W_c$ parameter, which is used to balance exploration and exploitation. Aswell as the weight of the heuristic $W_S$. If we used the function $H$ as the heuristic, it would be harder to determine a good value for $W_c$ and $W_S$ since the two terms are not on the same scale.
+ Recall that $S(G^t) = \infty$ for solved states. This ensures that the algorithm will always select a node that promises a solution, since $\infty$ is greater than the UCB value of any other node. We use the scoring function $S$ with MCTS, setting the parameters $W_X = 10$, $W_Y = 2$, and $W_Z = 1$. These values were determined experimentally and can be adjusted to optimize the algorithm's performance.
+ 
+ We chose to use $S$ (scoring function) instead of $H$ (heuristic/cost estimator) because it simplifies determining a suitable value for the exploration-exploitation balance parameter $W_c$ and the heuristic weight $W_S$. Using $H$ would make it more challenging to set appropriate values for $W_c$ and $W_S$ due to the different scale of these two terms.
 
 \subsection{Expansion}
 From the selected node, the algorithm expands the tree by generating child nodes for all possible actions. This step is crucial for exploring new paths and increasing the tree's depth.
 
-To select the next move, the algorithm select the 4 first best child node based on their respective value given by $S$ and sample one of them randomly with a linearly decreasing probability. This allows the algorithm to explore new paths while still focusing on the most promising ones. If one of these most promising nodes present a score of $\infty$, the algorithm will select it without any randomness.
+To select the next move, the algorithm selects the 4 first best child node based on their respective value given by $S$, and samples one of them randomly with a linearly decreasing probability. This allows the algorithm to explore new paths while still focusing on the most promising ones. If one of these most promising nodes presents a score of $\infty$, the algorithm will select it without any randomness.
 
 \subsection{Simulation}
 From the newly expanded node, the algorithm simulates the game's progress using random moves until we either:
 \begin{enumerate}
     \item Reach a solved state
     \item Reach a trap state
-    \item Reach the computational depth limits (set to 100 in our experiments)
+    \item Hit the computational depth limit (set to 100 in our experiments)
 \end{enumerate}
-The exploration is done similarly to the expansion phase, we select the 4 best child nodes based on their respective score $S$ and sample one of them randomly with a linearly decreasing probability. If one of these most promising nodes present a score of $\infty$, the algorithm will select it without any randomness.
+The exploration is done similarly to the expansion phase: As before, we select the 4 best child nodes based on their respective score $S$, and sample one of them randomly with a linearly decreasing probability. If one of these most promising nodes presents a score of $\infty$, the algorithm will select it without any randomness.
 
 \subsection{Backpropagation}
-After the simulation ends, the algorithm updates the scores of all nodes involved in the simulation. The score is updated based on the simulation result, with the score of the solved state being $\infty$ this will propagate back to the current node being explored, indicating that the node will lead to a solved state.
+After the simulation ends, the algorithm updates the scores of all nodes involved in the simulation. The score is updated based on the simulation result, with the score of the solved state being $\infty$. This will be propagated back to the current node being explored, indicating that the node will lead to a solved state.
 
 \subsection{Path finding}
-The algorithm repeats these steps for a predefined number of iterations, in our case 1,000. After the iterations are completed, the algorithm selects the child node with the highest score and returns the path from the root node to this node. We can reconstruct the path because through the expansion phase we created the children we wanted to explore, and we can keep track of the parent of each node.
+The algorithm repeats these steps for a predefined number of iterations, in our case 1,000. After the iterations are completed, the algorithm selects the child node with the highest score and returns the path from the root node to this node. The path can be reconstructed by memorizing references to parent nodes during expansion.
 
 % \section{State Scoring System}\label{State_Score_MCTS}
 % The scoring system is based on four key metrics and weighted according to their importance:

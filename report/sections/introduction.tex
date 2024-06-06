@@ -1,43 +1,52 @@
 \chapter{Introduction}
-Gaps, also known as Montana Gaps or Patience Gaps\footnote{\url{https://en.wikipedia.org/wiki/Gaps}}, is a solitaire game that is notably time-consuming to solve in its default setting. It belongs to the family of patience games\footnote{\url{https://en.wikipedia.org/wiki/Patience_(game)}}, which are generally single-player games where the objective is to arrange cards in a specific order according to certain rules. The game is played with a deck of French-suited playing cards\footnote{\url{https://en.wikipedia.org/wiki/French-suited_playing_cards}}.
+The Gaps game is a single-player game played with a deck of French-suited playing cards\footnote{\url{https://en.wikipedia.org/wiki/French-suited_playing_cards}}. It is attributed to the family of patience games\footnote{\url{https://en.wikipedia.org/wiki/Patience_(game)}}, where the objective is to arrange cards in a specific order according to certain rules. Despite its apparent simplicity, Gaps can be time-consuming to solve, especially in its default setting in which all ranks are used.
 
-To date, there is no significant work dedicated to solving this game, and we hope that our research can contribute to this area.
+In Gaps, the cards are arranged in a grid, and the player aims to fill the gaps by moving one card after another. The challenge lies in finding the right sequence of strategic steps to achieve the goal. The complexity of the game increases with the size of the grid, making it a suitable candidate for exploring Artificial Intelligence techniques to find optimal solutions.
 
 \figureWithCaption{gaps}{The playing cards used to play the Gaps game (in its unshuffled state)}{\textwidth}
 
-\section{Vocabulary}
-The game contains simple rules, and understanding these rules requires a clear definition of the vocabulary we will use.
+\section{Terminology}
+We employ card game-specific terminology throughout the report:
+
 \begin{enumerate}
-    \item \textbf{Gap}: A gap is an empty space in the game where no card is present. It can accept a specific card depending on the preceding card and its position in the row.
+    \item \textbf{Gap}: A gap is a cell in the game's grid where no card is present.
     \item \textbf{Rank}: The rank of a card refers to its number, which ranges from Ace (mapped to ID 0) to King (mapped to ID 12).
-    \item \textbf{Suit}: The suit of a card represents its symbol: Hearts (Red heart symbol, mapped to 0), Diamonds (Red diamond symbol, mapped to 1), Clubs (Black club symbol, mapped to 2), and Spades (Black spade symbol, mapped to 3).
-    \item \textbf{Color}: The color of a card is either black or red.
-    \item \textbf{Card Coordinate}: We define the coordinates in our game as follows: $(r, c)$, where $r$ represents the row and $c$ represents the column, starting from the top left.
-    \item \textbf{Previous Card}: The previous card is the card immediately to the left of the current card. Therefore, the previous card of the card located at $(r, c)$ is located at $(r, c-1)$.
-    \item \textbf{Trap Node / Trap State}: A state in the game where no actions are available, and the game is not solved.
-    \item \textbf{Solve Node / Solved State}: A state in the game where the game is considered solved.
-    \item \textbf{Leaf Node / Leaf State}: A state that can either be a solved state or a trap state.
-    \item \textbf{State Space}: All the possible states that can be reached from an initial game state by performing a series of actions.
+    A card's ID corresponds to its precedence, with 0 being the lowest precedence.
+    \item \textbf{Suit}: The suit of a card represents its symbol: Hearts (mapped to 0), Diamonds (mapped to 1), Clubs (mapped to 2), and Spades (mapped to 3).
+    \item \textbf{Color}: The color of a card. 
+    Can either be black (club and spades) or red (hearts and diamond).
 \end{enumerate}
 
-\section{Mathematical symbols}
-We will refer to the following mathematical representation in this report, here is a summary of what they represent.
+In addition, we also use the following terms that are specific to the gaps game:
+
+\begin{enumerate}
+    \item \textbf{Card Coordinate}: We define coordinates on the board in terms of the grid. A coordinate is denoted as $(r, c)$, where $r$ represents the row and $c$ represents the column. The grid's origin is at the top left. 
+    \item \textbf{Previous Card}: The previous card is the card immediately to the left of the current card. Therefore, the previous card of the card at $(r, c)$ is located at $(r, c-1)$.
+    \item \textbf{Trap Node / Trap State}: An unsolved state of the game in which no further actions can be played.
+    \item \textbf{Solve Node / Solved State}: A state of the game that is considered solved.
+    \item \textbf{Leaf Node / Leaf State}: A state that is either a solved state or a trap state.
+    \item \textbf{State Space}: A set containing all possible states that can be reached from a given game state (by performing a series of arbitrary actions of arbitrary length).
+\end{enumerate}
+
+\section{Mathematical notation}
+We will use the following mathematical notation throughout the report:
+
 \begin{table}[ht]
 \centering
 \resizebox{\columnwidth}{!}{%
 \begin{tabular}{ll}
-$G^t$           & Represent the board at time $t$, it is a matrix a cards                                                  \\     
-$G^t_{c,r}$     & Represent the card at position $(c,r)$ in the board at time $t$                                    \\
-$C$           & The number of columns we are working with                                                           \\
-$R$           & The number of rows we are working with, it also represent the number of gaps in our game               \\
-$X\left(G^t\right)$ and $X_n\left(G^t\right)$ & The number of well placed cards, the $n$ denotes its normalized version between 0 and 1         \\
-$Y\left(G^t\right)$ and $Y_n\left(G^t\right)$ & The number of dead gaps in the game, the $n$ denotes its normalized version between 0 and 1     \\
-$Z\left(G^t\right)$ and $Z_n\left(G^t\right)$ & The number of repeated gaps in the game, the $n$ denotes its normalized version between 0 and 1 \\
-$S\left(W_X, W_Y, W_Z, G^t\right)$ & The score of the state $G^t$ with the weights $W_X$, $W_Y$, and $W_Z$ \\
-$H\left(G^t, W_p\right)$ & The heuristic of the state $G^t$ with a weight penalty $W_p$ \\
-$N$           & The complexity of the shuffle.\\
-$W_c$           & The weight of the exploration term in the UCB formula.\\
-$t(C, N)$           & The timeout in seconds for a game of complexity $N$ and $C$ columns.\\
+$G^t$           & Represents the board at time $t$. It is a matrix of cards                                                  \\     
+$G^t_{c,r}$     & Represents the card at position $(c,r)$ in the board at time $t$                                    \\
+$C$           & Number of columns we are working with                                                           \\
+$R$           & Number of rows we are working with. This corresponds to the total number of gaps.               \\
+$X\left(G^t\right)$ and $X_n\left(G^t\right)$ & Number of well placed cards. The subscript $n$ denotes its normalized version between 0 and 1         \\
+$Y\left(G^t\right)$ and $Y_n\left(G^t\right)$ & Number of dead gaps in the game. The subscript $n$ denotes its normalized version between 0 and 1     \\
+$Z\left(G^t\right)$ and $Z_n\left(G^t\right)$ & Number of repeated gaps in the game. The subscript $n$ denotes its normalized version between 0 and 1 \\
+$S\left(W_X, W_Y, W_Z, G^t\right)$ & Score of the state $G^t$ with the weights $W_X$, $W_Y$, and $W_Z$ \\
+$H\left(G^t, W_p\right)$ & Heuristic of the state $G^t$ with a weight penalty $W_p$ \\
+$N$           & Complexity of the shuffle\\
+$W_c$           & Weight of the exploration. It is a term in the UCB formula, which is used by MCTS\\
+$t(C, N)$           & Timeout in seconds for a game of $C$ columns and complexity $N$\\
 \end{tabular}%
 }
 \caption{}
@@ -46,29 +55,40 @@ $t(C, N)$           & The timeout in seconds for a game of complexity $N$ and $C
 \newpage
 
 \section{Game rules}
-From the previous vocabulary we can define our rules
+Gaps is played as follows:
+
 \begin{enumerate}
     \item A game has a number of rows and columns within the discrete intervals\\
     $R \in \{1, 2, 3, 4\}$\\
-    $C \in \{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13\}$
-    \item From all the cards we pick $R$ (number of rows) cards that has to be removed to create the gaps. These ones are often the Kings or the Ace, it doesn't change the difficulty. In our implementation we choosed to remove the Kings.
-    \item We randomly shuffle the game, moving the gaps into random coordinates
-    \item We can only move a card in a gap
-    \item A card can be moved in a gap at location if and only if the previous card is a card with the same suit and with a rank exactly one unit lower than the card being moved. For instance we can move \MainMiniCartesJeu{7.K} in front of \MainMiniCartesJeu{6.K} if there is a gap, but not in front of \MainMiniCartesJeu{6.H} or \MainMiniCartesJeu{5.K}.
-    \item Any card can be moved if the a gap is at the beginning of a row, meaning if the gap position is in the following set of positions: $\{(r, 0) | \forall r \in R\}$.
-    \item If two or more gaps follow each other the gaps positioned after the first one are considered as a "double-gaps" and they cannot cannot be filled until the preceding one got filled.
-    \item The game is solved if for every row is populated by one unique suit and the cards are sorted, placing the gap at the last position in the row.
+    $C \in \{3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13\}$
+    \item We create $R$ gaps by removing $R$ (number of rows) from the board. 
+    Typically, these are the cards of the highest rank (Kings with 13 columns, Queens with 12, and so on...). 
+    Alternatively, it is also possible to remove the cards of the lowest rank (always Ace).
+    This does not affect the difficulty of the problem.
+    We chose the prior approach.
+    \item We randomly shuffle all grid cells, which causes all gaps to end up at random coordinates.
+    \item The only possible move is to move a card into a gap.
+    This causes a new gap to appear at the card's previous position.
+    \item A card can be moved into a gap if and only if the card preceding the gap is of the same suit and has a rank that is exactly one unit lower than the card to be moved. 
+    For instance, we can move \MainMiniCartesJeu{7.K} in a gap that is to the right of \MainMiniCartesJeu{6.K}.
+    The cards \MainMiniCartesJeu{6.H} (mismatching suit) and \MainMiniCartesJeu{5.K} (rank is two units smaller, not just one) would not be permissible.
+    \item Gaps at the beginning of a row can be filled unconditionally.
+    That is, any card can be moved into gaps of the set $\{(r, 0) | \forall r \in R\}$.
+    \item If a gap immediately follows another, we refer to it as a "repeated gap". Repeated gaps cannot be filled as long as its predecessor has not been filled.
+    \item The game is solved if every row is populated with cards of exactly one suit respectively, and if the cards are sorted with respect to their ranks. The gaps have to appear in the last position of a row.
 \end{enumerate}
 
 \section{Dead gap corollary}
-According to our rules, gaps located after the highest-ranked cards in the game are unusable for placing any cards. This is because a card can only be placed in a gap if its rank is exactly one unit higher than the rank of the card preceding the gap. However, this rule does not apply to gaps situated in the last column, as they represent the correct position of the gap in the solved state. We refer to these unusable gaps as "dead gaps."
+According to the rules, gaps located after the highest-ranked cards in the game cannot be filled with cards. This is because a card can only be placed in a gap if its rank is exactly one unit higher than the rank of the card preceding the gap. We refer to these unusable gaps as "dead gaps."
+
+Gaps located in the last column are never considered dead, as they are in the correct location with regard to the solved state. Note that they are nevertheless unusable in the outlined scenario.
 
 \figureWithCaption{rules}{The movements rules of the games summarized in one state}{\textwidth}
 
 \section{Shuffling}
-There are multiple ways to shuffle the game to start playing. A naive approach involves selecting two random cards and swapping them, repeating this process $N$ times to shuffle the game. However, this method does not guarantee the solvability of the game, which is typically ensured when a human player shuffles due to its time-consuming nature.
+There are multiple ways to shuffle board. A naive approach involves selecting two random cards (or gaps) and swapping them, repeating this process $N$ times to shuffle the game. However, this method does not guarantee the game to be solvable. Starting from a solvable game state is typically desired by human players though, as the game is already fairly complex and time-consuming on its own.
 
-A more reliable method is to start from a solved game, then pick a random card and a random gap, and move the card from its initial position to the gap. This process is repeated $N$ times. Shuffling in this manner from a solved game creates a tree of possible actions with an increasing depth as $N$ increases. The higher the value of $N$, the more trap nodes are introduced into our state space.
+A more reliable method is to start from a solved state, then pick a random card and a random gap, and move the card from its initial position to the gap. This process is repeated $N$ times. Shuffling in this manner from a solved game creates a tree of possible actions, with an increasing depth as $N$ increases. The higher the value of $N$, the more trap nodes are introduced into our state space. This is why we refer to the number of swaps as the "complexity of the shuffle" (or the initial board).
 
 \begin{algorithm}[H]
     \caption{Shuffle board}

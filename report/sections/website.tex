@@ -1,8 +1,14 @@
 \chapter{Code and final product}
-We chose to implement our algorithms in TypeScript\footnote{\url{https://www.typescriptlang.org/}} using React\footnote{\url{https://react.dev/}}. This is because we wanted to showcase our algorithms in a user-friendly way. This way one can play the game, see the algorithms in action, and understand how they work simply by visiting our website at the following URL: \textbf{\url{https://quaffel.github.io/gaps/}}.
+We chose to implement our algorithms in TypeScript\footnote{\url{https://www.typescriptlang.org/}} using React\footnote{\url{https://react.dev/}}. This is because we wanted to showcase our algorithms in a user-friendly way. This way one can play the game, see the algorithms in action, and understand how they work simply by visiting our website at \textbf{\url{https://quaffel.github.io/gaps/}}.
+
+We all equally contributed to this project. As we initially had different views on how it should be structured, we all started building parts of the project to explore different approaches, and ended up merging them together.
+The final result can be found here: \url{https://github.com/Quaffel/gaps}. The person in charge of merging the parts (and thus the commiter of the changes) was not necessarily the contributor of the original change.
+This means that commit authorship does not indicate by whom a change has originally been contributed.
 
 \section{Algorithms}
-We implemented three algorithms: A*, MCTS, and Greedy BFS. The A* and MCTS algorithms in a separated logic file, there are located in folder \texttt{src/logic/solver}. The Greedy BFS algorithm is implemented in the same file as the A$^*$ algorithm, but it is called with different parameters.
+We implemented three algorithms: A*, MCTS, and Greedy BFS. 
+Their implementations can be found at \texttt{src/logic/solver}.
+As Greedy BFS is just a variation of A$^*$ that only differs in parameters, they are located in the same file.
 
 % \begin{enumerate}
 %     \item Click on the card you are willing to move
